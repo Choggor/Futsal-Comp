@@ -24,10 +24,20 @@ interface ValidatedRow {
 
 const TEMPLATE = [
   'player_name,team,division,venue_night,insurance_expiry',
-  'John Smith,Tigers,Mixed Div 1,,2027-01-01',
+  'John Smith,Tigers,Mixed Div 1,,01/01/2027',
   'Sarah Jones,Eagles,Mixed Div 1,,',
-  'John Smith,Eagles,Mens Div 1,,2027-01-01',
+  'John Smith,Eagles,Mens Div 1,,01/01/2027',
 ].join('\n')
+
+function parseDate(raw: string): string {
+  const trimmed = raw.trim()
+  if (!trimmed) return ''
+  // Accept dd/mm/yyyy or dd-mm-yyyy → normalise to yyyy-mm-dd
+  const dmyMatch = trimmed.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/)
+  if (dmyMatch) return `${dmyMatch[3]}-${dmyMatch[2].padStart(2, '0')}-${dmyMatch[1].padStart(2, '0')}`
+  // Already yyyy-mm-dd or yyyy/mm/dd
+  return trimmed.replace(/\//g, '-')
+}
 
 function col(row: Record<string, string>, ...keys: string[]): string {
   for (const k of keys) {
@@ -95,14 +105,14 @@ export function PlayerImportPage() {
           const team = col(row, 'team', 'Team')
           const division = col(row, 'division', 'Division')
           const venue_night = col(row, 'venue_night', 'Venue Night', 'night')
-          const insurance_expiry = col(row, 'insurance_expiry', 'Insurance Expiry', 'expiry').replace(/\//g, '-')
+          const insurance_expiry = parseDate(col(row, 'insurance_expiry', 'Insurance Expiry', 'expiry'))
 
           const errors: string[] = []
           if (!player_name) errors.push('Player name is required')
           if (!team) errors.push('Team is required')
           if (!division) errors.push('Division is required')
           if (insurance_expiry && isNaN(Date.parse(insurance_expiry))) {
-            errors.push(`Invalid date "${insurance_expiry}" — use YYYY-MM-DD`)
+            errors.push(`Invalid date — use DD/MM/YYYY`)
           }
 
           let divisionId: string | null = null
@@ -261,7 +271,7 @@ export function PlayerImportPage() {
         <p style={{ fontSize: '0.875rem', color: 'var(--color-muted)', marginBottom: '0.5rem' }}>
           Columns: <code>player_name</code>, <code>team</code>, <code>division</code>,{' '}
           <code>venue_night</code> (optional — only needed if two divisions share the same name),{' '}
-          <code>insurance_expiry</code> (YYYY-MM-DD, optional).
+          <code>insurance_expiry</code> (DD/MM/YYYY, optional).
         </p>
         <p style={{ fontSize: '0.875rem', color: 'var(--color-muted)', marginBottom: '0.75rem' }}>
           Teams are created automatically if they don't exist in the specified division.
