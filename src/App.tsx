@@ -1,42 +1,45 @@
-import { Routes, Route, Link } from 'react-router-dom'
-
-function Home() {
-  return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Futsal Competition</h1>
-      <p>Coming soon — fixtures, standings and draw.</p>
-      <nav>
-        <Link to="/admin">Admin login</Link>
-      </nav>
-    </main>
-  )
-}
-
-function Admin() {
-  return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Admin</h1>
-      <p>Auth to be wired in Phase 2.</p>
-      <Link to="/">← Back</Link>
-    </main>
-  )
-}
-
-function NotFound() {
-  return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>404 — Page not found</h1>
-      <Link to="/">← Home</Link>
-    </main>
-  )
-}
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext'
+import { ProtectedRoute } from './components/ProtectedRoute'
+import { AdminLayout } from './components/AdminLayout'
+import { Login } from './pages/Login'
+import { Dashboard } from './pages/admin/Dashboard'
+import { VenuesPage } from './pages/admin/VenuesPage'
+import { CourtsPage } from './pages/admin/CourtsPage'
+import { TimeSlotsPage } from './pages/admin/TimeSlotsPage'
+import { DivisionsPage } from './pages/admin/DivisionsPage'
+import { TeamsPage } from './pages/admin/TeamsPage'
+import { PlayersPage } from './pages/admin/PlayersPage'
+import { PlayerImportPage } from './pages/admin/PlayerImportPage'
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/admin/*" element={<Admin />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={
+          <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
+            <h1>Futsal Competition</h1>
+            <p>Public fixtures, standings and draw coming in Phase 9.</p>
+          </main>
+        } />
+        <Route path="/login" element={<Login />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route element={<AdminLayout />}>
+            <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/venues" element={<VenuesPage />} />
+            <Route path="/admin/venues/:venueId/courts" element={<CourtsPage />} />
+            <Route path="/admin/venues/:venueId/timeslots" element={<TimeSlotsPage />} />
+            <Route path="/admin/venues/:venueId/divisions" element={<DivisionsPage />} />
+            <Route path="/admin/venues/:venueId/divisions/:divisionId/teams" element={<TeamsPage />} />
+            <Route path="/admin/players" element={<PlayersPage />} />
+            <Route path="/admin/players/import" element={<PlayerImportPage />} />
+          </Route>
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AuthProvider>
   )
 }
