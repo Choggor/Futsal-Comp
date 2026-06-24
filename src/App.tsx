@@ -7,10 +7,12 @@ import { Dashboard } from './pages/admin/Dashboard'
 import { VenuesPage } from './pages/admin/VenuesPage'
 import { CourtsPage } from './pages/admin/CourtsPage'
 import { TimeSlotsPage } from './pages/admin/TimeSlotsPage'
+import { NightsPage } from './pages/admin/NightsPage'
 import { DivisionsPage } from './pages/admin/DivisionsPage'
 import { TeamsPage } from './pages/admin/TeamsPage'
 import { PlayersPage } from './pages/admin/PlayersPage'
 import { PlayerImportPage } from './pages/admin/PlayerImportPage'
+import { DrawPage } from './pages/admin/DrawPage'
 
 export default function App() {
   return (
@@ -31,10 +33,12 @@ export default function App() {
             <Route path="/admin/venues" element={<VenuesPage />} />
             <Route path="/admin/venues/:venueId/courts" element={<CourtsPage />} />
             <Route path="/admin/venues/:venueId/timeslots" element={<TimeSlotsPage />} />
-            <Route path="/admin/venues/:venueId/divisions" element={<DivisionsPage />} />
-            <Route path="/admin/venues/:venueId/divisions/:divisionId/teams" element={<TeamsPage />} />
+            <Route path="/admin/venues/:venueId/nights" element={<NightsPage />} />
+            <Route path="/admin/venues/:venueId/nights/:nightId/divisions" element={<DivisionsPage />} />
+            <Route path="/admin/venues/:venueId/nights/:nightId/divisions/:divisionId/teams" element={<TeamsPage />} />
             <Route path="/admin/players" element={<PlayersPage />} />
             <Route path="/admin/players/import" element={<PlayerImportPage />} />
+            <Route path="/admin/draw" element={<DrawPage />} />
           </Route>
         </Route>
 

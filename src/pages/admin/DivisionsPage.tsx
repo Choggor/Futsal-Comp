@@ -2,21 +2,21 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 
-interface Division {
-  id: string
-  venue_id: string
-  name: string
-  type: 'mens' | 'mixed'
-  finals_format: 'none' | 'top4' | 'split8'
-}
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 type DivType = 'mens' | 'mixed'
 type FinalsFormat = 'none' | 'top4' | 'split8'
+
+interface Division { id: string; name: string; type: DivType; finals_format: FinalsFormat; venue_night_id: string | null }
+interface Night { id: string; venue_id: string; day_of_week: number; name: string | null }
+interface Venue { id: string; name: string }
+
 const blank: { name: string; type: DivType; finals_format: FinalsFormat } = { name: '', type: 'mixed', finals_format: 'top4' }
 
 export function DivisionsPage() {
-  const { venueId } = useParams<{ venueId: string }>()
-  const [venue, setVenue] = useState<{ id: string; name: string } | null>(null)
+  const { venueId, nightId } = useParams<{ venueId: string; nightId: string }>()
+  const [venue, setVenue] = useState<Venue | null>(null)
+  const [night, setNight] = useState<Night | null>(null)
   const [divisions, setDivisions] = useState<Division[]>([])
   const [form, setForm] = useState<{ name: string; type: DivType; finals_format: FinalsFormat }>(blank)
   const [editing, setEditing] = useState<Division | null>(null)
@@ -25,14 +25,19 @@ export function DivisionsPage() {
   const [saving, setSaving] = useState(false)
 
   async function load() {
-    const [{ data: v }, { data: d }] = await Promise.all([
-      supabase.from('venues').select('id, name').eq('id', venueId!).single(),
-      supabase.from('divisions').select('*').eq('venue_id', venueId!).order('name'),
+    const [{ data: n }, { data: d }] = await Promise.all([
+      supabase.from('venue_nights').select('id, venue_id, day_of_week, name').eq('id', nightId!).single(),
+      supabase.from('divisions').select('*').eq('venue_night_id', nightId!).order('name'),
     ])
-    setVenue(v); setDivisions(d ?? [])
+    setNight(n)
+    setDivisions(d ?? [])
+    if (n) {
+      const { data: v } = await supabase.from('venues').select('id, name').eq('id', n.venue_id).single()
+      setVenue(v)
+    }
   }
 
-  useEffect(() => { load() }, [venueId])
+  useEffect(() => { load() }, [nightId])
 
   function openCreate() { setEditing(null); setForm(blank); setShowForm(true); setError(null) }
   function openEdit(d: Division) {
@@ -43,28 +48,33 @@ export function DivisionsPage() {
     setSaving(true); setError(null)
     const { error } = editing
       ? await supabase.from('divisions').update(form).eq('id', editing.id)
-      : await supabase.from('divisions').insert({ ...form, venue_id: venueId! })
+      : await supabase.from('divisions').insert({ ...form, venue_night_id: nightId!, venue_id: night!.venue_id })
     if (error) setError(error.message)
     else { setShowForm(false); load() }
     setSaving(false)
   }
 
   async function remove(id: string) {
-    if (!confirm('Delete this division? Teams will also be deleted.')) return
+    if (!confirm('Delete this division? Its teams will also be deleted.')) return
     const { error } = await supabase.from('divisions').delete().eq('id', id)
     if (error) alert(error.message)
     else load()
   }
 
+  const nightLabel = night ? (night.name ?? DAY_NAMES[night.day_of_week]) : '…'
   const finalsLabel = { none: 'None', top4: 'Top 4', split8: 'Split 8' }
 
   return (
     <div>
       <div className="breadcrumb">
-        <Link to="/admin/venues">Venues</Link> › {venue?.name ?? '…'}
+        <Link to="/admin/venues">Venues</Link>
+        {' › '}
+        <Link to={`/admin/venues/${venueId}/nights`}>{venue?.name ?? '…'}</Link>
+        {' › '}
+        {nightLabel}
       </div>
       <div className="page-header">
-        <h1>Divisions — {venue?.name}</h1>
+        <h1>Divisions — {nightLabel}</h1>
         <button onClick={openCreate}>+ Add division</button>
       </div>
 
@@ -103,7 +113,7 @@ export function DivisionsPage() {
               <td>{d.name}</td>
               <td style={{ textTransform: 'capitalize' }}>{d.type}</td>
               <td>{finalsLabel[d.finals_format]}</td>
-              <td><Link to={`/admin/venues/${venueId}/divisions/${d.id}/teams`}>Manage teams</Link></td>
+              <td><Link to={`/admin/venues/${venueId}/nights/${nightId}/divisions/${d.id}/teams`}>Manage teams</Link></td>
               <td style={{ whiteSpace: 'nowrap' }}>
                 <button className="btn-sm" onClick={() => openEdit(d)}>Edit</button>
                 {' '}
@@ -111,7 +121,7 @@ export function DivisionsPage() {
               </td>
             </tr>
           ))}
-          {divisions.length === 0 && <tr><td colSpan={5}>No divisions yet.</td></tr>}
+          {divisions.length === 0 && <tr><td colSpan={5}>No divisions yet for this night.</td></tr>}
         </tbody>
       </table>
     </div>

@@ -20,6 +20,7 @@ export function AdminLayout() {
             {isSuperAdmin && <NavLink to="/admin/venues">Venues</NavLink>}
             <NavLink to="/admin/players">Players</NavLink>
             <NavLink to="/admin/players/import">Import CSV</NavLink>
+            {isSuperAdmin && <NavLink to="/admin/draw">Draw</NavLink>}
           </div>
           <div className="admin-nav-user">
             <span>{appUser?.display_name ?? 'Admin'}</span>

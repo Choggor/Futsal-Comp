@@ -136,7 +136,7 @@ export function VenuesPage() {
                 {' · '}
                 <Link to={`/admin/venues/${v.id}/timeslots`}>Slots</Link>
                 {' · '}
-                <Link to={`/admin/venues/${v.id}/divisions`}>Divisions</Link>
+                <Link to={`/admin/venues/${v.id}/nights`}>Nights</Link>
               </td>
               {isSuperAdmin && (
                 <td style={{ whiteSpace: 'nowrap' }}>
