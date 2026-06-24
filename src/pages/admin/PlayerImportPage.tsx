@@ -95,7 +95,7 @@ export function PlayerImportPage() {
           const team = col(row, 'team', 'Team')
           const division = col(row, 'division', 'Division')
           const venue_night = col(row, 'venue_night', 'Venue Night', 'night')
-          const insurance_expiry = col(row, 'insurance_expiry', 'Insurance Expiry', 'expiry')
+          const insurance_expiry = col(row, 'insurance_expiry', 'Insurance Expiry', 'expiry').replace(/\//g, '-')
 
           const errors: string[] = []
           if (!player_name) errors.push('Player name is required')
