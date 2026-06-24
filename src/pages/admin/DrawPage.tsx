@@ -138,6 +138,14 @@ export function DrawPage() {
     setGenerating(false)
   }
 
+  async function deleteSeason(s: Season) {
+    if (!confirm(`Delete "${s.name}"? This will also delete all its fixtures. This cannot be undone.`)) return
+    const { error } = await supabase.from('seasons').delete().eq('id', s.id)
+    if (error) { alert(error.message); return }
+    if (selected?.id === s.id) { setSelected(null); setFixtures([]) }
+    await loadSeasons()
+  }
+
   async function publish() {
     if (!selected) return
     if (!confirm(`Publish "${selected.name}"? This cannot be undone — the draw will go live and cannot be regenerated.`)) return
@@ -218,10 +226,13 @@ export function DrawPage() {
                         {s.status === 'published' ? 'Published' : 'Draft'}
                       </span>
                     </td>
-                    <td>
+                    <td style={{ whiteSpace: 'nowrap' }}>
                       <button className="btn-sm" onClick={() => selectSeason(s)}>
                         {selected?.id === s.id ? 'Selected ✓' : 'Select'}
                       </button>
+                      {s.status === 'draft' && (
+                        <> <button className="btn-sm btn-danger" onClick={() => deleteSeason(s)}>Delete</button></>
+                      )}
                     </td>
                   </tr>
                 ))}
