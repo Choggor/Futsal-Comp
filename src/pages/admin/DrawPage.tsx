@@ -45,6 +45,40 @@ function nightLabel(n: Season['venue_nights']) {
   return `${n.name ?? DAY_NAMES_FULL[n.day_of_week]} @ ${n.venues?.name ?? '?'}`
 }
 
+function SeasonTable({ seasons, selected, onSelect, onDelete }: {
+  seasons: Season[]
+  selected: Season | null
+  onSelect: (s: Season) => void
+  onDelete: (s: Season) => void
+}) {
+  return (
+    <table className="data-table">
+      <thead><tr><th>Name</th><th>Night</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        {seasons.map(s => (
+          <tr key={s.id} style={selected?.id === s.id ? { background: '#eff6ff' } : undefined}>
+            <td>{s.name}</td>
+            <td style={{ fontSize: '0.85rem', color: 'var(--color-muted)' }}>{nightLabel((s as any).venue_nights)}</td>
+            <td>
+              <span className={`badge ${s.status === 'published' ? 'badge-ok' : 'badge-warn'}`}>
+                {s.status === 'published' ? 'Published' : 'Draft'}
+              </span>
+            </td>
+            <td style={{ whiteSpace: 'nowrap' }}>
+              <button className="btn-sm" onClick={() => onSelect(s)}>
+                {selected?.id === s.id ? 'Selected ✓' : 'Select'}
+              </button>
+              {s.status === 'draft' && (
+                <> <button className="btn-sm btn-danger" onClick={() => onDelete(s)}>Delete</button></>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
+
 export function DrawPage() {
   const [seasons, setSeasons] = useState<Season[]>([])
   const [selected, setSelected] = useState<Season | null>(null)
@@ -165,6 +199,9 @@ export function DrawPage() {
   const rounds = [...byRound.entries()].sort(([a], [b]) => a - b)
 
   const filteredNights = nights.filter(n => n.venue_id === newVenueId)
+  const [showPast, setShowPast] = useState(false)
+  const activeSeasons = seasons.filter(s => s.status === 'draft')
+  const pastSeasons = seasons.filter(s => s.status === 'published')
 
   return (
     <div>
@@ -209,37 +246,36 @@ export function DrawPage() {
           </div>
         )}
 
-        {seasons.length === 0
-          ? <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>No seasons yet — create one to generate a draw.</p>
-          : (
-            <table className="data-table">
-              <thead><tr><th>Name</th><th>Night</th><th>Status</th><th></th></tr></thead>
-              <tbody>
-                {seasons.map(s => (
-                  <tr key={s.id} style={selected?.id === s.id ? { background: '#eff6ff' } : undefined}>
-                    <td>{s.name}</td>
-                    <td style={{ fontSize: '0.85rem', color: 'var(--color-muted)' }}>
-                      {nightLabel((s as any).venue_nights)}
-                    </td>
-                    <td>
-                      <span className={`badge ${s.status === 'published' ? 'badge-ok' : 'badge-warn'}`}>
-                        {s.status === 'published' ? 'Published' : 'Draft'}
-                      </span>
-                    </td>
-                    <td style={{ whiteSpace: 'nowrap' }}>
-                      <button className="btn-sm" onClick={() => selectSeason(s)}>
-                        {selected?.id === s.id ? 'Selected ✓' : 'Select'}
-                      </button>
-                      {s.status === 'draft' && (
-                        <> <button className="btn-sm btn-danger" onClick={() => deleteSeason(s)}>Delete</button></>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )
-        }
+        {seasons.length === 0 && (
+          <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>No seasons yet — create one to generate a draw.</p>
+        )}
+
+        {/* Active (draft) seasons */}
+        {activeSeasons.length > 0 && (
+          <SeasonTable seasons={activeSeasons} selected={selected} onSelect={selectSeason} onDelete={deleteSeason} />
+        )}
+        {activeSeasons.length === 0 && pastSeasons.length > 0 && (
+          <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem', marginBottom: '0.5rem' }}>No active seasons.</p>
+        )}
+
+        {/* Past (published) seasons — collapsible */}
+        {pastSeasons.length > 0 && (
+          <div style={{ marginTop: activeSeasons.length ? '1rem' : 0 }}>
+            <button
+              className="btn-secondary"
+              style={{ fontSize: '0.85rem', width: '100%', textAlign: 'left', display: 'flex', justifyContent: 'space-between' }}
+              onClick={() => setShowPast(p => !p)}
+            >
+              <span>Completed seasons ({pastSeasons.length})</span>
+              <span>{showPast ? '▲' : '▼'}</span>
+            </button>
+            {showPast && (
+              <div style={{ marginTop: '0.5rem' }}>
+                <SeasonTable seasons={pastSeasons} selected={selected} onSelect={selectSeason} onDelete={deleteSeason} />
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* ── Generate (draft only) ── */}
