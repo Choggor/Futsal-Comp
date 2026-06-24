@@ -12,6 +12,8 @@ interface Season {
   venue_night_id: string | null
   created_at: string
   venue_nights?: { name: string | null; day_of_week: number; venues: { name: string } | null } | null
+  start_date?: string | null
+  end_date?: string | null
 }
 
 interface Warning { type: string; message: string }
@@ -33,6 +35,12 @@ interface Fixture {
 interface Venue { id: string; name: string }
 interface Night { id: string; venue_id: string; day_of_week: number; name: string | null }
 
+function fmtDate(d: string | null | undefined) {
+  if (!d) return '—'
+  const [y, m, day] = d.split('-')
+  return `${day}/${m}/${y}`
+}
+
 function fmt12(t: string | null) {
   if (!t) return ''
   const [h, m] = t.split(':')
@@ -53,12 +61,14 @@ function SeasonTable({ seasons, selected, onSelect, onDelete }: {
 }) {
   return (
     <table className="data-table">
-      <thead><tr><th>Name</th><th>Night</th><th>Status</th><th></th></tr></thead>
+      <thead><tr><th>Name</th><th>Night</th><th>Start</th><th>End</th><th>Status</th><th></th></tr></thead>
       <tbody>
         {seasons.map(s => (
           <tr key={s.id} style={selected?.id === s.id ? { background: '#eff6ff' } : undefined}>
             <td>{s.name}</td>
             <td style={{ fontSize: '0.85rem', color: 'var(--color-muted)' }}>{nightLabel((s as any).venue_nights)}</td>
+            <td style={{ fontSize: '0.85rem', whiteSpace: 'nowrap' }}>{fmtDate(s.start_date)}</td>
+            <td style={{ fontSize: '0.85rem', whiteSpace: 'nowrap' }}>{fmtDate(s.end_date)}</td>
             <td>
               <span className={`badge ${s.status === 'published' ? 'badge-ok' : 'badge-warn'}`}>
                 {s.status === 'published' ? 'Published' : 'Draft'}
@@ -98,11 +108,33 @@ export function DrawPage() {
   const [publishing, setPublishing] = useState(false)
 
   async function loadSeasons() {
-    const { data } = await supabase
-      .from('seasons')
-      .select('id, name, status, venue_night_id, created_at, venue_nights(name, day_of_week, venues(name))')
-      .order('created_at', { ascending: false })
-    setSeasons((data ?? []) as unknown as Season[])
+    const [{ data: seasonsData }, { data: fixtureDates }] = await Promise.all([
+      supabase
+        .from('seasons')
+        .select('id, name, status, venue_night_id, created_at, venue_nights(name, day_of_week, venues(name))')
+        .order('created_at', { ascending: false }),
+      supabase
+        .from('fixtures')
+        .select('season_id, scheduled_date')
+        .not('scheduled_date', 'is', null),
+    ])
+
+    // Compute min/max date per season from fixtures
+    const dateMap = new Map<string, { min: string; max: string }>()
+    for (const f of fixtureDates ?? []) {
+      if (!f.scheduled_date) continue
+      const cur = dateMap.get(f.season_id)
+      if (!cur) { dateMap.set(f.season_id, { min: f.scheduled_date, max: f.scheduled_date }); continue }
+      if (f.scheduled_date < cur.min) cur.min = f.scheduled_date
+      if (f.scheduled_date > cur.max) cur.max = f.scheduled_date
+    }
+
+    const enriched = (seasonsData ?? []).map(s => ({
+      ...s,
+      start_date: dateMap.get(s.id)?.min ?? null,
+      end_date: dateMap.get(s.id)?.max ?? null,
+    }))
+    setSeasons(enriched as unknown as Season[])
   }
 
   async function loadVenues() {
