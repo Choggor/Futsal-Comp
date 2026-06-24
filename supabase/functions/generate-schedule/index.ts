@@ -192,111 +192,152 @@ Deno.serve(async (req) => {
     const { season_id, start_date, round_interval_days = 7 } = await req.json()
     if (!season_id || !start_date) return resp({ error: 'Missing season_id or start_date' }, 400)
 
-    const { data: season } = await admin.from('seasons').select('id, status').eq('id', season_id).single()
+    // Load season and its venue_night_id
+    const { data: season } = await admin
+      .from('seasons')
+      .select('id, status, venue_night_id')
+      .eq('id', season_id)
+      .single()
     if (!season) return resp({ error: 'Season not found' }, 404)
     if (season.status !== 'draft') return resp({ error: 'Cannot regenerate a published season' }, 400)
+    if (!season.venue_night_id) return resp({ error: 'Season has no venue night assigned' }, 400)
 
-    // Clear existing draft fixtures
+    // Clear existing draft fixtures for this season
     await admin.from('fixtures').delete().eq('season_id', season_id)
 
-    // Load venue nights with their divisions/teams
-    const { data: nights, error: nightErr } = await admin
+    // Load the single venue night with its divisions/teams
+    const { data: night, error: nightErr } = await admin
       .from('venue_nights')
       .select(`
         id, venue_id, day_of_week, name,
         venues(id, name),
         divisions(id, name, type, teams(id, name, team_players(player_id)))
       `)
-    if (nightErr) return resp({ error: nightErr.message }, 500)
-    if (!nights?.length) return resp({ error: 'No venue nights configured' }, 400)
+      .eq('id', season.venue_night_id)
+      .single()
 
-    // Load courts and slots by venue
-    const venueIds = [...new Set(nights.map((n: any) => n.venue_id as string))]
-    const [{ data: allCourts }, { data: allSlots }] = await Promise.all([
-      admin.from('courts').select('id, venue_id').in('venue_id', venueIds),
-      admin.from('time_slots').select('id, venue_id, slot_order').in('venue_id', venueIds).order('slot_order'),
+    if (nightErr || !night) return resp({ error: nightErr?.message ?? 'Venue night not found' }, 500)
+
+    const divisions: any[] = ((night as any).divisions ?? []).filter((d: any) => (d.teams ?? []).length >= 2)
+    if (!divisions.length) return resp({ error: 'No divisions with 2+ teams found for this night' }, 400)
+
+    // Load courts and slots for this venue
+    const venueId = (night as any).venue_id
+    const [{ data: courts }, { data: slots }] = await Promise.all([
+      admin.from('courts').select('id').eq('venue_id', venueId),
+      admin.from('time_slots').select('id, slot_order').eq('venue_id', venueId).order('slot_order'),
     ])
 
-    const courtsByVenue = new Map<string, { id: string }[]>()
-    for (const c of allCourts ?? []) {
-      const list = courtsByVenue.get(c.venue_id) ?? []; list.push(c); courtsByVenue.set(c.venue_id, list)
+    if (!courts?.length) return resp({ error: 'No courts configured for this venue' }, 400)
+    if (!slots?.length) return resp({ error: 'No time slots configured for this venue' }, 400)
+
+    const teamPlayers = buildTeamPlayerMap(divisions)
+
+    // Players shared across ≥2 mixed teams on this night
+    const playerMixedTeams = new Map<string, Set<string>>()
+    for (const div of divisions.filter((d: any) => d.type === 'mixed')) {
+      for (const team of div.teams ?? []) {
+        for (const tp of team.team_players ?? []) {
+          const s = playerMixedTeams.get(tp.player_id) ?? new Set()
+          s.add(team.id); playerMixedTeams.set(tp.player_id, s)
+        }
+      }
     }
-    const slotsByVenue = new Map<string, { id: string; slot_order: number }[]>()
-    for (const s of allSlots ?? []) {
-      const list = slotsByVenue.get(s.venue_id) ?? []; list.push(s); slotsByVenue.set(s.venue_id, list)
+    const sharedMixedMixed = new Set([...playerMixedTeams.entries()].filter(([, s]) => s.size >= 2).map(([id]) => id))
+
+    let maxRounds = 0
+    const divRounds = new Map<string, [string, string][][]>()
+    for (const div of divisions) {
+      const pairings = doubleRR(div.teams.map((t: any) => t.id))
+      divRounds.set(div.id, pairings)
+      maxRounds = Math.max(maxRounds, pairings.length)
     }
 
     const allFixtures: object[] = []
-    const warnings: { type: string; message: string }[] = []
+    const dayOfWeek = (night as any).day_of_week
 
-    for (const night of nights as any[]) {
-      const divisions: any[] = (night.divisions ?? []).filter((d: any) => (d.teams ?? []).length >= 2)
-      if (!divisions.length) continue
+    for (let round = 1; round <= maxRounds; round++) {
+      const date = gameDate(start_date, round, round_interval_days, dayOfWeek)
+      const games: Game[] = []
 
-      const courts = courtsByVenue.get(night.venue_id) ?? []
-      const slots = slotsByVenue.get(night.venue_id) ?? []
-
-      if (!courts.length || !slots.length) {
-        warnings.push({ type: 'config', message: `${night.venues?.name} night "${night.name ?? DAY_NAMES[night.day_of_week]}" skipped — missing courts or time slots` })
-        continue
-      }
-
-      const teamPlayers = buildTeamPlayerMap(divisions)
-
-      // Players shared across ≥2 mixed teams on this night (highest back-to-back priority)
-      const playerMixedTeams = new Map<string, Set<string>>()
-      for (const div of divisions.filter((d: any) => d.type === 'mixed')) {
-        for (const team of div.teams ?? []) {
-          for (const tp of team.team_players ?? []) {
-            const s = playerMixedTeams.get(tp.player_id) ?? new Set()
-            s.add(team.id); playerMixedTeams.set(tp.player_id, s)
-          }
-        }
-      }
-      const sharedMixedMixed = new Set([...playerMixedTeams.entries()].filter(([, s]) => s.size >= 2).map(([id]) => id))
-
-      let maxRounds = 0
-      const divRounds = new Map<string, [string, string][][]>()
       for (const div of divisions) {
-        const pairings = doubleRR(div.teams.map((t: any) => t.id))
-        divRounds.set(div.id, pairings)
-        maxRounds = Math.max(maxRounds, pairings.length)
-      }
-
-      for (let round = 1; round <= maxRounds; round++) {
-        const date = gameDate(start_date, round, round_interval_days, night.day_of_week)
-        const games: Game[] = []
-
-        for (const div of divisions) {
-          const rounds = divRounds.get(div.id)!
-          if (round > rounds.length) continue
-          for (const [homeId, awayId] of rounds[round - 1]) {
-            const isBye = homeId === '__BYE__' || awayId === '__BYE__'
-            games.push({ homeId: isBye ? (homeId === '__BYE__' ? awayId : homeId) : homeId, awayId: isBye ? '__BYE__' : awayId, divisionId: div.id, divType: div.type, isBye })
-          }
-        }
-
-        const assigned = assignSlots(games, slots, courts, teamPlayers, sharedMixedMixed)
-
-        for (const g of assigned) {
-          allFixtures.push({
-            season_id,
-            division_id: g.divisionId,
-            venue_id: night.venue_id,
-            court_id: g.isBye ? null : g.courtId,
-            slot_id: g.isBye ? null : g.slotId,
-            round,
-            phase: 'regular',
-            home_team_id: g.homeId,
-            away_team_id: g.isBye ? null : g.awayId,
-            scheduled_date: date,
-            status: 'scheduled',
+        const rounds = divRounds.get(div.id)!
+        if (round > rounds.length) continue
+        for (const [homeId, awayId] of rounds[round - 1]) {
+          const isBye = homeId === '__BYE__' || awayId === '__BYE__'
+          games.push({
+            homeId: isBye ? (homeId === '__BYE__' ? awayId : homeId) : homeId,
+            awayId: isBye ? '__BYE__' : awayId,
+            divisionId: div.id,
+            divType: div.type,
+            isBye,
           })
         }
       }
+
+      const assigned = assignSlots(games, slots, courts, teamPlayers, sharedMixedMixed)
+
+      for (const g of assigned) {
+        allFixtures.push({
+          season_id,
+          division_id: g.divisionId,
+          venue_id: venueId,
+          court_id: g.isBye ? null : g.courtId,
+          slot_id: g.isBye ? null : g.slotId,
+          round,
+          phase: 'regular',
+          home_team_id: g.homeId,
+          away_team_id: g.isBye ? null : g.awayId,
+          scheduled_date: date,
+          status: 'scheduled',
+        })
+      }
     }
 
-    warnings.push(...detectClashes(nights))
+    // Cross-venue clash detection — check if any players in this night also
+    // play at a different venue on the same day_of_week
+    const allPlayerIds = [...new Set(
+      divisions.flatMap((d: any) => d.teams.flatMap((t: any) => t.team_players.map((tp: any) => tp.player_id)))
+    )]
+
+    if (allPlayerIds.length > 0) {
+      const { data: otherEntries } = await admin
+        .from('team_players')
+        .select('player_id, teams(id, name, divisions(id, name, venue_night_id, venue_nights(venue_id, day_of_week, venues(name))))')
+        .in('player_id', allPlayerIds)
+
+      const warnings: { type: string; message: string }[] = []
+      const clashMessages = new Set<string>()
+
+      for (const entry of otherEntries ?? []) {
+        const team = (entry as any).teams
+        const div = team?.divisions
+        const vn = div?.venue_nights
+        if (!vn) continue
+        if (vn.venue_id === venueId) continue          // same venue — OK
+        if (vn.day_of_week !== dayOfWeek) continue     // different day — OK
+
+        // Same day, different venue = clash
+        const key = `${entry.player_id}|${div.name}@${vn.venues?.name}`
+        if (!clashMessages.has(key)) {
+          clashMessages.add(key)
+          const thisNightLabel = `${(night as any).name ?? DAY_NAMES[dayOfWeek]} @ ${(night as any).venues?.name}`
+          warnings.push({
+            type: 'cross_venue_clash',
+            message: `A player in ${thisNightLabel} also plays ${div.name} @ ${vn.venues?.name} — both on ${DAY_NAMES[dayOfWeek]}s. Unresolvable cross-venue clash.`,
+          })
+        }
+      }
+
+      if (allFixtures.length > 0) {
+        const { error: insErr } = await admin.from('fixtures').insert(allFixtures)
+        if (insErr) return resp({ error: insErr.message }, 500)
+      }
+
+      const realFixtures = allFixtures.filter((f: any) => f.away_team_id !== null)
+      const byes = allFixtures.filter((f: any) => f.away_team_id === null)
+      return resp({ success: true, fixtures_created: realFixtures.length, byes: byes.length, warnings })
+    }
 
     if (allFixtures.length > 0) {
       const { error: insErr } = await admin.from('fixtures').insert(allFixtures)
@@ -305,8 +346,8 @@ Deno.serve(async (req) => {
 
     const realFixtures = allFixtures.filter((f: any) => f.away_team_id !== null)
     const byes = allFixtures.filter((f: any) => f.away_team_id === null)
+    return resp({ success: true, fixtures_created: realFixtures.length, byes: byes.length, warnings: [] })
 
-    return resp({ success: true, fixtures_created: realFixtures.length, byes: byes.length, warnings })
   } catch (err: any) {
     return resp({ error: err?.message ?? 'Unknown error' }, 500)
   }
