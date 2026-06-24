@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -220,6 +221,17 @@ export function DrawPage() {
       {selected && selected.status === 'published' && (
         <div className="card" style={{ background: '#f0fdf4', borderColor: '#86efac' }}>
           <strong>{selected.name}</strong> is published. Scores can be entered but the draw cannot be regenerated.
+        </div>
+      )}
+
+      {selected && fixtures.length > 0 && (
+        <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+          <Link to={`/admin/draw/${selected.id}/scores`} style={{ textDecoration: 'none' }}>
+            <button>Enter scores</button>
+          </Link>
+          <Link to={`/admin/draw/${selected.id}/standings`} style={{ textDecoration: 'none' }}>
+            <button className="btn-secondary">View standings</button>
+          </Link>
         </div>
       )}
 

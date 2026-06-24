@@ -13,6 +13,8 @@ import { TeamsPage } from './pages/admin/TeamsPage'
 import { PlayersPage } from './pages/admin/PlayersPage'
 import { PlayerImportPage } from './pages/admin/PlayerImportPage'
 import { DrawPage } from './pages/admin/DrawPage'
+import { ScoreEntryPage } from './pages/admin/ScoreEntryPage'
+import { StandingsPage } from './pages/admin/StandingsPage'
 
 export default function App() {
   return (
@@ -39,6 +41,8 @@ export default function App() {
             <Route path="/admin/players" element={<PlayersPage />} />
             <Route path="/admin/players/import" element={<PlayerImportPage />} />
             <Route path="/admin/draw" element={<DrawPage />} />
+            <Route path="/admin/draw/:seasonId/scores" element={<ScoreEntryPage />} />
+            <Route path="/admin/draw/:seasonId/standings" element={<StandingsPage />} />
           </Route>
         </Route>
 
