@@ -81,10 +81,22 @@ export function AdminUsersPage() {
   }
 
   async function removeUser(userId: string) {
-    if (!confirm('Remove this admin? They will lose all access.')) return
-    await supabase.from('admin_venue_access').delete().eq('user_id', userId)
-    await supabase.from('app_users').delete().eq('id', userId)
-    load()
+    if (!confirm('Remove this admin? They will lose all access and cannot log in.')) return
+    const { data: { session } } = await supabase.auth.getSession()
+    const res = await fetch(
+      `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/invite-admin`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session?.access_token}`,
+        },
+        body: JSON.stringify({ action: 'delete', app_user_id: userId }),
+      }
+    )
+    const json = await res.json()
+    if (json.error) alert(json.error)
+    else load()
   }
 
   const venueAdmins = users.filter(u => u.role === 'sub_admin')
