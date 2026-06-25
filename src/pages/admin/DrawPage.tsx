@@ -380,6 +380,9 @@ export function DrawPage() {
           <Link to={`/admin/draw/${selected.id}/editor`} style={{ textDecoration: 'none' }}>
             <button className="btn-secondary">Edit fixtures</button>
           </Link>
+          <Link to={`/admin/draw/${selected.id}/finals`} style={{ textDecoration: 'none' }}>
+            <button className="btn-secondary">Finals</button>
+          </Link>
         </div>
       )}
 

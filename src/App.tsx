@@ -16,6 +16,7 @@ import { DrawPage } from './pages/admin/DrawPage'
 import { ScoreEntryPage } from './pages/admin/ScoreEntryPage'
 import { StandingsPage } from './pages/admin/StandingsPage'
 import { FixtureEditorPage } from './pages/admin/FixtureEditorPage'
+import { FinalsPage } from './pages/admin/FinalsPage'
 
 export default function App() {
   return (
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/admin/draw/:seasonId/scores" element={<ScoreEntryPage />} />
             <Route path="/admin/draw/:seasonId/standings" element={<StandingsPage />} />
             <Route path="/admin/draw/:seasonId/editor" element={<FixtureEditorPage />} />
+            <Route path="/admin/draw/:seasonId/finals" element={<FinalsPage />} />
           </Route>
         </Route>
 
