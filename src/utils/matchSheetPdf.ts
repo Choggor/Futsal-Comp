@@ -54,12 +54,12 @@ const CW = (W - ML - MR - GAP) / 2  // ~138.5mm per team column
 
 // Player table column widths (fit inside CW)
 const NUM_W = 8         // "#"
-const INIT_W = 12       // "Init."
+const INIT_W = 24       // "Init." — wide enough for a signature-style initial
 const INS_W = 11        // "Ins." checkbox
 const MVP_W = 15        // "MVP" (only when enabled)
 
 const ROWS = 14
-const ROW_H = 6.5
+const ROW_H = 7.9       // larger rows; naturally shrinks notes to ~half height
 
 // ── Draw one page ─────────────────────────────────────────────────────────────
 
@@ -103,28 +103,27 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
     }
   }
 
-  // ── Header (to the right of logo block) ────────────────────────────────────
-
-  const hx = ML + LOGO_W + 3   // start x of header text area
-  const hW = W - MR - hx       // width available
+  // ── Header — centred across full page width ────────────────────────────────
 
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(12)
-  doc.text('MATCH SHEET', hx + hW / 2, MT + 6, { align: 'center' })
+  doc.setFontSize(13)
+  doc.text('MATCH SHEET', W / 2, MT + 7, { align: 'center' })
 
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(8.5)
-  const infoLeft = [
+  const infoLine = [
     fx.venueName,
     fx.courtName ?? '',
     fmtDate(fx.scheduledDate),
     fmt12(fx.slotTime),
   ].filter(Boolean).join('   ·   ')
 
-  doc.text(infoLeft, hx, MT + 13)
+  doc.setFont('helvetica', 'normal')
+  doc.setFontSize(10)
+  doc.text(infoLine, W / 2, MT + 15, { align: 'center' })
+
+  doc.setFontSize(7.5)
   doc.text(
     `Round ${fx.round}   ·   ${fx.divisionType} ${fx.divisionName}`,
-    W - MR, MT + 13, { align: 'right' }
+    W - MR, MT + 21, { align: 'right' }
   )
 
   const rule1Y = MT + LOGO_H + 1
