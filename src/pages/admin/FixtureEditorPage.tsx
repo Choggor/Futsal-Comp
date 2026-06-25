@@ -333,7 +333,7 @@ export function FixtureEditorPage() {
 
   return (
     <div>
-      <div className="breadcrumb"><Link to="/admin/draw">Draw</Link> › Fixture editor</div>
+      <div className="breadcrumb"><Link to={`/admin/draw?season=${seasonId}`}>Draw</Link> › Fixture editor</div>
       <div className="page-header">
         <h1>Fixture Editor — {season?.name ?? '…'}</h1>
       </div>

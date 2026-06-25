@@ -114,7 +114,7 @@ export function StandingsPage() {
 
   return (
     <div>
-      <div className="breadcrumb"><Link to="/admin/draw">Draw</Link> › Standings</div>
+      <div className="breadcrumb"><Link to={`/admin/draw?season=${seasonId}`}>Draw</Link> › Standings</div>
       <div className="page-header"><h1>Standings — {season?.name ?? '…'}</h1></div>
 
       {loading && <div className="loading">Loading…</div>}

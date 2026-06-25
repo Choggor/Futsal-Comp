@@ -305,7 +305,7 @@ export function ScoreEntryPage() {
 
   return (
     <div>
-      <div className="breadcrumb"><Link to="/admin/draw">Draw</Link> › Score entry</div>
+      <div className="breadcrumb"><Link to={`/admin/draw?season=${seasonId}`}>Draw</Link> › Score entry</div>
       <div className="page-header">
         <h1>Score Entry — {season?.name ?? '…'}</h1>
       </div>

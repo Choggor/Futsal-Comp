@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -90,6 +90,7 @@ function SeasonTable({ seasons, selected, onSelect, onDelete }: {
 }
 
 export function DrawPage() {
+  const [searchParams] = useSearchParams()
   const [seasons, setSeasons] = useState<Season[]>([])
   const [selected, setSelected] = useState<Season | null>(null)
   const [venues, setVenues] = useState<Venue[]>([])
@@ -135,6 +136,7 @@ export function DrawPage() {
       end_date: dateMap.get(s.id)?.max ?? null,
     }))
     setSeasons(enriched as unknown as Season[])
+    return enriched
   }
 
   async function loadVenues() {
@@ -171,7 +173,15 @@ export function DrawPage() {
     setLoadingFixtures(false)
   }
 
-  useEffect(() => { loadSeasons(); loadVenues() }, [])
+  useEffect(() => {
+    const preselect = searchParams.get('season')
+    Promise.all([loadSeasons(), loadVenues()]).then(([enriched]) => {
+      if (preselect && enriched) {
+        const match = (enriched as unknown as Season[]).find(s => s.id === preselect)
+        if (match) setSelected(match)
+      }
+    })
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function createSeason() {
     if (!newName.trim() || !newNightId) return

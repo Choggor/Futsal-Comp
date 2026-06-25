@@ -386,7 +386,7 @@ export function FinalsPage() {
 
   return (
     <div>
-      <div className="breadcrumb"><Link to="/admin/draw">Draw</Link> › Finals</div>
+      <div className="breadcrumb"><Link to={`/admin/draw?season=${seasonId}`}>Draw</Link> › Finals</div>
       <div className="page-header"><h1>Finals — {season?.name ?? '…'}</h1></div>
 
       {loading && <div className="loading">Loading…</div>}
