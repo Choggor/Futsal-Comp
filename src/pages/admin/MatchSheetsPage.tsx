@@ -305,7 +305,7 @@ export function MatchSheetsPage() {
             Select a round to download one match sheet per fixture as a single printable PDF (landscape A4).
           </p>
 
-          <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+          <div className="tab-scroll" style={{ marginBottom: '1.25rem' }}>
             {rounds.map(r => (
               <button
                 key={r}

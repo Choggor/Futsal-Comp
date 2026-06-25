@@ -429,21 +429,21 @@ export function DrawPage() {
 
       {/* ── Score / standings links ── */}
       {selected && fixtures.length > 0 && (
-        <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+        <div className="action-row">
           <Link to={`/admin/draw/${selected.id}/scores`} style={{ textDecoration: 'none' }}>
-            <button>Enter scores</button>
+            <button style={{ width: '100%' }}>Enter scores</button>
           </Link>
           <Link to={`/admin/draw/${selected.id}/standings`} style={{ textDecoration: 'none' }}>
-            <button className="btn-secondary">View standings</button>
+            <button className="btn-secondary" style={{ width: '100%' }}>View standings</button>
           </Link>
           <Link to={`/admin/draw/${selected.id}/editor`} style={{ textDecoration: 'none' }}>
-            <button className="btn-secondary">Edit fixtures</button>
+            <button className="btn-secondary" style={{ width: '100%' }}>Edit fixtures</button>
           </Link>
           <Link to={`/admin/draw/${selected.id}/finals`} style={{ textDecoration: 'none' }}>
-            <button className="btn-secondary">Finals</button>
+            <button className="btn-secondary" style={{ width: '100%' }}>Finals</button>
           </Link>
           <Link to={`/admin/draw/${selected.id}/matchsheets`} style={{ textDecoration: 'none' }}>
-            <button className="btn-secondary">Match sheets</button>
+            <button className="btn-secondary" style={{ width: '100%' }}>Match sheets</button>
           </Link>
         </div>
       )}

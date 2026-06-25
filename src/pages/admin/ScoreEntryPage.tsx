@@ -319,7 +319,7 @@ export function ScoreEntryPage() {
       {!loading && fixtures.length > 0 && (
         <>
           {/* Round filter */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+          <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
             <button
               className={filterRound === 'all' ? '' : 'btn-secondary'}
               style={{ fontSize: '0.85rem', padding: '0.4rem 0.8rem' }}

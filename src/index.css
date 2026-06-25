@@ -340,6 +340,26 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 /* ── Scrollable table wrapper ────────────────────────────── */
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
+/* ── Round/tab selector — horizontal scroll strip ────────── */
+.tab-scroll {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.25rem;
+  scrollbar-width: none;
+}
+.tab-scroll::-webkit-scrollbar { display: none; }
+.tab-scroll button { flex-shrink: 0; }
+
+/* ── Action button row ───────────────────────────────────── */
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
 /* ── Mobile ──────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .admin-nav-links { display: none; }
@@ -347,6 +367,13 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   .admin-nav-hamburger { display: block; }
   .admin-main { padding: 1rem 0.75rem; }
   .data-table th, .data-table td { padding: 0.5rem 0.6rem; font-size: 0.8rem; }
-  .page-header h1 { font-size: 1.25rem; }
+  .page-header h1 { font-size: 1.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .form-grid { grid-template-columns: 1fr; }
+
+  /* Action buttons full-width on mobile */
+  .action-row { flex-direction: column; }
+  .action-row a, .action-row button { width: 100%; text-align: center; }
+
+  /* Bigger tap targets for score entry status buttons */
+  .score-status-btn { width: 100%; justify-content: center; }
 }

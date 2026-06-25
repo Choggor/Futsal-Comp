@@ -344,7 +344,7 @@ export function FixtureEditorPage() {
       {!loading && fixtures.length > 0 && (
         <>
           {/* Round selector */}
-          <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+          <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
             {rounds.map(r => {
               const phase = fixtures.find(f => f.round === r)?.phase
               return (
