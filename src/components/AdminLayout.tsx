@@ -22,10 +22,10 @@ export function AdminLayout() {
           <div className="admin-nav-links">
             <NavLink to="/admin/dashboard">Dashboard</NavLink>
             {isSuperAdmin && <NavLink to="/admin/venues">Venues</NavLink>}
-            <NavLink to="/admin/players">Players</NavLink>
-            <NavLink to="/admin/players/import">Import CSV</NavLink>
+            {isSuperAdmin && <NavLink to="/admin/players">Players</NavLink>}
+            {isSuperAdmin && <NavLink to="/admin/players/import">Import CSV</NavLink>}
             {isSuperAdmin && <NavLink to="/admin/setup">Setup Import</NavLink>}
-            {isSuperAdmin && <NavLink to="/admin/draw">Draw</NavLink>}
+            <NavLink to="/admin/draw">Draw</NavLink>
             {isSuperAdmin && <NavLink to="/admin/users">Users</NavLink>}
           </div>
           <div className="admin-nav-user">
@@ -45,10 +45,10 @@ export function AdminLayout() {
           <div className="admin-nav-drawer">
             <NavLink to="/admin/dashboard" onClick={closeMenu}>Dashboard</NavLink>
             {isSuperAdmin && <NavLink to="/admin/venues" onClick={closeMenu}>Venues</NavLink>}
-            <NavLink to="/admin/players" onClick={closeMenu}>Players</NavLink>
-            <NavLink to="/admin/players/import" onClick={closeMenu}>Import CSV</NavLink>
+            {isSuperAdmin && <NavLink to="/admin/players" onClick={closeMenu}>Players</NavLink>}
+            {isSuperAdmin && <NavLink to="/admin/players/import" onClick={closeMenu}>Import CSV</NavLink>}
             {isSuperAdmin && <NavLink to="/admin/setup" onClick={closeMenu}>Setup Import</NavLink>}
-            {isSuperAdmin && <NavLink to="/admin/draw" onClick={closeMenu}>Draw</NavLink>}
+            <NavLink to="/admin/draw" onClick={closeMenu}>Draw</NavLink>
             {isSuperAdmin && <NavLink to="/admin/users" onClick={closeMenu}>Users</NavLink>}
             <div className="admin-nav-drawer-user">
               <span>{appUser?.display_name ?? 'Admin'}</span>

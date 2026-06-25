@@ -39,9 +39,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (user.role === 'sub_admin') {
       const { data: scopes } = await supabase
-        .from('sub_admin_scopes')
+        .from('admin_venue_access')
         .select('venue_id')
-        .eq('app_user_id', user.id)
+        .eq('user_id', user.id)
       setVenueScopes(scopes?.map((s: { venue_id: string }) => s.venue_id) ?? [])
     } else {
       setVenueScopes([])

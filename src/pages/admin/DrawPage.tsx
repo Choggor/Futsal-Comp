@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
+import { useAuth } from '../../contexts/AuthContext'
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const DAY_NAMES_FULL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -90,6 +91,7 @@ function SeasonTable({ seasons, selected, onSelect, onDelete }: {
 }
 
 export function DrawPage() {
+  const { isSuperAdmin, venueScopes } = useAuth()
   const [searchParams] = useSearchParams()
   const [seasons, setSeasons] = useState<Season[]>([])
   const [selected, setSelected] = useState<Season | null>(null)
@@ -110,11 +112,24 @@ export function DrawPage() {
   const [unpublishing, setUnpublishing] = useState(false)
 
   async function loadSeasons() {
+    let seasonsQuery = supabase
+      .from('seasons')
+      .select('id, name, status, venue_night_id, created_at, venue_nights(name, day_of_week, venues(name))')
+      .order('created_at', { ascending: false })
+
+    // Sub-admins only see seasons for their assigned venues
+    if (!isSuperAdmin && venueScopes.length > 0) {
+      // Filter via venue_nights → venue_id
+      const { data: nights } = await supabase
+        .from('venue_nights')
+        .select('id')
+        .in('venue_id', venueScopes)
+      const nightIds = (nights ?? []).map((n: { id: string }) => n.id)
+      if (nightIds.length) seasonsQuery = seasonsQuery.in('venue_night_id', nightIds)
+    }
+
     const [{ data: seasonsData }, { data: fixtureDates }] = await Promise.all([
-      supabase
-        .from('seasons')
-        .select('id, name, status, venue_night_id, created_at, venue_nights(name, day_of_week, venues(name))')
-        .order('created_at', { ascending: false }),
+      seasonsQuery,
       supabase
         .from('fixtures')
         .select('season_id, scheduled_date')
@@ -282,7 +297,7 @@ export function DrawPage() {
       <div className="card">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
           <h2 style={{ margin: 0 }}>Seasons</h2>
-          <button className="btn-sm" onClick={() => setShowSeasonForm(f => !f)}>+ New season</button>
+          {isSuperAdmin && <button className="btn-sm" onClick={() => setShowSeasonForm(f => !f)}>+ New season</button>}
         </div>
 
         {showSeasonForm && (
@@ -349,8 +364,8 @@ export function DrawPage() {
         )}
       </div>
 
-      {/* ── Generate (draft only) ── */}
-      {selected && selected.status === 'draft' && (
+      {/* ── Generate (draft only, super_admin only) ── */}
+      {isSuperAdmin && selected && selected.status === 'draft' && (
         <div className="card">
           <h2 style={{ marginBottom: '0.25rem' }}>Generate draw</h2>
           <p style={{ fontSize: '0.85rem', color: 'var(--color-muted)', marginBottom: '0.75rem' }}>
@@ -404,9 +419,11 @@ export function DrawPage() {
       {selected && selected.status === 'published' && (
         <div className="card" style={{ background: '#f0fdf4', borderColor: '#86efac', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
           <span><strong>{selected.name}</strong> is published. Scores can be entered but the draw cannot be regenerated.</span>
-          <button className="btn-sm btn-danger" onClick={unpublish} disabled={unpublishing}>
-            {unpublishing ? 'Unpublishing…' : 'Unpublish'}
-          </button>
+          {isSuperAdmin && (
+            <button className="btn-sm btn-danger" onClick={unpublish} disabled={unpublishing}>
+              {unpublishing ? 'Unpublishing…' : 'Unpublish'}
+            </button>
+          )}
         </div>
       )}
 
