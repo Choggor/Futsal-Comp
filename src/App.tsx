@@ -17,6 +17,7 @@ import { ScoreEntryPage } from './pages/admin/ScoreEntryPage'
 import { StandingsPage } from './pages/admin/StandingsPage'
 import { FixtureEditorPage } from './pages/admin/FixtureEditorPage'
 import { FinalsPage } from './pages/admin/FinalsPage'
+import { MatchSheetsPage } from './pages/admin/MatchSheetsPage'
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/admin/draw/:seasonId/standings" element={<StandingsPage />} />
             <Route path="/admin/draw/:seasonId/editor" element={<FixtureEditorPage />} />
             <Route path="/admin/draw/:seasonId/finals" element={<FinalsPage />} />
+            <Route path="/admin/draw/:seasonId/matchsheets" element={<MatchSheetsPage />} />
           </Route>
         </Route>
 
