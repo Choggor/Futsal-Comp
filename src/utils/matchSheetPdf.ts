@@ -1,5 +1,10 @@
 import jsPDF from 'jspdf'
 
+export interface MatchSheetPlayer {
+  name: string
+  insured: boolean // true if insurance_expiry >= today
+}
+
 export interface MatchSheetFixture {
   round: number
   scheduledDate: string | null
@@ -11,8 +16,14 @@ export interface MatchSheetFixture {
   divisionName: string
   homeTeamName: string
   awayTeamName: string | null
-  homePlayers: string[]
-  awayPlayers: string[]
+  homePlayers: MatchSheetPlayer[]
+  awayPlayers: MatchSheetPlayer[]
+}
+
+export interface MatchSheetConfig {
+  orgName: string
+  contactInfo: string   // e.g. "phone · email · website" on one line
+  logoDataUrl: string | null
 }
 
 function fmt12(t: string | null): string {
@@ -29,33 +40,80 @@ function fmtDate(d: string | null): string {
   return `${parseInt(day)} ${months[parseInt(mo) - 1]} ${y}`
 }
 
+// ── Layout constants ──────────────────────────────────────────────────────────
+
 const W = 297
 const H = 210
-const ML = 8   // left margin
-const MR = 8   // right margin
-const MT = 8   // top margin
-const GAP = 4  // gap between the two player columns
-const CW = (W - ML - MR - GAP) / 2  // ~138.5mm per column
+const ML = 8
+const MR = 8
+const MT = 8
+const GAP = 4           // gap between the two player-table halves
+const LOGO_W = 36       // logo/contact block width
+const LOGO_H = 22       // logo/contact block height
+const CW = (W - ML - MR - GAP) / 2  // ~138.5mm per team column
 
-// Column widths within each player table half
-const NUM_W = 10   // "#" column
-const MVP_W = 16   // "MVP" column
+// Player table column widths (fit inside CW)
+const NUM_W = 8         // "#"
+const INIT_W = 12       // "Init."
+const INS_W = 11        // "Ins." checkbox
+const MVP_W = 15        // "MVP" (only when enabled)
+
 const ROWS = 14
 const ROW_H = 6.5
 
-function drawPage(doc: jsPDF, fx: MatchSheetFixture) {
-  const mvp = fx.mvpEnabled
-  const NAME_W = CW - NUM_W - (mvp ? MVP_W : 0)
+// ── Draw one page ─────────────────────────────────────────────────────────────
 
-  // ── Header ─────────────────────────────────────────────────────────────────
+function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
+  const mvp = fx.mvpEnabled
+  const NAME_W = CW - NUM_W - INIT_W - INS_W - (mvp ? MVP_W : 0)
+
+  // ── Logo / contact block ────────────────────────────────────────────────────
+
+  doc.setLineWidth(0.3)
+  doc.rect(ML, MT, LOGO_W, LOGO_H)
+
+  if (cfg.logoDataUrl) {
+    try {
+      // Fit logo into top portion of the block, leaving room for text below
+      doc.addImage(cfg.logoDataUrl, ML + 1, MT + 1, LOGO_W - 2, LOGO_H - 9)
+    } catch { /* ignore bad image data */ }
+    doc.setFontSize(7)
+    doc.setFont('helvetica', 'bold')
+    if (cfg.orgName) doc.text(cfg.orgName, ML + LOGO_W / 2, MT + LOGO_H - 6, { align: 'center', maxWidth: LOGO_W - 2 })
+    doc.setFont('helvetica', 'normal')
+    if (cfg.contactInfo) doc.text(cfg.contactInfo, ML + LOGO_W / 2, MT + LOGO_H - 2, { align: 'center', maxWidth: LOGO_W - 2 })
+  } else {
+    // No logo — show org name + contact centred in the box
+    doc.setFontSize(8)
+    doc.setFont('helvetica', 'bold')
+    if (cfg.orgName) {
+      doc.text(cfg.orgName, ML + LOGO_W / 2, MT + LOGO_H / 2 - 2, { align: 'center', maxWidth: LOGO_W - 2 })
+    }
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(6.5)
+    if (cfg.contactInfo) {
+      const lines = doc.splitTextToSize(cfg.contactInfo, LOGO_W - 2)
+      doc.text(lines.slice(0, 3), ML + LOGO_W / 2, MT + LOGO_H / 2 + 3, { align: 'center' })
+    }
+    if (!cfg.orgName && !cfg.contactInfo) {
+      doc.setTextColor(180)
+      doc.setFontSize(7)
+      doc.text('Logo / Contact', ML + LOGO_W / 2, MT + LOGO_H / 2 + 1, { align: 'center' })
+      doc.setTextColor(0)
+    }
+  }
+
+  // ── Header (to the right of logo block) ────────────────────────────────────
+
+  const hx = ML + LOGO_W + 3   // start x of header text area
+  const hW = W - MR - hx       // width available
 
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(12)
-  doc.text('MATCH SHEET', W / 2, MT + 5, { align: 'center' })
+  doc.text('MATCH SHEET', hx + hW / 2, MT + 6, { align: 'center' })
 
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(8.5)
-
   const infoLeft = [
     fx.venueName,
     fx.courtName ?? '',
@@ -63,36 +121,35 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture) {
     fmt12(fx.slotTime),
   ].filter(Boolean).join('   ·   ')
 
-  const infoRight = `Round ${fx.round}   ·   ${fx.divisionType} ${fx.divisionName}`
+  doc.text(infoLeft, hx, MT + 13)
+  doc.text(
+    `Round ${fx.round}   ·   ${fx.divisionType} ${fx.divisionName}`,
+    W - MR, MT + 13, { align: 'right' }
+  )
 
-  doc.text(infoLeft, ML, MT + 11)
-  doc.text(infoRight, W - MR, MT + 11, { align: 'right' })
-
-  const rule1Y = MT + 14
+  const rule1Y = MT + LOGO_H + 1
   doc.setLineWidth(0.4)
   doc.line(ML, rule1Y, W - MR, rule1Y)
 
-  // ── Teams + score ───────────────────────────────────────────────────────────
+  // ── Teams + score boxes ────────────────────────────────────────────────────
 
-  const teamY = rule1Y + 11  // vertical centre of score boxes
-
-  // Score boxes
+  const teamY = rule1Y + 11
   const boxW = 22, boxH = 14
   const cx = W / 2
   const boxTop = teamY - 9
+
   doc.setLineWidth(0.8)
-  doc.rect(cx - boxW - 3, boxTop, boxW, boxH)  // home score
-  doc.rect(cx + 3, boxTop, boxW, boxH)          // away score
+  doc.rect(cx - boxW - 3, boxTop, boxW, boxH)
+  doc.rect(cx + 3, boxTop, boxW, boxH)
+
   doc.setFontSize(13)
   doc.setFont('helvetica', 'bold')
   doc.text(':', cx, boxTop + boxH / 2 + 2.5, { align: 'center' })
 
-  // Team names
   doc.setFontSize(14)
   doc.text(fx.homeTeamName, ML + CW / 2, teamY, { align: 'center', maxWidth: CW - 4 })
   doc.text(fx.awayTeamName ?? 'BYE', ML + CW + GAP + CW / 2, teamY, { align: 'center', maxWidth: CW - 4 })
 
-  // HOME / AWAY labels
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(7)
   doc.text('HOME', ML + CW / 2, boxTop + boxH + 5, { align: 'center' })
@@ -102,27 +159,29 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture) {
   doc.setLineWidth(0.4)
   doc.line(ML, rule2Y, W - MR, rule2Y)
 
-  // ── Player table ────────────────────────────────────────────────────────────
+  // ── Player tables ──────────────────────────────────────────────────────────
 
-  const tblTop = rule2Y + 0.5  // top of table border
-  const tblH = ROW_H + ROWS * ROW_H  // header row + data rows
-  const headerTextY = tblTop + ROW_H - 1.5
+  const tblTop = rule2Y + 0.5
+  const tblH = ROW_H + ROWS * ROW_H   // header + data rows
 
-  // Outer rectangles (left table, right table)
   const lx = ML
   const rx = ML + CW + GAP
+
+  // Outer rectangles
   doc.setLineWidth(0.3)
   doc.rect(lx, tblTop, CW, tblH)
   doc.rect(rx, tblTop, CW, tblH)
 
-  // Header dividers
-  doc.setLineWidth(0.2)
-  // Left: # | Name | MVP
-  doc.line(lx + NUM_W, tblTop, lx + NUM_W, tblTop + tblH)
-  if (mvp) doc.line(lx + CW - MVP_W, tblTop, lx + CW - MVP_W, tblTop + tblH)
-  // Right: # | Name | MVP
-  doc.line(rx + NUM_W, tblTop, rx + NUM_W, tblTop + tblH)
-  if (mvp) doc.line(rx + CW - MVP_W, tblTop, rx + CW - MVP_W, tblTop + tblH)
+  // Internal column separator lines (both halves share the same relative offsets)
+  function drawColLines(ox: number) {
+    doc.setLineWidth(0.2)
+    doc.line(ox + NUM_W, tblTop, ox + NUM_W, tblTop + tblH)
+    doc.line(ox + NUM_W + NAME_W, tblTop, ox + NUM_W + NAME_W, tblTop + tblH)
+    doc.line(ox + NUM_W + NAME_W + INIT_W, tblTop, ox + NUM_W + NAME_W + INIT_W, tblTop + tblH)
+    if (mvp) doc.line(ox + CW - MVP_W, tblTop, ox + CW - MVP_W, tblTop + tblH)
+  }
+  drawColLines(lx)
+  drawColLines(rx)
 
   // Header row bottom rule
   doc.setLineWidth(0.4)
@@ -130,48 +189,57 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture) {
   doc.line(rx, tblTop + ROW_H, rx + CW, tblTop + ROW_H)
 
   // Header text
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(7.5)
-  doc.text('#', lx + NUM_W / 2, headerTextY, { align: 'center' })
-  doc.text('Player Name', lx + NUM_W + 2, headerTextY)
-  if (mvp) doc.text('MVP', lx + CW - MVP_W / 2, headerTextY, { align: 'center' })
-
-  doc.text('#', rx + NUM_W / 2, headerTextY, { align: 'center' })
-  doc.text('Player Name', rx + NUM_W + 2, headerTextY)
-  if (mvp) doc.text('MVP', rx + CW - MVP_W / 2, headerTextY, { align: 'center' })
+  const headerTextY = tblTop + ROW_H - 1.5
+  function drawHeader(ox: number) {
+    doc.setFont('helvetica', 'bold')
+    doc.setFontSize(7)
+    doc.text('#', ox + NUM_W / 2, headerTextY, { align: 'center' })
+    doc.text('Player Name', ox + NUM_W + 2, headerTextY)
+    doc.text('Init.', ox + NUM_W + NAME_W + INIT_W / 2, headerTextY, { align: 'center' })
+    doc.text('Ins.', ox + NUM_W + NAME_W + INIT_W + INS_W / 2, headerTextY, { align: 'center' })
+    if (mvp) doc.text('MVP', ox + CW - MVP_W / 2, headerTextY, { align: 'center' })
+  }
+  drawHeader(lx)
+  drawHeader(rx)
 
   // Data rows
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(7.5)
   doc.setLineWidth(0.1)
-
   for (let r = 0; r < ROWS; r++) {
     const rowTop = tblTop + ROW_H + r * ROW_H
     const textY = rowTop + ROW_H - 1.8
 
-    // Row separator (not after last row — outer rect handles that)
+    // Row separator (skip last — outer rect handles it)
     if (r < ROWS - 1) {
       doc.line(lx + 0.3, rowTop + ROW_H, lx + CW - 0.3, rowTop + ROW_H)
       doc.line(rx + 0.3, rowTop + ROW_H, rx + CW - 0.3, rowTop + ROW_H)
     }
 
-    // Left player
-    const lp = fx.homePlayers[r]
-    if (lp) {
-      doc.text(
-        doc.splitTextToSize(lp, NAME_W - 3)[0],
-        lx + NUM_W + 2, textY
-      )
+    function drawPlayerRow(ox: number, player: MatchSheetPlayer | undefined) {
+      // Insurance checkbox (small square centred in the Ins. cell)
+      const insX = ox + NUM_W + NAME_W + INIT_W + 1.5
+      const insY = rowTop + ROW_H / 2 - 2
+      const cbSize = 4
+      doc.setLineWidth(0.2)
+      doc.rect(insX, insY, cbSize, cbSize)
+
+      if (player) {
+        doc.setFont('helvetica', 'normal')
+        doc.setFontSize(7)
+        doc.text(
+          doc.splitTextToSize(player.name, NAME_W - 2)[0],
+          ox + NUM_W + 2, textY
+        )
+        if (player.insured) {
+          // Tick inside checkbox
+          doc.setFont('helvetica', 'normal')
+          doc.setFontSize(7)
+          doc.text('✓', insX + cbSize / 2, insY + cbSize - 0.5, { align: 'center' })
+        }
+      }
     }
 
-    // Right player
-    const rp = fx.awayPlayers[r]
-    if (rp) {
-      doc.text(
-        doc.splitTextToSize(rp, NAME_W - 3)[0],
-        rx + NUM_W + 2, textY
-      )
-    }
+    drawPlayerRow(lx, fx.homePlayers[r])
+    drawPlayerRow(rx, fx.awayPlayers[r])
   }
 
   const tblBottom = tblTop + tblH
@@ -181,38 +249,39 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture) {
   const refY = tblBottom + 7
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(8)
-  const refLineW = (W - ML - MR) / 3 - 4
-  const labels = ['Referee', 'Signature', 'Date']
-  labels.forEach((label, i) => {
-    const x = ML + i * ((W - ML - MR) / 3)
+  const third = (W - ML - MR) / 3
+  ;(['Referee', 'Signature', 'Date'] as const).forEach((label, i) => {
+    const x = ML + i * third
     doc.text(`${label}:`, x, refY)
     doc.setLineWidth(0.3)
-    doc.line(x + 18, refY, x + 18 + refLineW, refY)
+    doc.line(x + 20, refY, x + third - 4, refY)
   })
 
-  // ── Notes ───────────────────────────────────────────────────────────────────
+  // ── Notes (open bottom so it spills to reverse) ─────────────────────────────
 
   const notesTop = refY + 8
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(8)
-  doc.text('NOTES', ML, notesTop - 1)
+  doc.text('NOTES', ML, notesTop - 1.5)
 
   doc.setLineWidth(0.3)
-  // Left border
-  doc.line(ML, notesTop, ML, H)
-  // Right border
-  doc.line(W - MR, notesTop, W - MR, H)
-  // Top border
-  doc.line(ML, notesTop, W - MR, notesTop)
-  // No bottom border — intentionally open so notes spill to reverse
+  doc.line(ML, notesTop, W - MR, notesTop)   // top border
+  doc.line(ML, notesTop, ML, H)               // left border (to page edge)
+  doc.line(W - MR, notesTop, W - MR, H)      // right border (to page edge)
+  // no bottom border — intentionally open
 }
 
-export function generateMatchSheetsPDF(fixtures: MatchSheetFixture[]): void {
+// ── Public entry point ────────────────────────────────────────────────────────
+
+export function generateMatchSheetsPDF(
+  fixtures: MatchSheetFixture[],
+  config: MatchSheetConfig,
+): void {
   const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' })
 
   fixtures.forEach((fx, i) => {
     if (i > 0) doc.addPage()
-    drawPage(doc, fx)
+    drawPage(doc, fx, config)
   })
 
   doc.save('match-sheets.pdf')
