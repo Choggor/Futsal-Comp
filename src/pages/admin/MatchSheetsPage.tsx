@@ -45,6 +45,23 @@ export function MatchSheetsPage() {
   const [showConfig, setShowConfig] = useState(false)
   const logoInputRef = useRef<HTMLInputElement>(null)
 
+  // Auto-load brand logo as default when no logo has been uploaded yet
+  useEffect(() => {
+    if (config.logoDataUrl) return
+    const img = new Image()
+    img.onload = () => {
+      const canvas = document.createElement('canvas')
+      canvas.width = img.naturalWidth || 400
+      canvas.height = img.naturalHeight || 150
+      const ctx = canvas.getContext('2d')
+      if (!ctx) return
+      ctx.drawImage(img, 0, 0)
+      const dataUrl = canvas.toDataURL('image/png')
+      updateConfig({ logoDataUrl: dataUrl })
+    }
+    img.src = '/logo.svg'
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   function updateConfig(patch: Partial<MatchSheetConfig>) {
     setConfig(prev => { const next = { ...prev, ...patch }; saveConfig(next); return next })
   }
@@ -115,7 +132,7 @@ export function MatchSheetsPage() {
       // Load player details (name + insurance_expiry)
       const playerIds = [...new Set((teamPlayers ?? []).map(tp => tp.player_id))]
       const { data: playerRows } = playerIds.length
-        ? await supabase.from('players').select('id, first_name, last_name, insurance_expiry').in('id', playerIds)
+        ? await supabase.from('players').select('id, name, insurance_expiry').in('id', playerIds)
         : { data: [] }
 
       const today = new Date().toISOString().split('T')[0]
@@ -123,7 +140,7 @@ export function MatchSheetsPage() {
         (playerRows ?? []).map(p => [
           p.id,
           {
-            name: `${p.first_name} ${p.last_name}`,
+            name: p.name,
             insured: !!p.insurance_expiry && p.insurance_expiry >= today,
           },
         ])
@@ -179,7 +196,14 @@ export function MatchSheetsPage() {
         }
       })
 
-      generateMatchSheetsPDF(sheets, config)
+      const firstVenue = (venues ?? [])[0]
+      const venueName = firstVenue?.name ?? 'Venue'
+      const firstDate = roundFixtures[0]?.scheduled_date
+      const dayName = firstDate
+        ? ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][new Date(firstDate + 'T12:00:00').getDay()]
+        : 'Night'
+
+      generateMatchSheetsPDF(sheets, config, selectedRound, venueName, dayName)
     } catch (e: any) {
       setError(e?.message ?? 'Failed to generate PDF')
     }

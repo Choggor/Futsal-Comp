@@ -207,10 +207,16 @@ export function PlayerImportPage() {
     }
 
     // ── Step 2: Create missing players ────────────────────────────────────────
-    const { data: existingPlayers } = await supabase.from('players').select('id, name, insurance_expiry')
+    // Fetch all players in pages (PostgREST default limit is 1000)
     const playerMap = new Map<string, string>() // `name_lower|expiry` -> player_id
-    for (const p of existingPlayers ?? []) {
-      playerMap.set(`${p.name.toLowerCase()}|${p.insurance_expiry ?? ''}`, p.id)
+    let playerPage = 0
+    while (true) {
+      const { data: page } = await supabase.from('players').select('id, name, insurance_expiry')
+        .range(playerPage * 1000, playerPage * 1000 + 999)
+      if (!page?.length) break
+      for (const p of page) playerMap.set(`${p.name.toLowerCase()}|${p.insurance_expiry ?? ''}`, p.id)
+      if (page.length < 1000) break
+      playerPage++
     }
 
     const toCreatePlayers = new Map<string, { name: string; insurance_expiry: string | null }>()
@@ -223,16 +229,27 @@ export function PlayerImportPage() {
 
     let playersCreated = 0
     if (toCreatePlayers.size > 0) {
-      const { data: newPlayers } = await supabase.from('players').insert([...toCreatePlayers.values()]).select('id, name, insurance_expiry')
-      for (const p of newPlayers ?? []) {
-        playerMap.set(`${p.name.toLowerCase()}|${p.insurance_expiry ?? ''}`, p.id)
+      const batches = [...toCreatePlayers.values()]
+      for (let i = 0; i < batches.length; i += 500) {
+        const { data: newPlayers } = await supabase.from('players').insert(batches.slice(i, i + 500)).select('id, name, insurance_expiry')
+        for (const p of newPlayers ?? []) {
+          playerMap.set(`${p.name.toLowerCase()}|${p.insurance_expiry ?? ''}`, p.id)
+        }
+        playersCreated += newPlayers?.length ?? 0
       }
-      playersCreated = newPlayers?.length ?? 0
     }
 
     // ── Step 3: Create missing team_players assignments ────────────────────────
-    const { data: existingRoster } = await supabase.from('team_players').select('player_id, team_id')
-    const rosterSet = new Set((existingRoster ?? []).map(r => `${r.player_id}|${r.team_id}`))
+    const rosterSet = new Set<string>()
+    let rosterPage = 0
+    while (true) {
+      const { data: page } = await supabase.from('team_players').select('player_id, team_id')
+        .range(rosterPage * 1000, rosterPage * 1000 + 999)
+      if (!page?.length) break
+      for (const r of page) rosterSet.add(`${r.player_id}|${r.team_id}`)
+      if (page.length < 1000) break
+      rosterPage++
+    }
 
     const rosterInserts: { player_id: string; team_id: string }[] = []
     for (const r of okRows) {
@@ -316,7 +333,7 @@ export function PlayerImportPage() {
             </button>
           </div>
 
-          <table className="data-table">
+          <div className="table-scroll"><table className="data-table">
             <thead>
               <tr><th>Row</th><th>Player</th><th>Team</th><th>Division</th><th>Expiry</th><th>Status</th></tr>
             </thead>
@@ -337,7 +354,7 @@ export function PlayerImportPage() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </>
       )}
     </div>

@@ -179,7 +179,7 @@ export function PlayersPage() {
         <input type="search" placeholder="Search players…" value={search} onChange={e => setSearch(e.target.value)} style={{ maxWidth: 300 }} />
       </div>
 
-      <table className="data-table">
+      <div className="table-scroll"><table className="data-table">
         <thead>
           <tr><th>Name</th><th>Insurance</th><th>Teams</th><th></th></tr>
         </thead>
@@ -219,7 +219,7 @@ export function PlayersPage() {
             <tr><td colSpan={4}>{search ? 'No players match your search.' : 'No players yet.'}</td></tr>
           )}
         </tbody>
-      </table>
+      </table></div>
     </div>
   )
 }

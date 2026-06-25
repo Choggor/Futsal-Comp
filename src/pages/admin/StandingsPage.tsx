@@ -172,7 +172,7 @@ export function StandingsPage() {
                 <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-muted)', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   MVP Leaderboard
                 </div>
-                <table className="data-table">
+                <div className="table-scroll"><table className="data-table">
                   <thead><tr><th style={{ textAlign: 'left' }}>Player</th><th style={{ textAlign: 'left' }}>Team</th><th>Pts</th></tr></thead>
                   <tbody>
                     {mvpRows.slice(0, 5).map(m => (
@@ -183,7 +183,7 @@ export function StandingsPage() {
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </table></div>
               </div>
             )}
           </div>

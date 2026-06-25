@@ -1,5 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
+import { PublicLayout } from './components/PublicLayout'
+import { HomePage } from './pages/public/HomePage'
+import { VenuePage } from './pages/public/VenuePage'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { AdminLayout } from './components/AdminLayout'
 import { Login } from './pages/Login'
@@ -12,6 +15,7 @@ import { DivisionsPage } from './pages/admin/DivisionsPage'
 import { TeamsPage } from './pages/admin/TeamsPage'
 import { PlayersPage } from './pages/admin/PlayersPage'
 import { PlayerImportPage } from './pages/admin/PlayerImportPage'
+import { CompSetupPage } from './pages/admin/CompSetupPage'
 import { DrawPage } from './pages/admin/DrawPage'
 import { ScoreEntryPage } from './pages/admin/ScoreEntryPage'
 import { StandingsPage } from './pages/admin/StandingsPage'
@@ -23,12 +27,10 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={
-          <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-            <h1>Futsal Competition</h1>
-            <p>Public fixtures, standings and draw coming in Phase 9.</p>
-          </main>
-        } />
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/venue/:venueId" element={<VenuePage />} />
+        </Route>
         <Route path="/login" element={<Login />} />
 
         <Route element={<ProtectedRoute />}>
@@ -43,6 +45,7 @@ export default function App() {
             <Route path="/admin/venues/:venueId/nights/:nightId/divisions/:divisionId/teams" element={<TeamsPage />} />
             <Route path="/admin/players" element={<PlayersPage />} />
             <Route path="/admin/players/import" element={<PlayerImportPage />} />
+            <Route path="/admin/setup" element={<CompSetupPage />} />
             <Route path="/admin/draw" element={<DrawPage />} />
             <Route path="/admin/draw/:seasonId/scores" element={<ScoreEntryPage />} />
             <Route path="/admin/draw/:seasonId/standings" element={<StandingsPage />} />

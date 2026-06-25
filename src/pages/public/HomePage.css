@@ -1,0 +1,108 @@
+/* ── Home page ── */
+
+.home-hero {
+  position: relative;
+  background: var(--color-surface-2);
+  overflow: hidden;
+}
+
+.home-hero__inner {
+  max-width: var(--maxw-content);
+  margin: 0 auto;
+  padding: var(--space-9) var(--space-5) var(--space-8);
+}
+
+.home-hero__title {
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  margin: var(--space-3) 0 var(--space-5);
+}
+
+.home-hero__lead {
+  font-size: var(--text-lg);
+  color: var(--color-ink-2);
+  max-width: 56ch;
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-6);
+}
+
+.home-hero__cta {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.home-hero__spectrum {
+  height: 5px;
+  background: var(--gradient-spectrum);
+}
+
+/* Venues section */
+.home-venues {
+  padding: var(--space-8) 0;
+}
+
+.home-section__inner {
+  max-width: var(--maxw-content);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.home-section__inner h2 {
+  margin-bottom: var(--space-3);
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.venue-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  padding: 0;
+}
+
+.venue-card__accent {
+  height: 4px;
+  background: var(--gradient-top);
+}
+
+.venue-card__name {
+  font-size: var(--text-xl);
+  margin: var(--space-4) var(--space-5) var(--space-2);
+  color: var(--color-ink);
+}
+
+.venue-card__address {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  margin: 0 var(--space-5) var(--space-4);
+}
+
+.venue-card__link {
+  display: block;
+  margin: auto var(--space-5) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.venue-card:hover .venue-card__link { color: var(--color-accent); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Mobile ───────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .home-hero__inner { padding: var(--space-7) var(--space-4) var(--space-6); }
+  .home-hero__title { font-size: var(--text-3xl); }
+  .home-hero__lead { font-size: var(--text-base); }
+  .home-hero__cta { flex-direction: column; align-items: flex-start; }
+  .home-venues { padding: var(--space-6) 0; }
+  .venue-grid { grid-template-columns: 1fr; }
+}

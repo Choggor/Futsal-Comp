@@ -1,162 +1,1393 @@
-player_name,team,division,venue_night,insurance_expiry
-Emma Taylor,Thunderbolts,Mixed Div 1,Monday @ Test Venue 1,20/03/2027
-Liam Harris,Thunderbolts,Mixed Div 1,Monday @ Test Venue 1,
-Olivia Clarke,Thunderbolts,Mixed Div 1,Monday @ Test Venue 1,15/08/2027
-Alex Smith,Thunderbolts,Mixed Div 1,Monday @ Test Venue 1,30/06/2027
-Ava Turner,Lightning,Mixed Div 1,Monday @ Test Venue 1,
-Ethan Walker,Lightning,Mixed Div 1,Monday @ Test Venue 1,01/11/2027
-Mia Johnson,Lightning,Mixed Div 1,Monday @ Test Venue 1,25/04/2027
-Lucas Brown,Comets,Mixed Div 2,Monday @ Test Venue 1,
-Charlotte Davis,Comets,Mixed Div 2,Monday @ Test Venue 1,10/09/2027
-Oliver Wilson,Comets,Mixed Div 2,Monday @ Test Venue 1,14/02/2027
-Amelia Thompson,Comets,Mixed Div 2,Monday @ Test Venue 1,
-James White,Meteors,Mixed Div 2,Monday @ Test Venue 1,22/07/2027
-Isabella Martinez,Meteors,Mixed Div 2,Monday @ Test Venue 1,
-William Anderson,Meteors,Mixed Div 2,Monday @ Test Venue 1,30/05/2027
-Sophia Garcia,Iron Wolves,Mens Div 1,Monday @ Test Venue 1,10/01/2027
-Benjamin Lee,Iron Wolves,Mens Div 1,Monday @ Test Venue 1,
-Mason Jackson,Iron Wolves,Mens Div 1,Monday @ Test Venue 1,05/12/2027
-Jordan Lee,Iron Wolves,Mens Div 1,Monday @ Test Venue 1,15/03/2027
-Evelyn Moore,Steel Bears,Mens Div 1,Monday @ Test Venue 1,
-Elijah Martin,Steel Bears,Mens Div 1,Monday @ Test Venue 1,18/06/2027
-Abigail Young,Steel Bears,Mens Div 1,Monday @ Test Venue 1,03/10/2027
-Henry Allen,Stallions,Mens Div 2,Monday @ Test Venue 1,
-Emily King,Stallions,Mens Div 2,Monday @ Test Venue 1,12/04/2027
-Lucas Wright,Stallions,Mens Div 2,Monday @ Test Venue 1,27/08/2027
-Riley Evans,Stallions,Mens Div 2,Monday @ Test Venue 1,20/01/2027
-Aiden Scott,Panthers,Mens Div 2,Monday @ Test Venue 1,
-Scarlett Adams,Panthers,Mens Div 2,Monday @ Test Venue 1,15/11/2027
-Jack Baker,Panthers,Mens Div 2,Monday @ Test Venue 1,08/03/2027
-Grace Nelson,Titans,Mens Div 3,Monday @ Test Venue 1,01/07/2027
-Benjamin Carter,Titans,Mens Div 3,Monday @ Test Venue 1,
-Chloe Mitchell,Titans,Mens Div 3,Monday @ Test Venue 1,20/09/2027
-James Perez,Titans,Mens Div 3,Monday @ Test Venue 1,28/02/2027
-Zoe Roberts,Giants,Mens Div 3,Monday @ Test Venue 1,
-Oliver Turner,Giants,Mens Div 3,Monday @ Test Venue 1,14/06/2027
-Lily Phillips,Giants,Mens Div 3,Monday @ Test Venue 1,01/12/2027
-Alex Smith,Storm,Mixed Div 1,Tuesday @ Test Venue 1,30/06/2027
-Henry Campbell,Storm,Mixed Div 1,Tuesday @ Test Venue 1,
-Aria Parker,Storm,Mixed Div 1,Tuesday @ Test Venue 1,17/05/2027
-Sebastian Evans,Storm,Mixed Div 1,Tuesday @ Test Venue 1,22/10/2027
-Sofia Edwards,Thunder,Mixed Div 1,Tuesday @ Test Venue 1,
-Jackson Collins,Thunder,Mixed Div 1,Tuesday @ Test Venue 1,30/03/2027
-Penelope Stewart,Thunder,Mixed Div 1,Tuesday @ Test Venue 1,09/08/2027
-Aiden Morris,Solar,Mixed Div 2,Tuesday @ Test Venue 1,25/01/2027
-Luna Rogers,Solar,Mixed Div 2,Tuesday @ Test Venue 1,
-Owen Reed,Solar,Mixed Div 2,Tuesday @ Test Venue 1,14/07/2027
-Nora Cook,Solar,Mixed Div 2,Tuesday @ Test Venue 1,28/11/2027
-Wyatt Morgan,Lunar,Mixed Div 2,Tuesday @ Test Venue 1,
-Layla Bell,Lunar,Mixed Div 2,Tuesday @ Test Venue 1,06/04/2027
-Jack Murphy,Lunar,Mixed Div 2,Tuesday @ Test Venue 1,03/09/2027
-Riley Cooper,Eagles,Mens Div 1,Tuesday @ Test Venue 1,20/02/2027
-Christopher Richardson,Eagles,Mens Div 1,Tuesday @ Test Venue 1,
-Sofia Cox,Eagles,Mens Div 1,Tuesday @ Test Venue 1,31/08/2027
-Andrew Howard,Eagles,Mens Div 1,Tuesday @ Test Venue 1,07/05/2027
-Victoria Ward,Hawks,Mens Div 1,Tuesday @ Test Venue 1,
-Samuel Torres,Hawks,Mens Div 1,Tuesday @ Test Venue 1,19/12/2027
-Hannah Patterson,Hawks,Mens Div 1,Tuesday @ Test Venue 1,04/07/2027
-David Price,Jets,Mens Div 2,Tuesday @ Test Venue 1,
-Stella Sanders,Jets,Mens Div 2,Tuesday @ Test Venue 1,23/03/2027
-Joseph Long,Jets,Mens Div 2,Tuesday @ Test Venue 1,11/10/2027
-Violet Jenkins,Jets,Mens Div 2,Tuesday @ Test Venue 1,
-Daniel Patterson,Rockets,Mens Div 2,Tuesday @ Test Venue 1,02/06/2027
-Addison Butler,Rockets,Mens Div 2,Tuesday @ Test Venue 1,17/01/2027
-Matthew Henderson,Rockets,Mens Div 2,Tuesday @ Test Venue 1,
-Eleanor Ross,Sharks,Mens Div 3,Tuesday @ Test Venue 1,26/09/2027
-Nathan Simmons,Sharks,Mens Div 3,Tuesday @ Test Venue 1,
-Hazel Foster,Sharks,Mens Div 3,Tuesday @ Test Venue 1,30/04/2027
-Ryan Bryant,Sharks,Mens Div 3,Tuesday @ Test Venue 1,07/11/2027
-Aurora Gonzalez,Barracudas,Mens Div 3,Tuesday @ Test Venue 1,
-Caleb Alexander,Barracudas,Mens Div 3,Tuesday @ Test Venue 1,19/07/2027
-Savannah Russell,Barracudas,Mens Div 3,Tuesday @ Test Venue 1,05/02/2027
-Casey Brown,Hurricanes,Mixed Div 1,Wednesday @ Test Venue 1,
-Luke Griffin,Hurricanes,Mixed Div 1,Wednesday @ Test Venue 1,22/08/2027
-Ellie Diaz,Hurricanes,Mixed Div 1,Wednesday @ Test Venue 1,11/03/2027
-John Hayes,Hurricanes,Mixed Div 1,Wednesday @ Test Venue 1,
-Claire Myers,Cyclones,Mixed Div 1,Wednesday @ Test Venue 1,15/10/2027
-Isaiah Ford,Cyclones,Mixed Div 1,Wednesday @ Test Venue 1,24/05/2027
-Natalie Hamilton,Cyclones,Mixed Div 1,Wednesday @ Test Venue 1,
-Marcus Bell,Blazers,Mixed Div 2,Wednesday @ Test Venue 1,31/01/2027
-Tyler Reed,Blazers,Mixed Div 2,Wednesday @ Test Venue 1,
-Brandon Cook,Blazers,Mixed Div 2,Wednesday @ Test Venue 1,08/09/2027
-Vanessa Morgan,Blazers,Mixed Div 2,Wednesday @ Test Venue 1,17/06/2027
-Kyle Patterson,Flames,Mixed Div 2,Wednesday @ Test Venue 1,
-Amber Smith,Flames,Mixed Div 2,Wednesday @ Test Venue 1,24/12/2027
-Derek Collins,Flames,Mixed Div 2,Wednesday @ Test Venue 1,19/04/2027
-Tanya Roberts,Cobras,Mens Div 1,Wednesday @ Test Venue 1,08/07/2027
-Shane Williams,Cobras,Mens Div 1,Wednesday @ Test Venue 1,
-Monica Davis,Cobras,Mens Div 1,Wednesday @ Test Venue 1,21/11/2027
-Travis Turner,Cobras,Mens Div 1,Wednesday @ Test Venue 1,13/02/2027
-Penny Phillips,Vipers,Mens Div 1,Wednesday @ Test Venue 1,
-Glen Campbell,Vipers,Mens Div 1,Wednesday @ Test Venue 1,04/08/2027
-Dylan Foster,Vipers,Mens Div 1,Wednesday @ Test Venue 1,13/05/2027
-Sophie Turner,Rhinos,Mens Div 2,Wednesday @ Test Venue 1,
-Aaron King,Rhinos,Mens Div 2,Wednesday @ Test Venue 1,29/10/2027
-Chloe Adams,Rhinos,Mens Div 2,Wednesday @ Test Venue 1,16/03/2027
-Ryan Mitchell,Rhinos,Mens Div 2,Wednesday @ Test Venue 1,
-Jessica Brown,Hippos,Mens Div 2,Wednesday @ Test Venue 1,27/07/2027
-Kevin Harris,Hippos,Mens Div 2,Wednesday @ Test Venue 1,08/01/2027
-Alex Johnson,Hippos,Mens Div 2,Wednesday @ Test Venue 1,
-Michael Scott,Dragons,Mens Div 3,Wednesday @ Test Venue 1,21/06/2027
-Tom Lee,Dragons,Mens Div 3,Wednesday @ Test Venue 1,
-Sarah Parker,Dragons,Mens Div 3,Wednesday @ Test Venue 1,14/11/2027
-Emma Watson,Dragons,Mens Div 3,Wednesday @ Test Venue 1,02/04/2027
-Chris Evans,Phoenix,Mens Div 3,Wednesday @ Test Venue 1,
-James Bond,Phoenix,Mens Div 3,Wednesday @ Test Venue 1,17/09/2027
-Peter Parker,Phoenix,Mens Div 3,Wednesday @ Test Venue 1,26/02/2027
-Sam Wilson,Lynxes,Mixed Div 1,Tuesday @ Test Venue 2,31/12/2026
-Clark Kent,Lynxes,Mixed Div 1,Tuesday @ Test Venue 2,
-Bruce Wayne,Lynxes,Mixed Div 1,Tuesday @ Test Venue 2,10/08/2027
-Diana Prince,Lynxes,Mixed Div 1,Tuesday @ Test Venue 2,27/03/2027
-Tony Stark,Pumas,Mixed Div 1,Tuesday @ Test Venue 2,
-Steve Rogers,Pumas,Mixed Div 1,Tuesday @ Test Venue 2,06/11/2027
-Natasha Romanoff,Pumas,Mixed Div 1,Tuesday @ Test Venue 2,25/06/2027
-Jordan Lee,Falcons,Mens Div 1,Tuesday @ Test Venue 2,15/03/2027
-Barry Allen,Falcons,Mens Div 1,Tuesday @ Test Venue 2,
-Hal Jordan,Falcons,Mens Div 1,Tuesday @ Test Venue 2,29/09/2027
-Oliver Queen,Falcons,Mens Div 1,Tuesday @ Test Venue 2,18/05/2027
-Dinah Lance,Condors,Mens Div 1,Tuesday @ Test Venue 2,
-Wally West,Condors,Mens Div 1,Tuesday @ Test Venue 2,10/12/2027
-Arthur Curry,Condors,Mens Div 1,Tuesday @ Test Venue 2,05/07/2027
-Jade Wilson,Turtles,Mixed Div 1,Thursday @ Test Venue 2,06/05/2027
-Cole Turner,Turtles,Mixed Div 1,Thursday @ Test Venue 2,
-Ivy Brown,Turtles,Mixed Div 1,Thursday @ Test Venue 2,23/11/2027
-Miles Jackson,Turtles,Mixed Div 1,Thursday @ Test Venue 2,08/04/2027
-Brooke Adams,Tortoises,Mixed Div 1,Thursday @ Test Venue 2,
-Spencer Mitchell,Tortoises,Mixed Div 1,Thursday @ Test Venue 2,12/09/2027
-Paige Evans,Tortoises,Mixed Div 1,Thursday @ Test Venue 2,17/02/2027
-Taylor Scott,Foxes,Mens Div 2,Thursday @ Test Venue 2,29/01/2027
-Jordan Martinez,Foxes,Mens Div 2,Thursday @ Test Venue 2,
-Casey Wilson,Foxes,Mens Div 2,Thursday @ Test Venue 2,13/08/2027
-Kyle Evans,Foxes,Mens Div 2,Thursday @ Test Venue 2,22/05/2027
-Sam Cooper,Wolves,Mens Div 2,Thursday @ Test Venue 2,
-Alex Reed,Wolves,Mens Div 2,Thursday @ Test Venue 2,06/12/2027
-Jamie Morgan,Wolves,Mens Div 2,Thursday @ Test Venue 2,11/07/2027
-Sam Wilson,Phantoms,Mixed Div 1,Monday @ Test Venue 3,31/12/2026
-Robin Taylor,Phantoms,Mixed Div 1,Monday @ Test Venue 3,
-Dana Smith,Phantoms,Mixed Div 1,Monday @ Test Venue 3,04/09/2027
-Lee Johnson,Phantoms,Mixed Div 1,Monday @ Test Venue 3,21/04/2027
-Pat Williams,Ghosts,Mixed Div 1,Monday @ Test Venue 3,
-Frankie Brown,Ghosts,Mixed Div 1,Monday @ Test Venue 3,09/11/2027
-Chris Davis,Ghosts,Mixed Div 1,Monday @ Test Venue 3,16/06/2027
-Riley Evans,Rockets,Mixed Div 2,Monday @ Test Venue 3,20/01/2027
-Terry Phillips,Rockets,Mixed Div 2,Monday @ Test Venue 3,
-Drew Campbell,Rockets,Mixed Div 2,Monday @ Test Venue 3,31/08/2027
-Kelly Turner,Rockets,Mixed Div 2,Monday @ Test Venue 3,18/03/2027
-Brett Foster,Missiles,Mixed Div 2,Monday @ Test Venue 3,
-Kira Simmons,Missiles,Mixed Div 2,Monday @ Test Venue 3,27/10/2027
-Neil Watson,Missiles,Mixed Div 2,Monday @ Test Venue 3,14/05/2027
-Cassie Hunt,Spartans,Mixed Div 1,Thursday @ Test Venue 3,09/02/2027
-Marco Silva,Spartans,Mixed Div 1,Thursday @ Test Venue 3,
-Rachel Green,Spartans,Mixed Div 1,Thursday @ Test Venue 3,22/09/2027
-Ross Geller,Spartans,Mixed Div 1,Thursday @ Test Venue 3,14/04/2027
-Monica Bing,Vikings,Mixed Div 1,Thursday @ Test Venue 3,
-Chandler Cox,Vikings,Mixed Div 1,Thursday @ Test Venue 3,30/11/2027
-Joey Tribbiani,Vikings,Mixed Div 1,Thursday @ Test Venue 3,03/07/2027
-Casey Brown,Vipers,Mixed Div 2,Thursday @ Test Venue 3,
-Megan Fox,Vipers,Mixed Div 2,Thursday @ Test Venue 3,26/08/2027
-Will Smith,Vipers,Mixed Div 2,Thursday @ Test Venue 3,07/03/2027
-Chris Rock,Vipers,Mixed Div 2,Thursday @ Test Venue 3,
-Dave Chappelle,Cobras,Mixed Div 2,Thursday @ Test Venue 3,18/12/2027
-Kevin Hart,Cobras,Mixed Div 2,Thursday @ Test Venue 3,09/06/2027
-Oprah Winfrey,Cobras,Mixed Div 2,Thursday @ Test Venue 3,
+﻿player_name,team,division,venue_night,insurance_expiry
+James Smith,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,15/03/2026
+James Jones,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+James Williams,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,30/11/2026
+James Brown,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,08/04/2027
+James Taylor,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+James Davis,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,25/01/2028
+James Wilson,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,12/06/2027
+James Evans,Sole Survivors,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,22/07/2026
+James Thomas,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,15/03/2026
+James Johnson,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+James Walker,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,30/11/2026
+James White,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,08/04/2027
+James Clark,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+James Martin,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,25/01/2028
+James Young,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,12/06/2027
+James Harris,Multiple Scoregasms,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,22/07/2026
+James Robinson,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,15/03/2026
+James Allen,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+James Mitchell,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,30/11/2026
+James Moore,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,08/04/2027
+James Baker,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+James Green,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,25/01/2028
+James Cooper,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,12/06/2027
+James Campbell,Net Gains,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,22/07/2026
+James Collins,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,15/03/2026
+James Edwards,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+James Ward,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,30/11/2026
+James Watson,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,08/04/2027
+James Black,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+Emma Smith,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Emma Jones,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Emma Williams,Kick Me Maybe,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Emma Brown,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Emma Taylor,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+Emma Davis,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Emma Wilson,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Emma Evans,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+Emma Thomas,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Emma Johnson,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Emma Walker,The Ball Busters,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Emma White,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Emma Clark,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+Emma Martin,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Emma Young,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Emma Harris,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,
+Emma Robinson,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Emma Allen,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Emma Mitchell,Fut-sal Mistakes,BW Tuesday Mixed Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Emma Moore,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Emma Baker,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Emma Green,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Emma Cooper,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Emma Campbell,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Emma Collins,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Emma Edwards,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Emma Ward,Roll With the Pun-ches,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Emma Watson,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Emma Black,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam Smith,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Liam Jones,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Liam Williams,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam Brown,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Liam Taylor,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Liam Davis,Inglourious Ballsters,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Liam Wilson,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Liam Evans,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam Thomas,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Liam Johnson,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Liam Walker,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam White,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Liam Clark,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Liam Martin,Real Madrid Lite,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Liam Young,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Liam Harris,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam Robinson,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Liam Allen,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Liam Mitchell,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam Moore,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Liam Baker,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Liam Green,Hand of Sod,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Liam Cooper,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Liam Campbell,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam Collins,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Liam Edwards,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Liam Ward,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Liam Watson,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Liam Black,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Olivia Smith,Saved by the Ball,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Olivia Jones,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,15/03/2026
+Olivia Williams,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Olivia Brown,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,30/11/2026
+Olivia Taylor,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,08/04/2027
+Olivia Davis,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,
+Olivia Wilson,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,25/01/2028
+Olivia Evans,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,12/06/2027
+Olivia Thomas,The Cleat Show,BW Tuesday Mens Div 1,Tuesday @ Broadway Futsal,22/07/2026
+Olivia Johnson,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,15/03/2026
+Olivia Walker,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Olivia White,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,30/11/2026
+Olivia Clark,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,08/04/2027
+Olivia Martin,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Olivia Young,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,25/01/2028
+Olivia Harris,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,12/06/2027
+Olivia Robinson,Pitch Please,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,22/07/2026
+Olivia Allen,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,15/03/2026
+Olivia Mitchell,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Olivia Moore,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,30/11/2026
+Olivia Baker,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,08/04/2027
+Olivia Green,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Olivia Cooper,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,25/01/2028
+Olivia Campbell,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,12/06/2027
+Olivia Collins,Goal Diggers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,22/07/2026
+Olivia Edwards,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,15/03/2026
+Olivia Ward,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Olivia Watson,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,30/11/2026
+Olivia Black,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,08/04/2027
+Jack Smith,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Jack Jones,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,25/01/2028
+Jack Williams,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,12/06/2027
+Jack Brown,Toe Punters,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,22/07/2026
+Jack Taylor,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,15/03/2026
+Jack Davis,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Jack Wilson,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,30/11/2026
+Jack Evans,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,08/04/2027
+Jack Thomas,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Jack Johnson,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,25/01/2028
+Jack Walker,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,12/06/2027
+Jack White,The Substitute Teachers,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,22/07/2026
+Jack Clark,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,15/03/2026
+Jack Martin,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Jack Young,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,30/11/2026
+Jack Harris,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,08/04/2027
+Jack Robinson,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Jack Allen,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,25/01/2028
+Jack Mitchell,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,12/06/2027
+Jack Moore,One Foot in the Grave,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,22/07/2026
+Jack Baker,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,15/03/2026
+Jack Green,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Jack Cooper,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,30/11/2026
+Jack Campbell,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,08/04/2027
+Jack Collins,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,
+Jack Edwards,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,25/01/2028
+Jack Ward,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,12/06/2027
+Jack Watson,Cristiano Ro-NO-ldo,BW Thursday Mixed Div 1,Thursday @ Broadway Futsal,22/07/2026
+Jack Black,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,15/03/2026
+Charlotte Smith,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Jones,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,30/11/2026
+Charlotte Williams,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,08/04/2027
+Charlotte Brown,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Taylor,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,25/01/2028
+Charlotte Davis,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,12/06/2027
+Charlotte Wilson,Last Pick United,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,22/07/2026
+Charlotte Evans,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,15/03/2026
+Charlotte Thomas,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Johnson,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,30/11/2026
+Charlotte Walker,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,08/04/2027
+Charlotte White,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Clark,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,25/01/2028
+Charlotte Martin,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,12/06/2027
+Charlotte Young,Cleatus and the Gang,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,22/07/2026
+Charlotte Harris,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,15/03/2026
+Charlotte Robinson,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Allen,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,30/11/2026
+Charlotte Mitchell,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,08/04/2027
+Charlotte Moore,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Baker,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,25/01/2028
+Charlotte Green,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,12/06/2027
+Charlotte Cooper,Bend It Like Sendoff,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,22/07/2026
+Charlotte Campbell,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,15/03/2026
+Charlotte Collins,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Edwards,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,30/11/2026
+Charlotte Ward,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,08/04/2027
+Charlotte Watson,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Charlotte Black,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,25/01/2028
+Noah Smith,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,12/06/2027
+Noah Jones,The Footloose,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,22/07/2026
+Noah Williams,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,15/03/2026
+Noah Brown,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Noah Taylor,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,30/11/2026
+Noah Davis,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,08/04/2027
+Noah Wilson,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Noah Evans,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,25/01/2028
+Noah Thomas,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,12/06/2027
+Noah Johnson,Yer a Lizard Harry,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,22/07/2026
+Noah Walker,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,15/03/2026
+Noah White,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Noah Clark,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,30/11/2026
+Noah Martin,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,08/04/2027
+Noah Young,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,
+Noah Harris,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,25/01/2028
+Noah Robinson,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,12/06/2027
+Noah Allen,Ballsy McBallface,BW Thursday Mens Div 2,Thursday @ Broadway Futsal,22/07/2026
+Noah Mitchell,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,15/03/2026
+Noah Moore,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Noah Baker,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,30/11/2026
+Noah Green,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,08/04/2027
+Noah Cooper,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Noah Campbell,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,25/01/2028
+Noah Collins,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,12/06/2027
+Noah Edwards,Significant Goalers,UTS Monday Mixed D1,Monday @ UTS Social futsal,22/07/2026
+Noah Ward,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,15/03/2026
+Noah Watson,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Noah Black,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,30/11/2026
+Amelia Smith,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,08/04/2027
+Amelia Jones,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Amelia Williams,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,25/01/2028
+Amelia Brown,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,12/06/2027
+Amelia Taylor,The Mighty Toes,UTS Monday Mixed D1,Monday @ UTS Social futsal,22/07/2026
+Amelia Davis,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,15/03/2026
+Amelia Wilson,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Amelia Evans,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,30/11/2026
+Amelia Thomas,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,08/04/2027
+Amelia Johnson,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Amelia Walker,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,25/01/2028
+Amelia White,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,12/06/2027
+Amelia Clark,Net Profit,UTS Monday Mixed D1,Monday @ UTS Social futsal,22/07/2026
+Amelia Martin,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,15/03/2026
+Amelia Young,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Amelia Harris,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,30/11/2026
+Amelia Robinson,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,08/04/2027
+Amelia Allen,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Amelia Mitchell,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,25/01/2028
+Amelia Moore,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,12/06/2027
+Amelia Baker,Far Post Office,UTS Monday Mixed D1,Monday @ UTS Social futsal,22/07/2026
+Amelia Green,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,15/03/2026
+Amelia Cooper,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Amelia Campbell,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,30/11/2026
+Amelia Collins,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,08/04/2027
+Amelia Edwards,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Amelia Ward,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,25/01/2028
+Amelia Watson,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,12/06/2027
+Amelia Black,Ctrl Alt Defeat,UTS Monday Mixed D1,Monday @ UTS Social futsal,22/07/2026
+Oliver Smith,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,15/03/2026
+Oliver Jones,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Oliver Williams,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,30/11/2026
+Oliver Brown,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,08/04/2027
+Oliver Taylor,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,
+Oliver Davis,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,25/01/2028
+Oliver Wilson,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,12/06/2027
+Oliver Evans,Sons of Pitches,UTS Monday Mixed D1,Monday @ UTS Social futsal,22/07/2026
+Oliver Thomas,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,15/03/2026
+Oliver Johnson,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Oliver Walker,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,30/11/2026
+Oliver White,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,08/04/2027
+Oliver Clark,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Oliver Martin,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,25/01/2028
+Oliver Young,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,12/06/2027
+Oliver Harris,Kick Assets,UTS Monday Mixed D2,Monday @ UTS Social futsal,22/07/2026
+Oliver Robinson,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,15/03/2026
+Oliver Allen,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Oliver Mitchell,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,30/11/2026
+Oliver Moore,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,08/04/2027
+Oliver Baker,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Oliver Green,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,25/01/2028
+Oliver Cooper,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,12/06/2027
+Oliver Campbell,The Offside Rule Doesn't Apply Here Anyway,UTS Monday Mixed D2,Monday @ UTS Social futsal,22/07/2026
+Oliver Collins,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,15/03/2026
+Oliver Edwards,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Oliver Ward,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,30/11/2026
+Oliver Watson,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,08/04/2027
+Oliver Black,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Sophia Smith,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,25/01/2028
+Sophia Jones,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,12/06/2027
+Sophia Williams,Whole Lotta Sole,UTS Monday Mixed D2,Monday @ UTS Social futsal,22/07/2026
+Sophia Brown,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,15/03/2026
+Sophia Taylor,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Sophia Davis,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,30/11/2026
+Sophia Wilson,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,08/04/2027
+Sophia Evans,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Sophia Thomas,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,25/01/2028
+Sophia Johnson,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,12/06/2027
+Sophia Walker,Tackle Me Elmo,UTS Monday Mixed D2,Monday @ UTS Social futsal,22/07/2026
+Sophia White,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,15/03/2026
+Sophia Clark,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Sophia Martin,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,30/11/2026
+Sophia Young,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,08/04/2027
+Sophia Harris,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Sophia Robinson,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,25/01/2028
+Sophia Allen,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,12/06/2027
+Sophia Mitchell,Fast and the Futsal,UTS Monday Mixed D2,Monday @ UTS Social futsal,22/07/2026
+Sophia Moore,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,15/03/2026
+Sophia Baker,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Sophia Green,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,30/11/2026
+Sophia Cooper,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,08/04/2027
+Sophia Campbell,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,
+Sophia Collins,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,25/01/2028
+Sophia Edwards,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,12/06/2027
+Sophia Ward,Boot Scootin' Boogers,UTS Monday Mixed D2,Monday @ UTS Social futsal,22/07/2026
+Sophia Watson,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,15/03/2026
+Sophia Black,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,
+William Smith,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,30/11/2026
+William Jones,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,08/04/2027
+William Williams,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,
+William Brown,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,25/01/2028
+William Taylor,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,12/06/2027
+William Davis,Penalty Boxers,UTS Monday Womens D1,Monday @ UTS Social futsal,22/07/2026
+William Wilson,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,15/03/2026
+William Evans,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,
+William Thomas,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,30/11/2026
+William Johnson,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,08/04/2027
+William Walker,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,
+William White,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,25/01/2028
+William Clark,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,12/06/2027
+William Martin,Aguero-nteed Goals,UTS Monday Womens D1,Monday @ UTS Social futsal,22/07/2026
+William Young,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,15/03/2026
+William Harris,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,
+William Robinson,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,30/11/2026
+William Allen,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,08/04/2027
+William Mitchell,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,
+William Moore,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,25/01/2028
+William Baker,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,12/06/2027
+William Green,The Goal Keepers (we hoard goals),UTS Monday Womens D1,Monday @ UTS Social futsal,22/07/2026
+William Cooper,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,15/03/2026
+William Campbell,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,
+William Collins,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,30/11/2026
+William Edwards,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,08/04/2027
+William Ward,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,
+William Watson,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,25/01/2028
+William Black,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,12/06/2027
+Isabella Smith,Sweaty Bettys,UTS Monday Womens D1,Monday @ UTS Social futsal,22/07/2026
+Isabella Jones,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,15/03/2026
+Isabella Williams,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,
+Isabella Brown,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,30/11/2026
+Isabella Taylor,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,08/04/2027
+Isabella Davis,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,
+Isabella Wilson,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,25/01/2028
+Isabella Evans,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,12/06/2027
+Isabella Thomas,Game of Throw-ins,UTS Monday Womens D1,Monday @ UTS Social futsal,22/07/2026
+Isabella Johnson,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,15/03/2026
+Isabella Walker,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,
+Isabella White,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,30/11/2026
+Isabella Clark,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,08/04/2027
+Isabella Martin,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,
+Isabella Young,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,25/01/2028
+Isabella Harris,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,12/06/2027
+Isabella Robinson,Mind the Gap-er,UTS Monday Womens D1,Monday @ UTS Social futsal,22/07/2026
+Isabella Allen,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,15/03/2026
+Isabella Mitchell,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Isabella Moore,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,30/11/2026
+Isabella Baker,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,08/04/2027
+Isabella Green,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Isabella Cooper,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,25/01/2028
+Isabella Campbell,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,12/06/2027
+Isabella Collins,Five Guys One Ball,UTS Monday Womens D2,Monday @ UTS Social futsal,22/07/2026
+Isabella Edwards,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,15/03/2026
+Isabella Ward,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Isabella Watson,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,30/11/2026
+Isabella Black,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,08/04/2027
+Benjamin Smith,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Benjamin Jones,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,25/01/2028
+Benjamin Williams,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,12/06/2027
+Benjamin Brown,The Net Result,UTS Monday Womens D2,Monday @ UTS Social futsal,22/07/2026
+Benjamin Taylor,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,15/03/2026
+Benjamin Davis,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Benjamin Wilson,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,30/11/2026
+Benjamin Evans,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,08/04/2027
+Benjamin Thomas,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Benjamin Johnson,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,25/01/2028
+Benjamin Walker,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,12/06/2027
+Benjamin White,Bayer Neverkusen,UTS Monday Womens D2,Monday @ UTS Social futsal,22/07/2026
+Benjamin Clark,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,15/03/2026
+Benjamin Martin,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Benjamin Young,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,30/11/2026
+Benjamin Harris,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,08/04/2027
+Benjamin Robinson,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Benjamin Allen,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,25/01/2028
+Benjamin Mitchell,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,12/06/2027
+Benjamin Moore,Total Eclipse of the Goal,UTS Monday Womens D2,Monday @ UTS Social futsal,22/07/2026
+Benjamin Baker,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,15/03/2026
+Benjamin Green,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Benjamin Cooper,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,30/11/2026
+Benjamin Campbell,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,08/04/2027
+Benjamin Collins,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Benjamin Edwards,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,25/01/2028
+Benjamin Ward,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,12/06/2027
+Benjamin Watson,Indoor Voices,UTS Monday Womens D2,Monday @ UTS Social futsal,22/07/2026
+Benjamin Black,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,15/03/2026
+Mia Smith,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Mia Jones,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,30/11/2026
+Mia Williams,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,08/04/2027
+Mia Brown,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,
+Mia Taylor,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,25/01/2028
+Mia Davis,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,12/06/2027
+Mia Wilson,The Lean Mean Pun Machine,UTS Monday Womens D2,Monday @ UTS Social futsal,22/07/2026
+Mia Evans,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,15/03/2026
+Mia Thomas,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Mia Johnson,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,30/11/2026
+Mia Walker,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,08/04/2027
+Mia White,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Mia Clark,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,25/01/2028
+Mia Martin,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,12/06/2027
+Mia Young,Messi Business,UTS Monday Mens D2,Monday @ UTS Social futsal,22/07/2026
+Mia Harris,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,15/03/2026
+Mia Robinson,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Mia Allen,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,30/11/2026
+Mia Mitchell,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,08/04/2027
+Mia Moore,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Mia Baker,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,25/01/2028
+Mia Green,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,12/06/2027
+Mia Cooper,Off Their Trolley,UTS Monday Mens D2,Monday @ UTS Social futsal,22/07/2026
+Mia Campbell,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,15/03/2026
+Mia Collins,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Mia Edwards,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,30/11/2026
+Mia Ward,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,08/04/2027
+Mia Watson,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Mia Black,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,25/01/2028
+Lucas Smith,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,12/06/2027
+Lucas Jones,Breaking Shins,UTS Monday Mens D2,Monday @ UTS Social futsal,22/07/2026
+Lucas Williams,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,15/03/2026
+Lucas Brown,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Lucas Taylor,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,30/11/2026
+Lucas Davis,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,08/04/2027
+Lucas Wilson,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Lucas Evans,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,25/01/2028
+Lucas Thomas,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,12/06/2027
+Lucas Johnson,Game of Cones,UTS Monday Mens D2,Monday @ UTS Social futsal,22/07/2026
+Lucas Walker,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,15/03/2026
+Lucas White,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Lucas Clark,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,30/11/2026
+Lucas Martin,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,08/04/2027
+Lucas Young,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Lucas Harris,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,25/01/2028
+Lucas Robinson,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,12/06/2027
+Lucas Allen,Forrest Pump,UTS Monday Mens D2,Monday @ UTS Social futsal,22/07/2026
+Lucas Mitchell,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,15/03/2026
+Lucas Moore,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Lucas Baker,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,30/11/2026
+Lucas Green,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,08/04/2027
+Lucas Cooper,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,
+Lucas Campbell,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,25/01/2028
+Lucas Collins,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,12/06/2027
+Lucas Edwards,Silence of the Cleats,UTS Monday Mens D2,Monday @ UTS Social futsal,22/07/2026
+Lucas Ward,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Lucas Watson,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Lucas Black,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Emily Smith,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Emily Jones,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Emily Williams,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Emily Brown,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Emily Taylor,When Harry Met Salah,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Emily Davis,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Emily Wilson,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Emily Evans,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Emily Thomas,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Emily Johnson,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Emily Walker,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Emily White,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Emily Clark,Kicking and Screaming,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Emily Martin,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Emily Young,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Emily Harris,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Emily Robinson,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Emily Allen,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Emily Mitchell,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Emily Moore,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Emily Baker,She's the Man United,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Emily Green,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Emily Cooper,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Emily Campbell,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Emily Collins,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Emily Edwards,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Emily Ward,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Emily Watson,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Emily Black,Goal Club,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Henry Smith,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Henry Jones,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Henry Williams,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Henry Brown,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Henry Taylor,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Henry Davis,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Henry Wilson,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Henry Evans,The Italian Job Lot,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Henry Thomas,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Henry Johnson,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Henry Walker,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Henry White,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Henry Clark,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,
+Henry Martin,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Henry Young,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Henry Harris,Oceans Eleven Aside,UTS Wednesday Mixed Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Henry Robinson,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Henry Allen,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Henry Mitchell,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Henry Moore,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Henry Baker,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Henry Green,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Henry Cooper,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Henry Campbell,No Pain No Gain,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Henry Collins,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Henry Edwards,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Henry Ward,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Henry Watson,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Henry Black,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Zoe Smith,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Zoe Jones,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Zoe Williams,Sweeper Jeepers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Zoe Brown,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Zoe Taylor,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Zoe Davis,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Zoe Wilson,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Zoe Evans,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Zoe Thomas,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Zoe Johnson,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Zoe Walker,The Nutmeg Kings,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Zoe White,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Zoe Clark,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Zoe Martin,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Zoe Young,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Zoe Harris,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Zoe Robinson,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Zoe Allen,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Zoe Mitchell,Rabona Republic,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Zoe Moore,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Zoe Baker,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Zoe Green,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Zoe Cooper,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Zoe Campbell,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Zoe Collins,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Zoe Edwards,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Zoe Ward,Heel Yeah,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Zoe Watson,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Zoe Black,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Mason Smith,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Mason Jones,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Mason Williams,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,
+Mason Brown,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Mason Taylor,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Mason Davis,The Bicycle Kickers,UTS Wednesday Mixed Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Mason Wilson,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Mason Evans,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Mason Thomas,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Mason Johnson,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Mason Walker,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Mason White,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Mason Clark,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Mason Martin,Throw In the Towel,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Mason Young,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Mason Harris,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Mason Robinson,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Mason Allen,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Mason Mitchell,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Mason Moore,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Mason Baker,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Mason Green,The Ankle Biters,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Mason Cooper,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Mason Campbell,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Mason Collins,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Mason Edwards,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Mason Ward,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Mason Watson,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Mason Black,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Sarah Smith,Hamstring Theory,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Sarah Jones,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Sarah Williams,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Sarah Brown,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Sarah Taylor,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Sarah Davis,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Sarah Wilson,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Sarah Evans,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Sarah Thomas,Shin Happens,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Sarah Johnson,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Sarah Walker,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Sarah White,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Sarah Clark,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Sarah Martin,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Sarah Young,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Sarah Harris,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Sarah Robinson,Toe-tally Legit,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Sarah Allen,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,15/03/2026
+Sarah Mitchell,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Sarah Moore,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,30/11/2026
+Sarah Baker,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,08/04/2027
+Sarah Green,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,
+Sarah Cooper,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,25/01/2028
+Sarah Campbell,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,12/06/2027
+Sarah Collins,The Metatarsals,UTS Wednesday Mens Div 1,Wednesday @ UTS Social futsal,22/07/2026
+Sarah Edwards,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Sarah Ward,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Sarah Watson,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Sarah Black,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Ethan Smith,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Ethan Jones,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Ethan Williams,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Ethan Brown,Calf Life Crisis,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Ethan Taylor,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Ethan Davis,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Ethan Wilson,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Ethan Evans,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Ethan Thomas,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Ethan Johnson,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Ethan Walker,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Ethan White,Hammy and the Jets,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Ethan Clark,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Ethan Martin,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Ethan Young,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Ethan Harris,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Ethan Robinson,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Ethan Allen,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Ethan Mitchell,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Ethan Moore,The Twisted Ankles,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Ethan Baker,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Ethan Green,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Ethan Cooper,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Ethan Campbell,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Ethan Collins,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Ethan Edwards,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Ethan Ward,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Ethan Watson,Sore Losers FC,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Ethan Black,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Lucy Smith,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Lucy Jones,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Lucy Williams,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Lucy Brown,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Lucy Taylor,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Lucy Davis,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Lucy Wilson,We Thought It Was Practice,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Lucy Evans,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,15/03/2026
+Lucy Thomas,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Lucy Johnson,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,30/11/2026
+Lucy Walker,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,08/04/2027
+Lucy White,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,
+Lucy Clark,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,25/01/2028
+Lucy Martin,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,12/06/2027
+Lucy Young,Where's the Ref,UTS Wednesday Mens Div 2,Wednesday @ UTS Social futsal,22/07/2026
+Lucy Harris,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,15/03/2026
+Lucy Robinson,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Lucy Allen,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,30/11/2026
+Lucy Mitchell,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,08/04/2027
+Lucy Moore,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Lucy Baker,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,25/01/2028
+Lucy Green,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,12/06/2027
+Lucy Cooper,The Wrong Net,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,22/07/2026
+Lucy Campbell,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,15/03/2026
+Lucy Collins,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Lucy Edwards,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,30/11/2026
+Lucy Ward,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,08/04/2027
+Lucy Watson,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Lucy Black,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,25/01/2028
+Daniel Smith,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,12/06/2027
+Daniel Jones,Accidentally Scored,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,22/07/2026
+Daniel Williams,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,15/03/2026
+Daniel Brown,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Daniel Taylor,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,30/11/2026
+Daniel Davis,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,08/04/2027
+Daniel Wilson,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Daniel Evans,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,25/01/2028
+Daniel Thomas,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,12/06/2027
+Daniel Johnson,Warm Up Warriors,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,22/07/2026
+Daniel Walker,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,15/03/2026
+Daniel White,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Daniel Clark,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,30/11/2026
+Daniel Martin,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,08/04/2027
+Daniel Young,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Daniel Harris,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,25/01/2028
+Daniel Robinson,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,12/06/2027
+Daniel Allen,Still Breathing FC,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,22/07/2026
+Daniel Mitchell,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,15/03/2026
+Daniel Moore,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Daniel Baker,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,30/11/2026
+Daniel Green,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,08/04/2027
+Daniel Cooper,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Daniel Campbell,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,25/01/2028
+Daniel Collins,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,12/06/2027
+Daniel Edwards,The Participation Trophies,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,22/07/2026
+Daniel Ward,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,15/03/2026
+Daniel Watson,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Daniel Black,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,30/11/2026
+Grace Smith,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,08/04/2027
+Grace Jones,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,
+Grace Williams,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,25/01/2028
+Grace Brown,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,12/06/2027
+Grace Taylor,Probably Offside,UTS Wednesday Mens Div 3,Wednesday @ UTS Social futsal,22/07/2026
+Grace Davis,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,15/03/2026
+Grace Wilson,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Grace Evans,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,30/11/2026
+Grace Thomas,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,08/04/2027
+Grace Johnson,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Grace Walker,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,25/01/2028
+Grace White,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,12/06/2027
+Grace Clark,Sunday Bloody Sunday League,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,22/07/2026
+Grace Martin,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,15/03/2026
+Grace Young,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Grace Harris,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,30/11/2026
+Grace Robinson,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,08/04/2027
+Grace Allen,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Grace Mitchell,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,25/01/2028
+Grace Moore,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,12/06/2027
+Grace Baker,The Hangover FC,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,22/07/2026
+Grace Green,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,15/03/2026
+Grace Cooper,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Grace Campbell,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,30/11/2026
+Grace Collins,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,08/04/2027
+Grace Edwards,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Grace Ward,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,25/01/2028
+Grace Watson,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,12/06/2027
+Grace Black,Turf Burners,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,22/07/2026
+Andrew Smith,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,15/03/2026
+Andrew Jones,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Andrew Williams,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,30/11/2026
+Andrew Brown,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,08/04/2027
+Andrew Taylor,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Andrew Davis,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,25/01/2028
+Andrew Wilson,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,12/06/2027
+Andrew Evans,Yellow Card Sharks,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,22/07/2026
+Andrew Thomas,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,15/03/2026
+Andrew Johnson,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Andrew Walker,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,30/11/2026
+Andrew White,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,08/04/2027
+Andrew Clark,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Andrew Martin,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,25/01/2028
+Andrew Young,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,12/06/2027
+Andrew Harris,Hat Trick or Treat,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,22/07/2026
+Andrew Robinson,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,15/03/2026
+Andrew Allen,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Andrew Mitchell,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,30/11/2026
+Andrew Moore,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,08/04/2027
+Andrew Baker,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,
+Andrew Green,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,25/01/2028
+Andrew Cooper,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,12/06/2027
+Andrew Campbell,The Golden Boots,UTS Thursday Mixed Div 1,Thursday @ UTS Social futsal,22/07/2026
+Andrew Collins,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,15/03/2026
+Andrew Edwards,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Andrew Ward,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,30/11/2026
+Andrew Watson,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,08/04/2027
+Andrew Black,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Chloe Smith,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,25/01/2028
+Chloe Jones,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,12/06/2027
+Chloe Williams,Set Piece Theatre,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,22/07/2026
+Chloe Brown,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,15/03/2026
+Chloe Taylor,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Chloe Davis,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,30/11/2026
+Chloe Wilson,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,08/04/2027
+Chloe Evans,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Chloe Thomas,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,25/01/2028
+Chloe Johnson,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,12/06/2027
+Chloe Walker,Dead Ball Society,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,22/07/2026
+Chloe White,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,15/03/2026
+Chloe Clark,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Chloe Martin,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,30/11/2026
+Chloe Young,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,08/04/2027
+Chloe Harris,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Chloe Robinson,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,25/01/2028
+Chloe Allen,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,12/06/2027
+Chloe Mitchell,Box-to-Box Office,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,22/07/2026
+Chloe Moore,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,15/03/2026
+Chloe Baker,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Chloe Green,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,30/11/2026
+Chloe Cooper,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,08/04/2027
+Chloe Campbell,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Chloe Collins,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,25/01/2028
+Chloe Edwards,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,12/06/2027
+Chloe Ward,The False Nines,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,22/07/2026
+Chloe Watson,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,15/03/2026
+Chloe Black,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Dylan Smith,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,30/11/2026
+Dylan Jones,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,08/04/2027
+Dylan Williams,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Dylan Brown,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,25/01/2028
+Dylan Taylor,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,12/06/2027
+Dylan Davis,The High Press Gang,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,22/07/2026
+Dylan Wilson,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,15/03/2026
+Dylan Evans,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Dylan Thomas,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,30/11/2026
+Dylan Johnson,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,08/04/2027
+Dylan Walker,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,
+Dylan White,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,25/01/2028
+Dylan Clark,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,12/06/2027
+Dylan Martin,Low Block Party,UTS Thursday Mixed Div 2,Thursday @ UTS Social futsal,22/07/2026
+Dylan Young,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,15/03/2026
+Dylan Harris,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Dylan Robinson,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,30/11/2026
+Dylan Allen,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,08/04/2027
+Dylan Mitchell,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Dylan Moore,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,25/01/2028
+Dylan Baker,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,12/06/2027
+Dylan Green,Gegenpressing Issues,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,22/07/2026
+Dylan Cooper,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,15/03/2026
+Dylan Campbell,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Dylan Collins,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,30/11/2026
+Dylan Edwards,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,08/04/2027
+Dylan Ward,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Dylan Watson,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,25/01/2028
+Dylan Black,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,12/06/2027
+Hannah Smith,Tiki-Tackle,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,22/07/2026
+Hannah Jones,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,15/03/2026
+Hannah Williams,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Hannah Brown,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,30/11/2026
+Hannah Taylor,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,08/04/2027
+Hannah Davis,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Hannah Wilson,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,25/01/2028
+Hannah Evans,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,12/06/2027
+Hannah Thomas,FC Barca-loungers,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,22/07/2026
+Hannah Johnson,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,15/03/2026
+Hannah Walker,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Hannah White,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,30/11/2026
+Hannah Clark,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,08/04/2027
+Hannah Martin,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Hannah Young,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,25/01/2028
+Hannah Harris,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,12/06/2027
+Hannah Robinson,Ajax and Cleaning Products,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,22/07/2026
+Hannah Allen,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,15/03/2026
+Hannah Mitchell,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Hannah Moore,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,30/11/2026
+Hannah Baker,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,08/04/2027
+Hannah Green,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Hannah Cooper,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,25/01/2028
+Hannah Campbell,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,12/06/2027
+Hannah Collins,Inter Meh-lan,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,22/07/2026
+Hannah Edwards,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,15/03/2026
+Hannah Ward,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Hannah Watson,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,30/11/2026
+Hannah Black,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,08/04/2027
+Tyler Smith,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,
+Tyler Jones,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,25/01/2028
+Tyler Williams,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,12/06/2027
+Tyler Brown,Borussia Teeth,UTS Thursday Mixed Div 3,Thursday @ UTS Social futsal,22/07/2026
+Tyler Taylor,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,15/03/2026
+Tyler Davis,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Tyler Wilson,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,30/11/2026
+Tyler Evans,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,08/04/2027
+Tyler Thomas,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Tyler Johnson,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,25/01/2028
+Tyler Walker,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,12/06/2027
+Tyler White,VAR Too Slow,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,22/07/2026
+Tyler Clark,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,15/03/2026
+Tyler Martin,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Tyler Young,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,30/11/2026
+Tyler Harris,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,08/04/2027
+Tyler Robinson,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Tyler Allen,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,25/01/2028
+Tyler Mitchell,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,12/06/2027
+Tyler Moore,Own Goal Scorers Anonymous,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,22/07/2026
+Tyler Baker,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,15/03/2026
+Tyler Green,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Tyler Cooper,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,30/11/2026
+Tyler Campbell,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,08/04/2027
+Tyler Collins,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Tyler Edwards,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,25/01/2028
+Tyler Ward,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,12/06/2027
+Tyler Watson,The Phantom Fouls,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,22/07/2026
+Tyler Black,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,15/03/2026
+Natalie Smith,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Natalie Jones,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,30/11/2026
+Natalie Williams,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,08/04/2027
+Natalie Brown,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Natalie Taylor,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,25/01/2028
+Natalie Davis,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,12/06/2027
+Natalie Wilson,The Tackle Factory,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,22/07/2026
+Natalie Evans,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,15/03/2026
+Natalie Thomas,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Natalie Johnson,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,30/11/2026
+Natalie Walker,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,08/04/2027
+Natalie White,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Natalie Clark,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,25/01/2028
+Natalie Martin,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,12/06/2027
+Natalie Young,Chip and Dales,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,22/07/2026
+Natalie Harris,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,15/03/2026
+Natalie Robinson,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Natalie Allen,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,30/11/2026
+Natalie Mitchell,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,08/04/2027
+Natalie Moore,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,
+Natalie Baker,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,25/01/2028
+Natalie Green,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,12/06/2027
+Natalie Cooper,Volley Llamas,UTS Thursday Mens Div 1,Thursday @ UTS Social futsal,22/07/2026
+Natalie Campbell,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,15/03/2026
+Natalie Collins,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Natalie Edwards,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,30/11/2026
+Natalie Ward,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,08/04/2027
+Natalie Watson,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Natalie Black,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,25/01/2028
+Sean Smith,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,12/06/2027
+Sean Jones,The Backheel Boys,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,22/07/2026
+Sean Williams,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,15/03/2026
+Sean Brown,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Sean Taylor,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,30/11/2026
+Sean Davis,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,08/04/2027
+Sean Wilson,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Sean Evans,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,25/01/2028
+Sean Thomas,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,12/06/2027
+Sean Johnson,Clearance Sale,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,22/07/2026
+Sean Walker,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,15/03/2026
+Sean White,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Sean Clark,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,30/11/2026
+Sean Martin,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,08/04/2027
+Sean Young,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Sean Harris,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,25/01/2028
+Sean Robinson,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,12/06/2027
+Sean Allen,The Sliding Tackles,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,22/07/2026
+Sean Mitchell,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,15/03/2026
+Sean Moore,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Sean Baker,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,30/11/2026
+Sean Green,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,08/04/2027
+Sean Cooper,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Sean Campbell,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,25/01/2028
+Sean Collins,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,12/06/2027
+Sean Edwards,Quad Squad,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,22/07/2026
+Sean Ward,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,15/03/2026
+Sean Watson,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Sean Black,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,30/11/2026
+Victoria Smith,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,08/04/2027
+Victoria Jones,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Victoria Williams,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,25/01/2028
+Victoria Brown,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,12/06/2027
+Victoria Taylor,The Shin Splints,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,22/07/2026
+Victoria Davis,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,15/03/2026
+Victoria Wilson,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Victoria Evans,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,30/11/2026
+Victoria Thomas,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,08/04/2027
+Victoria Johnson,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,
+Victoria Walker,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,25/01/2028
+Victoria White,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,12/06/2027
+Victoria Clark,Flexible Friends,UTS Thursday Mens Div 2,Thursday @ UTS Social futsal,22/07/2026
+Victoria Martin,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Victoria Young,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Victoria Harris,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Victoria Robinson,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Victoria Allen,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Victoria Mitchell,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Victoria Moore,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Victoria Baker,The Back Four,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Victoria Green,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Victoria Cooper,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Victoria Campbell,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Victoria Collins,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Victoria Edwards,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Victoria Ward,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Victoria Watson,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Victoria Black,The G.O.A.T. Cheese,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Patrick Smith,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Patrick Jones,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Patrick Williams,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Patrick Brown,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Patrick Taylor,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Patrick Davis,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Patrick Wilson,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Patrick Evans,Ronaldo's Haircut,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Patrick Thomas,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Patrick Johnson,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Patrick Walker,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Patrick White,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Patrick Clark,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Patrick Martin,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Patrick Young,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Patrick Harris,Handballs to the Wall,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Patrick Robinson,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Patrick Allen,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Patrick Mitchell,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Patrick Moore,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Patrick Baker,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Patrick Green,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Patrick Cooper,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Patrick Campbell,Magic Carpet Ride or Die,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Patrick Collins,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Patrick Edwards,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Patrick Ward,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Patrick Watson,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Patrick Black,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,
+Lily Smith,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Lily Jones,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Lily Williams,Barely Competitive,WM Monday Mixed Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Lily Brown,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Lily Taylor,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Lily Davis,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Lily Wilson,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Lily Evans,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Lily Thomas,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Lily Johnson,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Lily Walker,Results Not Guaranteed,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Lily White,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Lily Clark,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Lily Martin,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Lily Young,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Lily Harris,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Lily Robinson,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Lily Allen,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Lily Mitchell,Ask Your Mother,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Lily Moore,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Lily Baker,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Lily Green,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Lily Cooper,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Lily Campbell,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Lily Collins,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Lily Edwards,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Lily Ward,Sunday Roast FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Lily Watson,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Lily Black,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Tim Smith,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Tim Jones,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Tim Williams,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Tim Brown,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Tim Taylor,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Tim Davis,The Grass Stains,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Tim Wilson,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Tim Evans,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Tim Thomas,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Tim Johnson,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Tim Walker,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Tim White,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Tim Clark,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Tim Martin,Red Mist FC,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Tim Young,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Tim Harris,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Tim Robinson,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Tim Allen,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Tim Mitchell,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,
+Tim Moore,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Tim Baker,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Tim Green,Hat Trick Pony,WM Monday Mixed Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Tim Cooper,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Tim Campbell,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Tim Collins,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Tim Edwards,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Tim Ward,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Tim Watson,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Tim Black,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Madison Smith,The Corner Kicks,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Madison Jones,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Madison Williams,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Madison Brown,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Madison Taylor,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Madison Davis,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Madison Wilson,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Madison Evans,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Madison Thomas,Deep Lying Playmakers,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Madison Johnson,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Madison Walker,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Madison White,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Madison Clark,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Madison Martin,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Madison Young,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Madison Harris,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Madison Robinson,Galacticos Anonymous,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Madison Allen,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Madison Mitchell,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Madison Moore,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Madison Baker,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Madison Green,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Madison Cooper,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Madison Campbell,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Madison Collins,Loco Motive FC,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Madison Edwards,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Madison Ward,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Madison Watson,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Madison Black,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Tom Smith,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Tom Jones,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Tom Williams,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Tom Brown,The Thunder Thighs,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Tom Taylor,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Tom Davis,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Tom Wilson,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Tom Evans,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Tom Thomas,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,
+Tom Johnson,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Tom Walker,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Tom White,No Hamstrings Attached,WM Monday Womens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Tom Clark,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Tom Martin,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Tom Young,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Tom Harris,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Tom Robinson,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Tom Allen,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Tom Mitchell,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Tom Moore,Three Lions One Shin,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Tom Baker,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Tom Green,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Tom Cooper,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Tom Campbell,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Tom Collins,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Tom Edwards,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Tom Ward,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Tom Watson,Messi Situations,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Tom Black,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Sofia Smith,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Jones,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Sofia Williams,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Sofia Brown,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Taylor,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Sofia Davis,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Sofia Wilson,Yellow Fever,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Sofia Evans,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Sofia Thomas,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Johnson,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Sofia Walker,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Sofia White,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Clark,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Sofia Martin,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Sofia Young,The Flat Back Four,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Sofia Harris,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Sofia Robinson,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Allen,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Sofia Mitchell,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Sofia Moore,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Baker,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Sofia Green,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Sofia Cooper,Nutmeg or Never,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Sofia Campbell,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,15/03/2026
+Sofia Collins,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Edwards,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,30/11/2026
+Sofia Ward,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,08/04/2027
+Sofia Watson,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,
+Sofia Black,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,25/01/2028
+Nick Smith,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,12/06/2027
+Nick Jones,Chip and Chasing,WM Monday Mens Div 1,Monday @ Woolloomooloo Courts,22/07/2026
+Nick Williams,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Nick Brown,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Nick Taylor,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Nick Davis,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Nick Wilson,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Nick Evans,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Nick Thomas,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Nick Johnson,Keepers of the Peace,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Nick Walker,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Nick White,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Nick Clark,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Nick Martin,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Nick Young,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Nick Harris,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Nick Robinson,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Nick Allen,Late to the Party,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Nick Mitchell,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Nick Moore,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Nick Baker,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Nick Green,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Nick Cooper,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Nick Campbell,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Nick Collins,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Nick Edwards,The Stoppage Timers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Nick Ward,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Nick Watson,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Nick Black,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Ella Smith,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Ella Jones,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Ella Williams,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Ella Brown,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Ella Taylor,Injury Prone FC,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Ella Davis,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Ella Wilson,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Ella Evans,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Ella Thomas,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Ella Johnson,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Ella Walker,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Ella White,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Ella Clark,Two Left Feet United,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Ella Martin,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,15/03/2026
+Ella Young,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Ella Harris,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,30/11/2026
+Ella Robinson,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,08/04/2027
+Ella Allen,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,
+Ella Mitchell,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,25/01/2028
+Ella Moore,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,12/06/2027
+Ella Baker,The Accidental Strikers,WM Monday Mens Div 2,Monday @ Woolloomooloo Courts,22/07/2026
+Ella Green,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Ella Cooper,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Ella Campbell,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Ella Collins,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Ella Edwards,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Ella Ward,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Ella Watson,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Ella Black,Caught Offside,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Chris Smith,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Chris Jones,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Chris Williams,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Chris Brown,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Chris Taylor,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Chris Davis,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Chris Wilson,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Chris Evans,Jurassic Park Rangers,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Chris Thomas,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Chris Johnson,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Chris Walker,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Chris White,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Chris Clark,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Chris Martin,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Chris Young,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Chris Harris,The Usual Suspects,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Chris Robinson,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Chris Allen,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Chris Mitchell,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Chris Moore,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Chris Baker,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Chris Green,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Chris Cooper,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Chris Campbell,Extra Time Please,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Chris Collins,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Chris Edwards,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Chris Ward,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Chris Watson,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Chris Black,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Harper Smith,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Harper Jones,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Harper Williams,Panic at the Disco Ball,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Harper Brown,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Harper Taylor,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Harper Davis,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Harper Wilson,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Harper Evans,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,
+Harper Thomas,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Harper Johnson,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Harper Walker,The Substitute Bench,WM Thursday Mixed Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Harper White,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Harper Clark,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Harper Martin,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Harper Young,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Harper Harris,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Harper Robinson,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Harper Allen,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Harper Mitchell,Bench Warmers FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Harper Moore,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Harper Baker,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Harper Green,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Harper Cooper,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Harper Campbell,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Harper Collins,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Harper Edwards,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Harper Ward,The Early Bathers,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Harper Watson,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Harper Black,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh Smith,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Josh Jones,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Josh Williams,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh Brown,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Josh Taylor,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Josh Davis,Foul Weather Friends,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Josh Wilson,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Josh Evans,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh Thomas,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Josh Johnson,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Josh Walker,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh White,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Josh Clark,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Josh Martin,Free Kick in the Teeth,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Josh Young,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Josh Harris,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh Robinson,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Josh Allen,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Josh Mitchell,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh Moore,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Josh Baker,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Josh Green,The Overlap Artists,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Josh Cooper,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Josh Campbell,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh Collins,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Josh Edwards,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Josh Ward,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,
+Josh Watson,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Josh Black,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Abigail Smith,Press Gang FC,WM Thursday Mixed Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Abigail Jones,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,15/03/2026
+Abigail Williams,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Abigail Brown,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,30/11/2026
+Abigail Taylor,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,08/04/2027
+Abigail Davis,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Abigail Wilson,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,25/01/2028
+Abigail Evans,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,12/06/2027
+Abigail Thomas,False Start United,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,22/07/2026
+Abigail Johnson,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,15/03/2026
+Abigail Walker,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Abigail White,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,30/11/2026
+Abigail Clark,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,08/04/2027
+Abigail Martin,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Abigail Young,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,25/01/2028
+Abigail Harris,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,12/06/2027
+Abigail Robinson,The Dummy Runners,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,22/07/2026
+Abigail Allen,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,15/03/2026
+Abigail Mitchell,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Abigail Moore,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,30/11/2026
+Abigail Baker,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,08/04/2027
+Abigail Green,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Abigail Cooper,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,25/01/2028
+Abigail Campbell,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,12/06/2027
+Abigail Collins,One Touch Wonder,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,22/07/2026
+Abigail Edwards,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,15/03/2026
+Abigail Ward,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Abigail Watson,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,30/11/2026
+Abigail Black,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,08/04/2027
+Ben Smith,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Ben Jones,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,25/01/2028
+Ben Williams,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,12/06/2027
+Ben Brown,Hit and Hope FC,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,22/07/2026
+Ben Taylor,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,15/03/2026
+Ben Davis,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Ben Wilson,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,30/11/2026
+Ben Evans,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,08/04/2027
+Ben Thomas,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Ben Johnson,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,25/01/2028
+Ben Walker,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,12/06/2027
+Ben White,The Long Ball Theory,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,22/07/2026
+Ben Clark,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,15/03/2026
+Ben Martin,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Ben Young,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,30/11/2026
+Ben Harris,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,08/04/2027
+Ben Robinson,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,
+Ben Allen,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,25/01/2028
+Ben Mitchell,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,12/06/2027
+Ben Moore,Width of a Post,WM Thursday Mixed Div 3,Thursday @ Woolloomooloo Courts,22/07/2026
+Ben Baker,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Ben Green,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Ben Cooper,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Ben Campbell,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Ben Collins,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Ben Edwards,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Ben Ward,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Ben Watson,Crossbar Challenge,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Ben Black,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Elizabeth Smith,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Jones,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Elizabeth Williams,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Elizabeth Brown,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Taylor,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Elizabeth Davis,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Elizabeth Wilson,The Woodwork FC,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Elizabeth Evans,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Elizabeth Thomas,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Johnson,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Elizabeth Walker,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Elizabeth White,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Clark,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Elizabeth Martin,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Elizabeth Young,Post and In,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Elizabeth Harris,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Elizabeth Robinson,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Allen,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Elizabeth Mitchell,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Elizabeth Moore,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Baker,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Elizabeth Green,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Elizabeth Cooper,Saved by the Bell End,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Elizabeth Campbell,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Elizabeth Collins,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Edwards,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Elizabeth Ward,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Elizabeth Watson,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Elizabeth Black,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Alex Smith,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Alex Jones,The Rebound,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Alex Williams,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,15/03/2026
+Alex Brown,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Alex Taylor,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,30/11/2026
+Alex Davis,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,08/04/2027
+Alex Wilson,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,
+Alex Evans,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,25/01/2028
+Alex Thomas,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,12/06/2027
+Alex Johnson,Second Ball Hunters,WM Thursday Mens Div 1,Thursday @ Woolloomooloo Courts,22/07/2026
+Alex Walker,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Alex White,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Alex Clark,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Alex Martin,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Alex Young,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Alex Harris,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Alex Robinson,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Alex Allen,Injury Time FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Alex Mitchell,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Alex Moore,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Alex Baker,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Alex Green,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Alex Cooper,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Alex Campbell,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Alex Collins,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Alex Edwards,Total Futsal,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Alex Ward,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Alex Watson,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Alex Black,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Rachel Smith,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Rachel Jones,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Rachel Williams,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Rachel Brown,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Rachel Taylor,The Wonderwalls,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Rachel Davis,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Rachel Wilson,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Rachel Evans,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Rachel Thomas,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Rachel Johnson,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Rachel Walker,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Rachel White,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Rachel Clark,Loco Parentis FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Rachel Martin,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Rachel Young,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Rachel Harris,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Rachel Robinson,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Rachel Allen,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Rachel Mitchell,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Rachel Moore,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Rachel Baker,The Wonder Wall Boys,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,22/07/2026
+Rachel Green,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,15/03/2026
+Rachel Cooper,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Rachel Campbell,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,30/11/2026
+Rachel Collins,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,08/04/2027
+Rachel Edwards,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,
+Rachel Ward,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,25/01/2028
+Rachel Watson,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,12/06/2027
+Rachel Black,Offside Trap FC,WM Thursday Mens Div 2,Thursday @ Woolloomooloo Courts,22/07/2026

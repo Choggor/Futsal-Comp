@@ -77,27 +77,27 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
       // Fit logo into top portion of the block, leaving room for text below
       doc.addImage(cfg.logoDataUrl, ML + 1, MT + 1, LOGO_W - 2, LOGO_H - 9)
     } catch { /* ignore bad image data */ }
-    doc.setFontSize(7)
+    doc.setFontSize(12)
     doc.setFont('helvetica', 'bold')
-    if (cfg.orgName) doc.text(cfg.orgName, ML + LOGO_W / 2, MT + LOGO_H - 6, { align: 'center', maxWidth: LOGO_W - 2 })
+    if (cfg.orgName) doc.text(cfg.orgName, ML + LOGO_W / 2, MT + LOGO_H + 4, { align: 'center', maxWidth: LOGO_W - 2 })
     doc.setFont('helvetica', 'normal')
-    if (cfg.contactInfo) doc.text(cfg.contactInfo, ML + LOGO_W / 2, MT + LOGO_H - 2, { align: 'center', maxWidth: LOGO_W - 2 })
+    if (cfg.contactInfo) doc.text(cfg.contactInfo, ML + LOGO_W / 2, MT + LOGO_H + 9, { align: 'center', maxWidth: LOGO_W - 2 })
   } else {
     // No logo — show org name + contact centred in the box
-    doc.setFontSize(8)
+    doc.setFontSize(14)
     doc.setFont('helvetica', 'bold')
     if (cfg.orgName) {
       doc.text(cfg.orgName, ML + LOGO_W / 2, MT + LOGO_H / 2 - 2, { align: 'center', maxWidth: LOGO_W - 2 })
     }
     doc.setFont('helvetica', 'normal')
-    doc.setFontSize(6.5)
+    doc.setFontSize(11.5)
     if (cfg.contactInfo) {
       const lines = doc.splitTextToSize(cfg.contactInfo, LOGO_W - 2)
       doc.text(lines.slice(0, 3), ML + LOGO_W / 2, MT + LOGO_H / 2 + 3, { align: 'center' })
     }
     if (!cfg.orgName && !cfg.contactInfo) {
       doc.setTextColor(180)
-      doc.setFontSize(7)
+      doc.setFontSize(12)
       doc.text('Logo / Contact', ML + LOGO_W / 2, MT + LOGO_H / 2 + 1, { align: 'center' })
       doc.setTextColor(0)
     }
@@ -106,7 +106,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   // ── Header — centred across full page width ────────────────────────────────
 
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(13)
+  doc.setFontSize(23)
   doc.text('MATCH SHEET', W / 2, MT + 7, { align: 'center' })
 
   const infoLine = [
@@ -117,10 +117,10 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   ].filter(Boolean).join('   ·   ')
 
   doc.setFont('helvetica', 'normal')
-  doc.setFontSize(10)
+  doc.setFontSize(17.5)
   doc.text(infoLine, W / 2, MT + 15, { align: 'center' })
 
-  doc.setFontSize(7.5)
+  doc.setFontSize(13)
   doc.text(
     `Round ${fx.round}   ·   ${fx.divisionType} ${fx.divisionName}`,
     W - MR, MT + 21, { align: 'right' }
@@ -141,16 +141,16 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   doc.rect(cx - boxW - 3, boxTop, boxW, boxH)
   doc.rect(cx + 3, boxTop, boxW, boxH)
 
-  doc.setFontSize(13)
+  doc.setFontSize(23)
   doc.setFont('helvetica', 'bold')
   doc.text(':', cx, boxTop + boxH / 2 + 2.5, { align: 'center' })
 
-  doc.setFontSize(14)
+  doc.setFontSize(24.5)
   doc.text(fx.homeTeamName, ML + CW / 2, teamY, { align: 'center', maxWidth: CW - 4 })
   doc.text(fx.awayTeamName ?? 'BYE', ML + CW + GAP + CW / 2, teamY, { align: 'center', maxWidth: CW - 4 })
 
   doc.setFont('helvetica', 'normal')
-  doc.setFontSize(7)
+  doc.setFontSize(12)
   doc.text('HOME', ML + CW / 2, boxTop + boxH + 5, { align: 'center' })
   doc.text('AWAY', ML + CW + GAP + CW / 2, boxTop + boxH + 5, { align: 'center' })
 
@@ -191,7 +191,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   const headerTextY = tblTop + ROW_H - 1.5
   function drawHeader(ox: number) {
     doc.setFont('helvetica', 'bold')
-    doc.setFontSize(7)
+    doc.setFontSize(12)
     doc.text('#', ox + NUM_W / 2, headerTextY, { align: 'center' })
     doc.text('Player Name', ox + NUM_W + 2, headerTextY)
     doc.text('Init.', ox + NUM_W + NAME_W + INIT_W / 2, headerTextY, { align: 'center' })
@@ -223,7 +223,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
 
       if (player) {
         doc.setFont('helvetica', 'normal')
-        doc.setFontSize(7)
+        doc.setFontSize(12)
         doc.text(
           doc.splitTextToSize(player.name, NAME_W - 2)[0],
           ox + NUM_W + 2, textY
@@ -231,7 +231,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
         if (player.insured) {
           // Tick inside checkbox
           doc.setFont('helvetica', 'normal')
-          doc.setFontSize(7)
+          doc.setFontSize(12)
           doc.text('✓', insX + cbSize / 2, insY + cbSize - 0.5, { align: 'center' })
         }
       }
@@ -247,7 +247,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
 
   const refY = tblBottom + 7
   doc.setFont('helvetica', 'normal')
-  doc.setFontSize(8)
+  doc.setFontSize(14)
   const third = (W - ML - MR) / 3
   ;(['Referee', 'Signature', 'Date'] as const).forEach((label, i) => {
     const x = ML + i * third
@@ -260,7 +260,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
 
   const notesTop = refY + 8
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(8)
+  doc.setFontSize(14)
   doc.text('NOTES', ML, notesTop - 1.5)
 
   doc.setLineWidth(0.375)
@@ -275,13 +275,20 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
 export function generateMatchSheetsPDF(
   fixtures: MatchSheetFixture[],
   config: MatchSheetConfig,
+  round: number,
+  venueName: string,
+  nightName: string,
 ): void {
   const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' })
+
+  // Build filename: TS_Broadway_Tuesday_Round1
+  const slug = (s: string) => s.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '')
+  const filename = `TS_${slug(venueName)}_${slug(nightName)}_Round${round}.pdf`
 
   fixtures.forEach((fx, i) => {
     if (i > 0) doc.addPage()
     drawPage(doc, fx, config)
   })
 
-  doc.save('match-sheets.pdf')
+  doc.save(filename)
 }

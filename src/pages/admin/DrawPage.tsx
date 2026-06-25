@@ -60,7 +60,7 @@ function SeasonTable({ seasons, selected, onSelect, onDelete }: {
   onDelete: (s: Season) => void
 }) {
   return (
-    <table className="data-table">
+    <div className="table-scroll"><table className="data-table">
       <thead><tr><th>Name</th><th>Night</th><th>Start</th><th>End</th><th>Status</th><th></th></tr></thead>
       <tbody>
         {seasons.map(s => (
@@ -85,7 +85,7 @@ function SeasonTable({ seasons, selected, onSelect, onDelete }: {
           </tr>
         ))}
       </tbody>
-    </table>
+    </table></div>
   )
 }
 
@@ -107,6 +107,7 @@ export function DrawPage() {
   const [fixtures, setFixtures] = useState<Fixture[]>([])
   const [loadingFixtures, setLoadingFixtures] = useState(false)
   const [publishing, setPublishing] = useState(false)
+  const [unpublishing, setUnpublishing] = useState(false)
 
   async function loadSeasons() {
     const [{ data: seasonsData }, { data: fixtureDates }] = await Promise.all([
@@ -222,6 +223,17 @@ export function DrawPage() {
     await loadSeasons()
   }
 
+  async function unpublish() {
+    if (!selected) return
+    if (!confirm(`Unpublish "${selected.name}"? It will go back to draft and disappear from the public site until re-published.`)) return
+    setUnpublishing(true)
+    const { error } = await supabase.from('seasons').update({ status: 'draft' }).eq('id', selected.id)
+    if (error) { alert(error.message); setUnpublishing(false); return }
+    await loadSeasons()
+    setSelected(s => s ? { ...s, status: 'draft' } : s)
+    setUnpublishing(false)
+  }
+
   async function publish() {
     if (!selected) return
     if (!confirm(`Publish "${selected.name}"? This cannot be undone — the draw will go live and cannot be regenerated.`)) return
@@ -239,6 +251,23 @@ export function DrawPage() {
     const list = byRound.get(f.round) ?? []; list.push(f); byRound.set(f.round, list)
   }
   const rounds = [...byRound.entries()].sort(([a], [b]) => a - b)
+
+  // Detect court/time clashes: two or more fixtures sharing the same date + court + slot
+  const courtClashes: string[] = []
+  const slotCourtCount = new Map<string, { round: number; fixtures: Fixture[] }>()
+  for (const f of fixtures) {
+    if (!f.scheduled_date || !(f as any).courts?.name || !(f as any).time_slots?.start_time) continue
+    const key = `${f.scheduled_date}|${(f as any).courts.name}|${(f as any).time_slots.start_time}`
+    const existing = slotCourtCount.get(key)
+    if (!existing) { slotCourtCount.set(key, { round: f.round, fixtures: [f] }) }
+    else { existing.fixtures.push(f) }
+  }
+  for (const [key, { fixtures: clashing }] of slotCourtCount) {
+    if (clashing.length > 1) {
+      const [date, court, time] = key.split('|')
+      courtClashes.push(`${date} · ${court} · ${fmt12(time)} — ${clashing.length} games scheduled (rounds ${clashing.map(f => f.round).join(', ')})`)
+    }
+  }
 
   const filteredNights = nights.filter(n => n.venue_id === newVenueId)
   const [showPast, setShowPast] = useState(false)
@@ -373,8 +402,11 @@ export function DrawPage() {
       )}
 
       {selected && selected.status === 'published' && (
-        <div className="card" style={{ background: '#f0fdf4', borderColor: '#86efac' }}>
-          <strong>{selected.name}</strong> is published. Scores can be entered but the draw cannot be regenerated.
+        <div className="card" style={{ background: '#f0fdf4', borderColor: '#86efac', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+          <span><strong>{selected.name}</strong> is published. Scores can be entered but the draw cannot be regenerated.</span>
+          <button className="btn-sm btn-danger" onClick={unpublish} disabled={unpublishing}>
+            {unpublishing ? 'Unpublishing…' : 'Unpublish'}
+          </button>
         </div>
       )}
 
@@ -399,6 +431,19 @@ export function DrawPage() {
         </div>
       )}
 
+      {/* ── Court clash warnings ── */}
+      {courtClashes.length > 0 && (
+        <div className="card" style={{ background: '#fff7ed', borderColor: '#fed7aa', marginBottom: '1rem' }}>
+          <strong style={{ color: 'var(--color-warning)' }}>⚠ {courtClashes.length} court clash{courtClashes.length !== 1 ? 'es' : ''} detected</strong>
+          <ul style={{ marginTop: '0.5rem', paddingLeft: '1.25rem', fontSize: '0.875rem' }}>
+            {courtClashes.map((msg, i) => <li key={i}>{msg}</li>)}
+          </ul>
+          <p style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: 'var(--color-muted)', marginBottom: 0 }}>
+            Use <strong>Edit fixtures</strong> to reassign courts or time slots.
+          </p>
+        </div>
+      )}
+
       {/* ── Fixture list ── */}
       {selected && (
         <div>
@@ -417,7 +462,7 @@ export function DrawPage() {
                   Round {round}
                   {date && <span style={{ fontWeight: 400, color: 'var(--color-muted)', marginLeft: 8, fontSize: '0.875rem' }}>{dow} {date}</span>}
                 </h3>
-                <table className="data-table">
+                <div className="table-scroll"><table className="data-table">
                   <thead>
                     <tr><th>Division</th><th>Home</th><th>Away</th><th>Court</th><th>Time</th></tr>
                   </thead>
@@ -437,7 +482,7 @@ export function DrawPage() {
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </table></div>
               </div>
             )
           })}
