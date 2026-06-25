@@ -87,7 +87,7 @@ export function AdminUsersPage() {
     load()
   }
 
-  const venueAdmins = users.filter(u => u.role === 'venue_admin')
+  const venueAdmins = users.filter(u => u.role === 'sub_admin')
   const superAdmins = users.filter(u => u.role === 'super_admin')
 
   return (

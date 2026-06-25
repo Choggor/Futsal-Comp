@@ -52,7 +52,7 @@ Deno.serve(async (req) => {
     const { error: insertErr } = await admin.from('app_users').insert({
       auth_user_id: invited.user.id,
       display_name: display_name || email,
-      role: 'venue_admin',
+      role: 'sub_admin',
     })
     if (insertErr) return resp({ error: insertErr.message }, 400)
 
