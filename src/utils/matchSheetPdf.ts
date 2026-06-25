@@ -69,7 +69,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
 
   // ── Logo / contact block ────────────────────────────────────────────────────
 
-  doc.setLineWidth(0.3)
+  doc.setLineWidth(0.375)
   doc.rect(ML, MT, LOGO_W, LOGO_H)
 
   if (cfg.logoDataUrl) {
@@ -127,7 +127,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   )
 
   const rule1Y = MT + LOGO_H + 1
-  doc.setLineWidth(0.4)
+  doc.setLineWidth(0.5)
   doc.line(ML, rule1Y, W - MR, rule1Y)
 
   // ── Teams + score boxes ────────────────────────────────────────────────────
@@ -137,7 +137,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   const cx = W / 2
   const boxTop = teamY - 9
 
-  doc.setLineWidth(0.8)
+  doc.setLineWidth(0.375)
   doc.rect(cx - boxW - 3, boxTop, boxW, boxH)
   doc.rect(cx + 3, boxTop, boxW, boxH)
 
@@ -155,7 +155,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   doc.text('AWAY', ML + CW + GAP + CW / 2, boxTop + boxH + 5, { align: 'center' })
 
   const rule2Y = boxTop + boxH + 8
-  doc.setLineWidth(0.4)
+  doc.setLineWidth(0.5)
   doc.line(ML, rule2Y, W - MR, rule2Y)
 
   // ── Player tables ──────────────────────────────────────────────────────────
@@ -167,13 +167,13 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   const rx = ML + CW + GAP
 
   // Outer rectangles
-  doc.setLineWidth(0.3)
+  doc.setLineWidth(0.375)
   doc.rect(lx, tblTop, CW, tblH)
   doc.rect(rx, tblTop, CW, tblH)
 
   // Internal column separator lines (both halves share the same relative offsets)
   function drawColLines(ox: number) {
-    doc.setLineWidth(0.2)
+    doc.setLineWidth(0.25)
     doc.line(ox + NUM_W, tblTop, ox + NUM_W, tblTop + tblH)
     doc.line(ox + NUM_W + NAME_W, tblTop, ox + NUM_W + NAME_W, tblTop + tblH)
     doc.line(ox + NUM_W + NAME_W + INIT_W, tblTop, ox + NUM_W + NAME_W + INIT_W, tblTop + tblH)
@@ -183,7 +183,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   drawColLines(rx)
 
   // Header row bottom rule
-  doc.setLineWidth(0.4)
+  doc.setLineWidth(0.5)
   doc.line(lx, tblTop + ROW_H, lx + CW, tblTop + ROW_H)
   doc.line(rx, tblTop + ROW_H, rx + CW, tblTop + ROW_H)
 
@@ -202,7 +202,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   drawHeader(rx)
 
   // Data rows
-  doc.setLineWidth(0.1)
+  doc.setLineWidth(0.125)
   for (let r = 0; r < ROWS; r++) {
     const rowTop = tblTop + ROW_H + r * ROW_H
     const textY = rowTop + ROW_H - 1.8
@@ -218,7 +218,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
       const insX = ox + NUM_W + NAME_W + INIT_W + 1.5
       const insY = rowTop + ROW_H / 2 - 2
       const cbSize = 4
-      doc.setLineWidth(0.2)
+      doc.setLineWidth(0.25)
       doc.rect(insX, insY, cbSize, cbSize)
 
       if (player) {
@@ -252,7 +252,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   ;(['Referee', 'Signature', 'Date'] as const).forEach((label, i) => {
     const x = ML + i * third
     doc.text(`${label}:`, x, refY)
-    doc.setLineWidth(0.3)
+    doc.setLineWidth(0.375)
     doc.line(x + 20, refY, x + third - 4, refY)
   })
 
@@ -263,7 +263,7 @@ function drawPage(doc: jsPDF, fx: MatchSheetFixture, cfg: MatchSheetConfig) {
   doc.setFontSize(8)
   doc.text('NOTES', ML, notesTop - 1.5)
 
-  doc.setLineWidth(0.3)
+  doc.setLineWidth(0.375)
   doc.line(ML, notesTop, W - MR, notesTop)   // top border
   doc.line(ML, notesTop, ML, H)               // left border (to page edge)
   doc.line(W - MR, notesTop, W - MR, H)      // right border (to page edge)
