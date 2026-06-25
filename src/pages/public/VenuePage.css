@@ -377,15 +377,16 @@
 
   .fixture-list { max-width: 100%; }
 
-  /* Stack team names vertically on narrow screens */
+  /* Stack team names vertically, centred on narrow screens */
   .fixture-row__teams {
     grid-template-columns: 1fr;
     gap: var(--space-1);
+    text-align: center;
   }
-  .fixture-row__team--away { text-align: left; }
+  .fixture-row__team--away { text-align: center; }
   .fixture-row__score {
     font-size: var(--text-lg);
-    text-align: left;
+    text-align: center;
     min-width: 0;
   }
 

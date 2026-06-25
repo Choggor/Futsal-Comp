@@ -92,12 +92,12 @@ function FixtureCard({ fixture, overlay = false }: { fixture: Fixture; overlay?:
       cursor: overlay ? 'grabbing' : 'grab',
       userSelect: 'none',
     }}>
-      <div style={{ fontWeight: 600, color: 'var(--color-muted)', textTransform: 'capitalize', fontSize: '0.7rem' }}>
+      <div style={{ fontWeight: 600, color: 'var(--color-muted)', textTransform: 'capitalize', fontSize: '0.7rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
         {(fixture.divisions as any)?.type} · {(fixture.divisions as any)?.name}
       </div>
-      <div style={{ fontWeight: 700 }}>{fixture.home_team?.name ?? '—'}</div>
+      <div style={{ fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{fixture.home_team?.name ?? '—'}</div>
       <div style={{ color: 'var(--color-muted)', fontSize: '0.72rem' }}>vs</div>
-      <div style={{ fontWeight: 700 }}>{isBye ? <em>Bye</em> : (fixture.away_team?.name ?? '—')}</div>
+      <div style={{ fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{isBye ? <em>Bye</em> : (fixture.away_team?.name ?? '—')}</div>
       {fixture.status !== 'scheduled' && (
         <div style={{ marginTop: '0.2rem', fontSize: '0.68rem', textTransform: 'capitalize', color: '#6b7280' }}>
           {fixture.status}
@@ -134,7 +134,7 @@ function DroppableCell({ id, children }: { id: string; children?: React.ReactNod
       ref={setNodeRef}
       style={{
         verticalAlign: 'top',
-        minWidth: 130,
+        minWidth: 100,
         minHeight: 70,
         padding: '0.35rem',
         background: isOver ? '#eff6ff' : undefined,
@@ -386,8 +386,8 @@ export function FixtureEditorPage() {
 
           {/* Grid */}
           <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-            <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
-              <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+            <div style={{ overflowX: 'auto', marginBottom: '1.5rem', WebkitOverflowScrolling: 'touch' }}>
+              <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: 360 }}>
                 <thead>
                   <tr>
                     <th style={{ padding: '0.4rem 0.5rem', textAlign: 'left', fontSize: '0.8rem', color: 'var(--color-muted)', whiteSpace: 'nowrap', background: 'var(--color-surface)', borderBottom: '2px solid var(--color-border)' }}>
