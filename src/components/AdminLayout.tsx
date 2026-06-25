@@ -26,6 +26,7 @@ export function AdminLayout() {
             <NavLink to="/admin/players/import">Import CSV</NavLink>
             {isSuperAdmin && <NavLink to="/admin/setup">Setup Import</NavLink>}
             {isSuperAdmin && <NavLink to="/admin/draw">Draw</NavLink>}
+            {isSuperAdmin && <NavLink to="/admin/users">Users</NavLink>}
           </div>
           <div className="admin-nav-user">
             <span>{appUser?.display_name ?? 'Admin'}</span>
@@ -48,6 +49,7 @@ export function AdminLayout() {
             <NavLink to="/admin/players/import" onClick={closeMenu}>Import CSV</NavLink>
             {isSuperAdmin && <NavLink to="/admin/setup" onClick={closeMenu}>Setup Import</NavLink>}
             {isSuperAdmin && <NavLink to="/admin/draw" onClick={closeMenu}>Draw</NavLink>}
+            {isSuperAdmin && <NavLink to="/admin/users" onClick={closeMenu}>Users</NavLink>}
             <div className="admin-nav-drawer-user">
               <span>{appUser?.display_name ?? 'Admin'}</span>
               <button onClick={handleSignOut}>Sign out</button>
