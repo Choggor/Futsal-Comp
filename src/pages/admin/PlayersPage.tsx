@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../contexts/AuthContext'
 
+const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
 interface TeamRef {
   team_id: string
-  teams: { id: string; name: string; divisions: { name: string; venue_id: string } }
+  teams: { id: string; name: string; divisions: { name: string; venue_id: string; venue_night_id: string | null } }
 }
 
 interface Player {
@@ -20,6 +22,8 @@ interface TeamOption {
   division_name: string
   venue_id: string
   venue_name: string
+  venue_night_id: string | null
+  night_name: string
 }
 
 const blankForm = { name: '', insurance_expiry: '', team_id: '' }
@@ -55,15 +59,21 @@ export function PlayersPage() {
   async function loadTeams() {
     const { data } = await supabase
       .from('teams')
-      .select('id, name, divisions(name, venue_id, venues(name))')
+      .select('id, name, divisions(name, venue_id, venue_night_id, venues(name), venue_nights(name, day_of_week))')
       .order('name')
-    const flat: TeamOption[] = (data ?? []).map((t: any) => ({
-      id: t.id,
-      name: t.name,
-      division_name: t.divisions?.name ?? '',
-      venue_id: t.divisions?.venue_id ?? '',
-      venue_name: t.divisions?.venues?.name ?? '',
-    }))
+    const flat: TeamOption[] = (data ?? []).map((t: any) => {
+      const vn = t.divisions?.venue_nights
+      const nightName = vn ? (vn.name ?? DAY_NAMES[vn.day_of_week] ?? 'Unknown') : ''
+      return {
+        id: t.id,
+        name: t.name,
+        division_name: t.divisions?.name ?? '',
+        venue_id: t.divisions?.venue_id ?? '',
+        venue_name: t.divisions?.venues?.name ?? '',
+        venue_night_id: t.divisions?.venue_night_id ?? null,
+        night_name: nightName,
+      }
+    })
     setTeamOptions(isSuperAdmin ? flat : flat.filter(t => venueScopes.includes(t.venue_id)))
   }
 
@@ -119,19 +129,47 @@ export function PlayersPage() {
     load()
   }
 
-  const [teamFilter, setTeamFilter] = useState<string>('all')
+  const [venueFilter, setVenueFilter] = useState('all')
+  const [nightFilter, setNightFilter] = useState('all')
+  const [teamFilter, setTeamFilter] = useState('all')
 
-  // All unique teams across all players for the filter chips
-  const allTeams = Array.from(
+  // Derived filter options
+  const allVenues = Array.from(new Map(teamOptions.map(t => [t.venue_id, t.venue_name])).entries())
+    .sort((a, b) => a[1].localeCompare(b[1]))
+
+  const nightsForVenue = Array.from(
     new Map(
-      players.flatMap(p => p.team_players.map(tp => [tp.team_id, tp.teams.name]))
+      teamOptions
+        .filter(t => venueFilter === 'all' || t.venue_id === venueFilter)
+        .filter(t => t.venue_night_id)
+        .map(t => [t.venue_night_id!, t.night_name])
     ).entries()
   ).sort((a, b) => a[1].localeCompare(b[1]))
 
+  const teamsForFilter = teamOptions
+    .filter(t => venueFilter === 'all' || t.venue_id === venueFilter)
+    .filter(t => nightFilter === 'all' || t.venue_night_id === nightFilter)
+
+  // Reset downstream filters when parent changes
+  function handleVenueChange(v: string) {
+    setVenueFilter(v); setNightFilter('all'); setTeamFilter('all')
+  }
+  function handleNightChange(n: string) {
+    setNightFilter(n); setTeamFilter('all')
+  }
+
   const filtered = players.filter(p => {
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
+    const matchesVenue = venueFilter === 'all' || p.team_players.some(tp => {
+      const team = teamOptions.find(t => t.id === tp.team_id)
+      return team?.venue_id === venueFilter
+    })
+    const matchesNight = nightFilter === 'all' || p.team_players.some(tp => {
+      const team = teamOptions.find(t => t.id === tp.team_id)
+      return team?.venue_night_id === nightFilter
+    })
     const matchesTeam = teamFilter === 'all' || p.team_players.some(tp => tp.team_id === teamFilter)
-    return matchesSearch && matchesTeam
+    return matchesSearch && matchesVenue && matchesNight && matchesTeam
   })
 
   return (
@@ -188,31 +226,47 @@ export function PlayersPage() {
         </div>
       )}
 
-      <div style={{ marginBottom: '0.75rem' }}>
-        <input
-          type="search"
-          placeholder="Search players…"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          style={{ maxWidth: 340 }}
-        />
+      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem', alignItems: 'flex-end' }}>
+        <label style={{ flex: '1 1 180px' }}>
+          Search
+          <input
+            type="search"
+            placeholder="Player name…"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </label>
+        {allVenues.length > 1 && (
+          <label style={{ flex: '1 1 160px' }}>
+            Venue
+            <select value={venueFilter} onChange={e => handleVenueChange(e.target.value)}>
+              <option value="all">All venues</option>
+              {allVenues.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+            </select>
+          </label>
+        )}
+        {nightsForVenue.length > 1 && (
+          <label style={{ flex: '1 1 160px' }}>
+            Night
+            <select value={nightFilter} onChange={e => handleNightChange(e.target.value)}>
+              <option value="all">All nights</option>
+              {nightsForVenue.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+            </select>
+          </label>
+        )}
+        {teamsForFilter.length > 0 && (
+          <label style={{ flex: '1 1 160px' }}>
+            Team
+            <select value={teamFilter} onChange={e => setTeamFilter(e.target.value)}>
+              <option value="all">All teams</option>
+              {teamsForFilter.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+            </select>
+          </label>
+        )}
       </div>
-
-      {allTeams.length > 0 && (
-        <div style={{ marginBottom: '1rem', maxWidth: 340 }}>
-          <select value={teamFilter} onChange={e => setTeamFilter(e.target.value)}>
-            <option value="all">All teams</option>
-            {allTeams.map(([id, name]) => (
-              <option key={id} value={id}>{name}</option>
-            ))}
-          </select>
-        </div>
-      )}
 
       <div style={{ fontSize: '0.8rem', color: 'var(--color-muted)', marginBottom: '0.5rem' }}>
         {filtered.length} player{filtered.length !== 1 ? 's' : ''}
-        {teamFilter !== 'all' && ` · ${allTeams.find(([id]) => id === teamFilter)?.[1]}`}
-        {search && ` · "${search}"`}
       </div>
 
       <div className="table-scroll"><table className="data-table">
