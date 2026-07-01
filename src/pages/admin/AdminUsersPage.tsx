@@ -1,5 +1,6 @@
-import { useEffect, useState, useCallback } from 'react'
+﻿import { useEffect, useState, useCallback } from 'react'
 import { supabase } from '../../lib/supabase'
+import { useAuth } from '../../contexts/AuthContext'
 
 interface AppUser {
   id: string
@@ -13,13 +14,14 @@ interface AppUser {
 interface Venue { id: string; name: string }
 
 export function AdminUsersPage() {
+  const { session } = useAuth()
   const [users, setUsers] = useState<AppUser[]>([])
   const [venues, setVenues] = useState<Venue[]>([])
   const [loading, setLoading] = useState(true)
 
-  // Invite form
   const [email, setEmail] = useState('')
   const [displayName, setDisplayName] = useState('')
+  const [role, setRole] = useState<'sub_admin' | 'super_admin'>('sub_admin')
   const [inviting, setInviting] = useState(false)
   const [inviteResult, setInviteResult] = useState<string | null>(null)
   const [inviteError, setInviteError] = useState<string | null>(null)
@@ -55,7 +57,7 @@ export function AdminUsersPage() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${session?.access_token}`,
         },
-        body: JSON.stringify({ email, display_name: displayName }),
+        body: JSON.stringify({ email, display_name: displayName, role }),
       }
     )
     const json = await res.json()
@@ -65,6 +67,7 @@ export function AdminUsersPage() {
       setInviteResult(`Invite sent to ${email}`)
       setEmail('')
       setDisplayName('')
+      setRole('sub_admin')
       load()
     }
     setInviting(false)
@@ -80,8 +83,9 @@ export function AdminUsersPage() {
     load()
   }
 
-  async function removeUser(userId: string) {
-    if (!confirm('Remove this admin? They will lose all access and cannot log in.')) return
+  async function removeUser(u: AppUser) {
+    const label = u.role === 'super_admin' ? 'super admin' : 'venue admin'
+    if (!confirm(`Remove this ${label}? They will lose all access.`)) return
     const { data: { session } } = await supabase.auth.getSession()
     const res = await fetch(
       `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/invite-admin`,
@@ -91,7 +95,7 @@ export function AdminUsersPage() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${session?.access_token}`,
         },
-        body: JSON.stringify({ action: 'delete', app_user_id: userId }),
+        body: JSON.stringify({ action: 'delete', app_user_id: u.id }),
       }
     )
     const json = await res.json()
@@ -110,9 +114,9 @@ export function AdminUsersPage() {
 
       {/* Invite form */}
       <div className="card">
-        <h2>Invite venue admin</h2>
+        <h2>Invite admin</h2>
         <p style={{ fontSize: '0.875rem', color: 'var(--color-muted)', marginBottom: '1rem' }}>
-          They'll receive an email with a link to set their password. Once logged in, assign them venues below.
+          They'll receive an email with a link to set their password.
         </p>
         <form onSubmit={handleInvite}>
           <div className="form-grid">
@@ -135,6 +139,13 @@ export function AdminUsersPage() {
                 placeholder="Jane Smith"
               />
             </label>
+            <label>
+              Role
+              <select value={role} onChange={e => setRole(e.target.value as any)}>
+                <option value="sub_admin">Venue admin — scoped to assigned venues</option>
+                <option value="super_admin">Super admin — full access</option>
+              </select>
+            </label>
           </div>
           {inviteError && <div className="form-error">{inviteError}</div>}
           {inviteResult && (
@@ -151,6 +162,29 @@ export function AdminUsersPage() {
       </div>
 
       {loading && <div className="loading">Loading…</div>}
+
+      {/* Super admins */}
+      {!loading && superAdmins.length > 0 && (
+        <div className="card">
+          <h2>Super admins ({superAdmins.length})</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {superAdmins.map(u => {
+              const isSelf = u.auth_user_id === session?.user?.id
+              return (
+                <div key={u.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <span style={{ fontWeight: 600 }}>{u.display_name}</span>
+                    {isSelf && <span style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>(you)</span>}
+                  </div>
+                  {!isSelf && (
+                    <button className="btn-sm btn-danger" onClick={() => removeUser(u)}>Remove</button>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Venue admins */}
       {!loading && (
@@ -171,7 +205,7 @@ export function AdminUsersPage() {
                           {assignedIds.size} venue{assignedIds.size !== 1 ? 's' : ''}
                         </span>
                       </div>
-                      <button className="btn-sm btn-danger" onClick={() => removeUser(u.id)}>Remove</button>
+                      <button className="btn-sm btn-danger" onClick={() => removeUser(u)}>Remove</button>
                     </div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                       {venues.map(v => {
@@ -195,21 +229,7 @@ export function AdminUsersPage() {
           )}
         </div>
       )}
-
-      {/* Super admins (read-only) */}
-      {!loading && superAdmins.length > 0 && (
-        <div className="card">
-          <h2>Super admins</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            {superAdmins.map(u => (
-              <div key={u.id} style={{ fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span style={{ fontWeight: 600 }}>{u.display_name}</span>
-                <span className="badge badge-ok">super admin</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   )
 }
+
