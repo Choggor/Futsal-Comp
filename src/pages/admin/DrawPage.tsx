@@ -194,7 +194,7 @@ export function DrawPage() {
     Promise.all([loadSeasons(), loadVenues()]).then(([enriched]) => {
       if (preselect && enriched) {
         const match = (enriched as unknown as Season[]).find(s => s.id === preselect)
-        if (match) setSelected(match)
+        if (match) selectSeason(match)
       }
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -216,11 +216,14 @@ export function DrawPage() {
 
   function selectSeason(s: Season) {
     setSelected(s); setGenResult(null); setGenError(null)
+    // Pre-fill the start date from the season's existing fixtures so regenerating is one click
+    if (s.start_date) setStartDate(s.start_date)
     loadFixtures(s.id)
   }
 
   async function generate() {
     if (!selected || !startDate) return
+    if (fixtures.length > 0 && !confirm('Regenerate the draw? This replaces all existing draft fixtures for this season.')) return
     setGenerating(true); setGenResult(null); setGenError(null)
     const { data, error } = await supabase.functions.invoke('generate-schedule', {
       body: { season_id: selected.id, start_date: startDate, round_interval_days: intervalDays },
@@ -405,7 +408,7 @@ export function DrawPage() {
           )}
           <div className="form-actions">
             <button onClick={generate} disabled={generating || !startDate}>
-              {generating ? 'Generating…' : 'Generate draw'}
+              {generating ? 'Generating…' : fixtures.length > 0 ? 'Regenerate draw' : 'Generate draw'}
             </button>
             {fixtures.length > 0 && (
               <button onClick={publish} disabled={publishing} style={{ background: '#059669' }}>
