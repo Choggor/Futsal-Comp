@@ -14,7 +14,6 @@ import { NightsPage } from './pages/admin/NightsPage'
 import { DivisionsPage } from './pages/admin/DivisionsPage'
 import { TeamsPage } from './pages/admin/TeamsPage'
 import { PlayersPage } from './pages/admin/PlayersPage'
-import { PlayerImportPage } from './pages/admin/PlayerImportPage'
 import { CompSetupPage } from './pages/admin/CompSetupPage'
 import { DrawPage } from './pages/admin/DrawPage'
 import { ScoreEntryPage } from './pages/admin/ScoreEntryPage'
@@ -45,7 +44,6 @@ export default function App() {
             <Route path="/admin/venues/:venueId/nights/:nightId/divisions" element={<DivisionsPage />} />
             <Route path="/admin/venues/:venueId/nights/:nightId/divisions/:divisionId/teams" element={<TeamsPage />} />
             <Route path="/admin/players" element={<PlayersPage />} />
-            <Route path="/admin/players/import" element={<PlayerImportPage />} />
             <Route path="/admin/setup" element={<CompSetupPage />} />
             <Route path="/admin/draw" element={<DrawPage />} />
             <Route path="/admin/draw/:seasonId/scores" element={<ScoreEntryPage />} />
