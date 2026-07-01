@@ -113,43 +113,48 @@ export function VenuesPage() {
         </div>
       )}
 
-      <table className="data-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Points (W/D/L)</th>
-            <th>MVP</th>
-            <th>Manage</th>
-            {isSuperAdmin && <th></th>}
-          </tr>
-        </thead>
-        <tbody>
-          {venues.map(v => (
-            <tr key={v.id}>
-              <td>{v.name}</td>
-              <td>{v.address ?? '—'}</td>
-              <td>{v.points_win} / {v.points_draw} / {v.points_loss}</td>
-              <td>{v.mvp_enabled ? 'Yes' : 'No'}</td>
-              <td>
-                <Link to={`/admin/venues/${v.id}/courts`}>Courts</Link>
-                {' · '}
-                <Link to={`/admin/venues/${v.id}/timeslots`}>Slots</Link>
-                {' · '}
-                <Link to={`/admin/venues/${v.id}/nights`}>Nights</Link>
-              </td>
-              {isSuperAdmin && (
-                <td style={{ whiteSpace: 'nowrap' }}>
-                  <button className="btn-sm" onClick={() => openEdit(v)}>Edit</button>
-                  {' '}
-                  <button className="btn-sm btn-danger" onClick={() => remove(v.id)}>Delete</button>
-                </td>
-              )}
-            </tr>
-          ))}
-          {venues.length === 0 && <tr><td colSpan={6}>No venues yet.</td></tr>}
-        </tbody>
-      </table>
+      {venues.length === 0 && (
+        <div className="card" style={{ color: 'var(--color-muted)', fontSize: '0.9rem' }}>No venues yet — add one above.</div>
+      )}
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+        {venues.map(v => (
+          <div key={v.id} className="card" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: 0 }}>
+            {/* Header */}
+            <div>
+              <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{v.name}</div>
+              {v.address && <div style={{ fontSize: '0.82rem', color: 'var(--color-muted)', marginTop: '0.15rem' }}>{v.address}</div>}
+              <div style={{ fontSize: '0.78rem', color: 'var(--color-muted)', marginTop: '0.25rem' }}>
+                Points: {v.points_win}W / {v.points_draw}D / {v.points_loss}L
+                {v.mvp_enabled && <span style={{ marginLeft: '0.6rem', background: '#dbeafe', color: '#1d4ed8', borderRadius: 999, padding: '0.1rem 0.5rem', fontSize: '0.72rem', fontWeight: 600 }}>MVP</span>}
+              </div>
+            </div>
+
+            {/* Manage buttons */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.4rem' }}>
+              {[
+                { label: 'Courts', to: `/admin/venues/${v.id}/courts` },
+                { label: 'Time Slots', to: `/admin/venues/${v.id}/timeslots` },
+                { label: 'Nights', to: `/admin/venues/${v.id}/nights` },
+              ].map(({ label, to }) => (
+                <Link key={label} to={to} style={{ textDecoration: 'none' }}>
+                  <button className="btn-secondary" style={{ width: '100%', fontSize: '0.82rem', padding: '0.5rem 0.25rem', textAlign: 'center' }}>
+                    {label}
+                  </button>
+                </Link>
+              ))}
+            </div>
+
+            {/* Edit / Delete */}
+            {isSuperAdmin && (
+              <div style={{ display: 'flex', gap: '0.4rem', paddingTop: '0.25rem', borderTop: '1px solid var(--color-border)' }}>
+                <button className="btn-sm btn-secondary" style={{ flex: 1 }} onClick={() => openEdit(v)}>Edit</button>
+                <button className="btn-sm btn-danger" style={{ flex: 1 }} onClick={() => remove(v.id)}>Delete</button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
