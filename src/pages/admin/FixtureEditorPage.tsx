@@ -679,26 +679,26 @@ export function FixtureEditorPage() {
               </table>
             </div>
 
+            {/* Unscheduled — kept inside DndContext so the cards are draggable */}
+            {unscheduled.length > 0 && (
+              <div className="card" style={{ marginBottom: '1.5rem' }}>
+                <h3 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'var(--color-muted)' }}>
+                  Unscheduled ({unscheduled.length}) — No slot available. Either add a time slot or reduce total teams
+                </h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  {unscheduled.map(f => (
+                    <div key={f.id} style={{ width: 150 }}>
+                      <Draggable fixture={f} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <DragOverlay>
               {dragFixture && <FixtureCard fixture={dragFixture} overlay />}
             </DragOverlay>
           </DndContext>
-
-          {/* Unscheduled */}
-          {unscheduled.length > 0 && (
-            <div className="card" style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'var(--color-muted)' }}>
-                Unscheduled ({unscheduled.length}) — No slot available. Either add a time slot or reduce total teams
-              </h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {unscheduled.map(f => (
-                  <div key={f.id} style={{ width: 150 }}>
-                    <Draggable fixture={f} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Status controls */}
           <div className="card">
