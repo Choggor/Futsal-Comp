@@ -65,14 +65,20 @@ function buildTeamPlayerMap(divisions: any[]): Map<string, Set<string>> {
   return map
 }
 
+// Season-long tally: how many times each team has played each slot so far.
+type SlotUsage = Map<string, Map<string, number>>
+
 function assignSlots(
   games: Game[],
   slots: { id: string; slot_order: number }[],
   courts: { id: string }[],
   teamPlayers: Map<string, Set<string>>,
   sharedMixedMixed: Set<string>,
+  slotUsage: SlotUsage,   // mutated across rounds to spread teams over time slots
+  roundNum: number,       // rotates tie-breaks so no slot is systematically favoured
 ): AssignedGame[] {
   const ordered = [...slots].sort((a, b) => a.slot_order - b.slot_order)
+  const nCourts = courts.length
 
   function hasSharedMixed(g: Game) {
     for (const [pid, teams] of teamPlayers) {
@@ -81,50 +87,89 @@ function assignSlots(
     return false
   }
 
-  const sorted = [...games].sort((a, b) => {
-    if (a.isBye !== b.isBye) return a.isBye ? 1 : -1
-    if (a.divType !== b.divType) return a.divType === 'mixed' ? -1 : 1
-    if (a.divType === 'mixed') {
-      const as_ = hasSharedMixed(a), bs = hasSharedMixed(b)
-      if (as_ !== bs) return as_ ? -1 : 1
-    }
+  function usageOf(teamId: string, slotId: string): number {
+    return slotUsage.get(teamId)?.get(slotId) ?? 0
+  }
+  function bump(teamId: string, slotId: string) {
+    let m = slotUsage.get(teamId)
+    if (!m) { m = new Map(); slotUsage.set(teamId, m) }
+    m.set(slotId, (m.get(slotId) ?? 0) + 1)
+  }
+
+  const results: AssignedGame[] = []
+  const occupancy = new Map<string, AssignedGame[]>(ordered.map(s => [s.id, []]))
+
+  // Byes get no slot/court.
+  for (const g of games.filter(g => g.isBye)) {
+    results.push({ ...g, slotId: null, courtId: null })
+  }
+
+  const realGames = games.filter(g => !g.isBye)
+  const mixed = realGames.filter(g => g.divType === 'mixed')
+  const mens = realGames.filter(g => g.divType !== 'mixed')
+
+  // Place the hardest-to-schedule mixed games (shared players) first.
+  mixed.sort((a, b) => {
+    const as_ = hasSharedMixed(a), bs = hasSharedMixed(b)
+    if (as_ !== bs) return as_ ? -1 : 1
     return 0
   })
 
-  const occupancy = new Map<string, AssignedGame[]>(ordered.map(s => [s.id, []]))
-  const results: AssignedGame[] = []
+  // RULE: mixed occupies the earliest slots, mens the rest. Band size is derived
+  // from how many slots the mixed games need this round (option a).
+  const mixedSlotCount = nCourts > 0 ? Math.min(ordered.length, Math.ceil(mixed.length / nCourts)) : 0
+  const mixedBand = ordered.slice(0, mixedSlotCount)
+  const mensBand = ordered.slice(mixedSlotCount)
 
-  for (const game of sorted) {
-    if (game.isBye) { results.push({ ...game, slotId: null, courtId: null }); continue }
+  function placeGroup(group: Game[], band: { id: string; slot_order: number }[]) {
+    const bandLen = band.length
+    for (const game of group) {
+      const candidates: { slotId: string; idx: number; cost: number }[] = []
+      band.forEach((slot, idx) => {
+        const occ = occupancy.get(slot.id)!
+        if (occ.length >= nCourts) return
 
-    let placed = false
-    for (const slot of ordered) {
-      const occ = occupancy.get(slot.id)!
-      if (occ.length >= courts.length) continue
+        const occTeams = new Set(occ.flatMap(g => [g.homeId, g.awayId]))
+        if (occTeams.has(game.homeId) || occTeams.has(game.awayId)) return
 
-      const occTeams = new Set(occ.flatMap(g => [g.homeId, g.awayId]))
-      if (occTeams.has(game.homeId) || occTeams.has(game.awayId)) continue
+        const occPlayers = new Set<string>()
+        for (const g of occ) {
+          teamPlayers.get(g.homeId)?.forEach(p => occPlayers.add(p))
+          teamPlayers.get(g.awayId)?.forEach(p => occPlayers.add(p))
+        }
+        const gamePlayers = new Set([...(teamPlayers.get(game.homeId) ?? []), ...(teamPlayers.get(game.awayId) ?? [])])
+        if ([...gamePlayers].some(p => occPlayers.has(p))) return
 
-      const occPlayers = new Set<string>()
-      for (const g of occ) {
-        teamPlayers.get(g.homeId)?.forEach(p => occPlayers.add(p))
-        teamPlayers.get(g.awayId)?.forEach(p => occPlayers.add(p))
-      }
+        // Balance: prefer the slot these two teams have played least this season.
+        const cost = usageOf(game.homeId, slot.id) + usageOf(game.awayId, slot.id)
+        candidates.push({ slotId: slot.id, idx, cost })
+      })
 
-      const gamePlayers = new Set([...(teamPlayers.get(game.homeId) ?? []), ...(teamPlayers.get(game.awayId) ?? [])])
-      if ([...gamePlayers].some(p => occPlayers.has(p))) continue
+      if (!candidates.length) { results.push({ ...game, slotId: null, courtId: null }); continue }
 
+      candidates.sort((a, b) => {
+        if (a.cost !== b.cost) return a.cost - b.cost
+        // Rotate which slot wins a tie, per round, to remove first-week bias.
+        const ra = (a.idx + roundNum) % bandLen
+        const rb = (b.idx + roundNum) % bandLen
+        if (ra !== rb) return ra - rb
+        return a.idx - b.idx
+      })
+
+      const chosenId = candidates[0].slotId
+      const occ = occupancy.get(chosenId)!
       const usedCourts = new Set(occ.map(g => g.courtId))
       const court = courts.find(c => !usedCourts.has(c.id))!
-      const ag: AssignedGame = { ...game, slotId: slot.id, courtId: court.id }
+      const ag: AssignedGame = { ...game, slotId: chosenId, courtId: court.id }
       occ.push(ag)
       results.push(ag)
-      placed = true
-      break
+      bump(game.homeId, chosenId)
+      bump(game.awayId, chosenId)
     }
-
-    if (!placed) results.push({ ...game, slotId: null, courtId: null })
   }
+
+  placeGroup(mixed, mixedBand)
+  placeGroup(mens, mensBand)
 
   return results
 }
@@ -256,6 +301,9 @@ Deno.serve(async (req) => {
     const allFixtures: object[] = []
     const dayOfWeek = (night as any).day_of_week
 
+    // Season-long slot usage per team — drives the spread across time slots.
+    const slotUsage: SlotUsage = new Map()
+
     for (let round = 1; round <= maxRounds; round++) {
       const date = gameDate(start_date, round, round_interval_days, dayOfWeek)
       const games: Game[] = []
@@ -275,7 +323,7 @@ Deno.serve(async (req) => {
         }
       }
 
-      const assigned = assignSlots(games, slots, courts, teamPlayers, sharedMixedMixed)
+      const assigned = assignSlots(games, slots, courts, teamPlayers, sharedMixedMixed, slotUsage, round)
 
       for (const g of assigned) {
         allFixtures.push({
