@@ -603,20 +603,18 @@ export function FixtureEditorPage() {
           {view === 'grid' && (
           <>
           {/* Round selector */}
-          <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
-            {rounds.map(r => {
-              const phase = fixtures.find(f => f.round === r)?.phase
-              return (
-                <button
-                  key={r}
-                  className={selectedRound === r ? '' : 'btn-secondary'}
-                  style={{ fontSize: '0.85rem', padding: '0.4rem 0.8rem' }}
-                  onClick={() => { setSelectedRound(r); setPending(null) }}
-                >
-                  {phase === 'makeup' ? `Makeup ${r}` : phase === 'finals' ? `Finals` : `Round ${r}`}
-                </button>
-              )
-            })}
+          <div style={{ marginBottom: '1rem' }}>
+            <select
+              value={selectedRound}
+              onChange={e => { setSelectedRound(Number(e.target.value)); setPending(null) }}
+              style={{ fontSize: '0.9rem', padding: '0.45rem 0.6rem', minWidth: 200 }}
+            >
+              {rounds.map(r => {
+                const phase = fixtures.find(f => f.round === r)?.phase
+                const label = phase === 'makeup' ? `Makeup ${r}` : phase === 'finals' ? 'Finals' : `Round ${r}`
+                return <option key={r} value={r}>{label}</option>
+              })}
+            </select>
           </div>
 
           {roundDate && (
