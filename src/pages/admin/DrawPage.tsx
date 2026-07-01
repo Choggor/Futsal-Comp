@@ -29,7 +29,7 @@ interface Fixture {
   divisions: { name: string; type: string } | null
   home_team: { name: string } | null
   away_team: { name: string } | null
-  time_slots: { start_time: string } | null
+  time_slots: { start_time: string; slot_order: number } | null
   courts: { name: string } | null
 }
 
@@ -179,7 +179,7 @@ export function DrawPage() {
         divisions(name, type),
         home_team:home_team_id(name),
         away_team:away_team_id(name),
-        time_slots:slot_id(start_time),
+        time_slots:slot_id(start_time, slot_order),
         courts(name)
       `)
       .eq('season_id', seasonId)
@@ -263,10 +263,17 @@ export function DrawPage() {
     setPublishing(false)
   }
 
-  // Group fixtures by round
+  // Group fixtures by round, ordering each round by time slot (byes last)
   const byRound = new Map<number, Fixture[]>()
   for (const f of fixtures) {
     const list = byRound.get(f.round) ?? []; list.push(f); byRound.set(f.round, list)
+  }
+  const slotOrderOf = (f: Fixture) => (f as any).time_slots?.slot_order ?? 999
+  for (const list of byRound.values()) {
+    list.sort((a, b) =>
+      slotOrderOf(a) - slotOrderOf(b) ||
+      ((a.courts as any)?.name ?? '').localeCompare((b.courts as any)?.name ?? '')
+    )
   }
   const rounds = [...byRound.entries()].sort(([a], [b]) => a - b)
 

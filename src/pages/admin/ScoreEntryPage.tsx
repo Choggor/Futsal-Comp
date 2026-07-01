@@ -20,7 +20,7 @@ interface Fixture {
   home_team: { name: string } | null
   away_team: { name: string } | null
   courts: { name: string } | null
-  time_slots: { start_time: string } | null
+  time_slots: { start_time: string; slot_order: number } | null
 }
 
 interface Season { id: string; name: string; status: 'draft' | 'published' }
@@ -271,7 +271,7 @@ export function ScoreEntryPage() {
         home_team:home_team_id(name),
         away_team:away_team_id(name),
         courts(name),
-        time_slots:slot_id(start_time)
+        time_slots:slot_id(start_time, slot_order)
       `).eq('season_id', seasonId!).order('round').order('scheduled_date'),
       supabase.from('venues').select('id, mvp_enabled, points_win, points_draw, points_loss'),
     ])
@@ -293,6 +293,14 @@ export function ScoreEntryPage() {
     const list = byRound.get(f.round) ?? []
     list.push(f)
     byRound.set(f.round, list)
+  }
+  // Order each round by time slot (byes last)
+  const slotOrderOf = (f: Fixture) => (f as any).time_slots?.slot_order ?? 999
+  for (const list of byRound.values()) {
+    list.sort((a, b) =>
+      slotOrderOf(a) - slotOrderOf(b) ||
+      ((a.courts as any)?.name ?? '').localeCompare((b.courts as any)?.name ?? '')
+    )
   }
 
   const statusBadge = (f: Fixture) => {
