@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, Fragment } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
   DndContext, DragOverlay,
@@ -433,6 +433,117 @@ function ScheduleView({ fixtures, onChanged }: { fixtures: Fixture[]; onChanged:
   )
 }
 
+// ── Balance view — teams × time-slots heatmap ─────────────────────────────────
+
+function BalanceView({ fixtures, slots }: { fixtures: Fixture[]; slots: Slot[] }) {
+  const orderedSlots = [...slots].sort((a, b) => a.slot_order - b.slot_order)
+
+  interface TeamMeta { id: string; name: string; divType: string; divName: string }
+  const teamMeta = new Map<string, TeamMeta>()
+  const counts = new Map<string, Map<string, number>>()      // teamId → slotId → games
+  const bandByType = new Map<string, Set<string>>()          // divType → slots that type uses
+
+  for (const f of fixtures) {
+    if (!f.away_team_id || !f.slot_id) continue               // skip byes / unscheduled
+    const div = f.divisions as any
+    const type = div?.type ?? 'mens'
+    const dname = div?.name ?? ''
+    const pairs: [string, string | undefined][] = [
+      [f.home_team_id, f.home_team?.name],
+      [f.away_team_id!, f.away_team?.name],
+    ]
+    for (const [tid, tname] of pairs) {
+      if (!teamMeta.has(tid)) teamMeta.set(tid, { id: tid, name: tname ?? '—', divType: type, divName: dname })
+      let m = counts.get(tid); if (!m) { m = new Map(); counts.set(tid, m) }
+      m.set(f.slot_id, (m.get(f.slot_id) ?? 0) + 1)
+    }
+    const bset = bandByType.get(type) ?? new Set<string>(); bset.add(f.slot_id); bandByType.set(type, bset)
+  }
+
+  const maxCount = Math.max(1, ...[...counts.values()].flatMap(m => [...m.values()]))
+
+  const teams = [...teamMeta.values()]
+  const divNames = [...new Set(teams.map(t => t.divName))].sort((a, b) => {
+    const ta = teams.find(t => t.divName === a)!.divType
+    const tb = teams.find(t => t.divName === b)!.divType
+    if (ta !== tb) return ta === 'mixed' ? -1 : 1
+    return a.localeCompare(b)
+  })
+
+  const cellBg = (n: number) => n === 0 ? 'transparent' : `rgba(37, 99, 235, ${0.15 + 0.85 * (n / maxCount)})`
+  const cellFg = (n: number) => n === 0 ? 'transparent' : n / maxCount > 0.55 ? '#fff' : '#1e3a8a'
+
+  if (!teams.length) {
+    return <div className="card">No scheduled games to analyse yet. Generate the draw first.</div>
+  }
+
+  return (
+    <div className="card">
+      <p style={{ fontSize: '0.875rem', color: 'var(--color-muted)', marginBottom: '1rem' }}>
+        How many games each team plays in each time slot across the season. Even shading along a row = a good spread.
+        The <strong>Spread</strong> column flags any team stuck in too few slots.
+      </p>
+
+      <div className="table-scroll">
+        <table style={{ borderCollapse: 'collapse', fontSize: '0.8rem', width: '100%' }}>
+          <thead>
+            <tr>
+              <th style={{ textAlign: 'left', padding: '0.4rem 0.6rem', position: 'sticky', left: 0, background: 'var(--color-surface)', borderBottom: '2px solid var(--color-border)', minWidth: 130 }}>Team</th>
+              {orderedSlots.map(s => (
+                <th key={s.id} style={{ padding: '0.4rem 0.3rem', textAlign: 'center', whiteSpace: 'nowrap', borderBottom: '2px solid var(--color-border)', color: 'var(--color-muted)', fontWeight: 600, minWidth: 52 }}>
+                  {fmt12(s.start_time)}
+                </th>
+              ))}
+              <th style={{ padding: '0.4rem 0.6rem', textAlign: 'left', borderBottom: '2px solid var(--color-border)', color: 'var(--color-muted)', fontWeight: 600, whiteSpace: 'nowrap' }}>Spread</th>
+            </tr>
+          </thead>
+          <tbody>
+            {divNames.map(dn => {
+              const divTeams = teams.filter(t => t.divName === dn).sort((a, b) => a.name.localeCompare(b.name))
+              const type = divTeams[0]?.divType
+              return (
+                <Fragment key={dn}>
+                  <tr>
+                    <td colSpan={orderedSlots.length + 2} style={{ padding: '0.5rem 0.6rem 0.25rem', fontWeight: 700, fontSize: '0.78rem', textTransform: 'capitalize', color: 'var(--color-muted)' }}>
+                      {type} · {dn}
+                    </td>
+                  </tr>
+                  {divTeams.map(t => {
+                    const band = bandByType.get(t.divType) ?? new Set<string>()
+                    const bandSlots = orderedSlots.filter(s => band.has(s.id))
+                    const rowCounts = bandSlots.map(s => counts.get(t.id)?.get(s.id) ?? 0)
+                    const mx = rowCounts.length ? Math.max(...rowCounts) : 0
+                    const mn = rowCounts.length ? Math.min(...rowCounts) : 0
+                    const range = mx - mn
+                    const spreadColor = range <= 1 ? '#16a34a' : range === 2 ? '#d97706' : '#dc2626'
+                    return (
+                      <tr key={t.id}>
+                        <td style={{ padding: '0.35rem 0.6rem', position: 'sticky', left: 0, background: 'var(--color-bg, #fff)', borderBottom: '1px solid var(--color-border)', whiteSpace: 'nowrap' }}>{t.name}</td>
+                        {orderedSlots.map(s => {
+                          const n = counts.get(t.id)?.get(s.id) ?? 0
+                          return (
+                            <td key={s.id} style={{ textAlign: 'center', padding: '0.35rem 0.3rem', borderBottom: '1px solid var(--color-border)', background: cellBg(n), color: cellFg(n), fontWeight: 600 }}>
+                              {n > 0 ? n : ''}
+                            </td>
+                          )
+                        })}
+                        <td style={{ padding: '0.35rem 0.6rem', borderBottom: '1px solid var(--color-border)', whiteSpace: 'nowrap' }}>
+                          <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: spreadColor, marginRight: 6 }} />
+                          <span style={{ color: 'var(--color-muted)' }}>{rowCounts.join(' / ')}</span>
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </Fragment>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export function FixtureEditorPage() {
@@ -446,7 +557,7 @@ export function FixtureEditorPage() {
   const [loading, setLoading] = useState(true)
   const [dragFixture, setDragFixture] = useState<Fixture | null>(null)
   const [pending, setPending] = useState<PendingAction | null>(null)
-  const [view, setView] = useState<'grid' | 'schedule'>('grid')
+  const [view, setView] = useState<'grid' | 'schedule' | 'balance'>('grid')
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
 
@@ -596,9 +707,11 @@ export function FixtureEditorPage() {
           <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
             <button className={view === 'grid' ? '' : 'btn-secondary'} style={{ fontSize: '0.85rem', padding: '0.4rem 0.9rem' }} onClick={() => setView('grid')}>Grid</button>
             <button className={view === 'schedule' ? '' : 'btn-secondary'} style={{ fontSize: '0.85rem', padding: '0.4rem 0.9rem' }} onClick={() => { setView('schedule'); setPending(null) }}>Schedule</button>
+            <button className={view === 'balance' ? '' : 'btn-secondary'} style={{ fontSize: '0.85rem', padding: '0.4rem 0.9rem' }} onClick={() => { setView('balance'); setPending(null) }}>Balance</button>
           </div>
 
           {view === 'schedule' && <ScheduleView fixtures={fixtures} onChanged={load} />}
+          {view === 'balance' && <BalanceView fixtures={fixtures} slots={slots} />}
 
           {view === 'grid' && (
           <>
