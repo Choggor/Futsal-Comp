@@ -26,6 +26,10 @@ interface Slot { id: string; start_time: string; slot_order: number }
 interface Court { id: string; name: string }
 interface Season { id: string; name: string; status: string; venue_night_id: string | null }
 
+type PendingAction =
+  | { kind: 'move'; fixture: Fixture; slotId: string; courtId: string; warnings: string[] }
+  | { kind: 'swap'; fixture: Fixture; occupant: Fixture; warnings: string[] }
+
 function fmt12(t: string | null) {
   if (!t) return ''
   const [h, m] = t.split(':')
@@ -70,6 +74,68 @@ function validateMove(
   if (clashCount) warnings.push(`${clashCount} shared player${clashCount > 1 ? 's' : ''} already playing in this slot`)
 
   return warnings
+}
+
+// Validate a swap: a moves to b's slot/court and b moves to a's.
+// Only cross-slot swaps can create new clashes (same-slot = just trading courts).
+function validateSwap(
+  a: Fixture,
+  b: Fixture,
+  roundFixtures: Fixture[],
+  teamPlayerMap: Map<string, Set<string>>,
+): string[] {
+  const warnings: string[] = []
+  if (a.slot_id === b.slot_id) return warnings // just trading courts in the same slot — always safe
+
+  const checkInto = (mover: Fixture, newSlotId: string | null) => {
+    const others = roundFixtures.filter(f => f.id !== a.id && f.id !== b.id && f.slot_id === newSlotId)
+
+    const occTeams = new Set(others.flatMap(f => [f.home_team_id, f.away_team_id].filter(Boolean) as string[]))
+    if (occTeams.has(mover.home_team_id)) warnings.push(`${mover.home_team?.name} would play twice in the same time slot`)
+    if (mover.away_team_id && occTeams.has(mover.away_team_id)) warnings.push(`${mover.away_team?.name} would play twice in the same time slot`)
+
+    const occPlayers = new Set<string>()
+    for (const o of others) {
+      teamPlayerMap.get(o.home_team_id)?.forEach(p => occPlayers.add(p))
+      if (o.away_team_id) teamPlayerMap.get(o.away_team_id)?.forEach(p => occPlayers.add(p))
+    }
+    const myPlayers = new Set([
+      ...(teamPlayerMap.get(mover.home_team_id) ?? []),
+      ...(mover.away_team_id ? teamPlayerMap.get(mover.away_team_id) ?? [] : []),
+    ])
+    const clash = [...myPlayers].filter(p => occPlayers.has(p)).length
+    if (clash) warnings.push(`${clash} shared player${clash > 1 ? 's' : ''} would clash in the new slot`)
+  }
+
+  checkInto(a, b.slot_id)
+  checkInto(b, a.slot_id)
+  return warnings
+}
+
+// ── Date helpers for the schedule view ────────────────────────────────────────
+
+const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+function addDays(isoDate: string, n: number): string {
+  const [y, m, d] = isoDate.split('-').map(Number)
+  const dt = new Date(y, m - 1, d)
+  dt.setDate(dt.getDate() + n)
+  return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}-${String(dt.getDate()).padStart(2, '0')}`
+}
+
+function longDate(isoDate: string): string {
+  const [y, m, d] = isoDate.split('-').map(Number)
+  const dt = new Date(y, m - 1, d)
+  return `${DOW[dt.getDay()]} ${d} ${MON[m - 1]} ${y}`
+}
+
+function weeksBetween(a: string, b: string): number {
+  const [ay, am, ad] = a.split('-').map(Number)
+  const [by, bm, bd] = b.split('-').map(Number)
+  const da = new Date(ay, am - 1, ad).getTime()
+  const db = new Date(by, bm - 1, bd).getTime()
+  return Math.round((db - da) / (7 * 86400000))
 }
 
 // ── Draggable fixture card ────────────────────────────────────────────────────
@@ -207,6 +273,166 @@ function ReschedulePanel({ fixture, slots, courts, maxRound, onSaved }: {
   )
 }
 
+// ── Schedule view — round dates, holidays, cascading shifts ───────────────────
+
+interface RoundInfo {
+  round: number
+  phase: string
+  date: string | null
+  games: number
+  ids: string[]
+}
+
+function ScheduleView({ fixtures, onChanged }: { fixtures: Fixture[]; onChanged: () => void }) {
+  const [expanded, setExpanded] = useState<number | null>(null)
+  const [dateDraft, setDateDraft] = useState('')
+  const [saving, setSaving] = useState(false)
+
+  // Group fixtures into rounds
+  const roundMap = new Map<number, RoundInfo>()
+  for (const f of fixtures) {
+    if (f.round == null) continue
+    let ri = roundMap.get(f.round)
+    if (!ri) { ri = { round: f.round, phase: f.phase, date: f.scheduled_date, games: 0, ids: [] }; roundMap.set(f.round, ri) }
+    ri.ids.push(f.id)
+    if (f.away_team_id) ri.games++
+    if (!ri.date && f.scheduled_date) ri.date = f.scheduled_date
+  }
+  const rounds = [...roundMap.values()].sort((a, b) => {
+    if (a.date && b.date) return a.date < b.date ? -1 : a.date > b.date ? 1 : a.round - b.round
+    if (a.date) return -1
+    if (b.date) return 1
+    return a.round - b.round
+  })
+
+  const maxDate = rounds.reduce((m, r) => (r.date && r.date > m ? r.date : m), '')
+
+  function roundLabel(r: RoundInfo) {
+    if (r.phase === 'finals') return 'Finals'
+    if (r.phase === 'makeup') return `Makeup ${r.round}`
+    return `Round ${r.round}`
+  }
+
+  async function applyDate(r: RoundInfo, newDate: string) {
+    setSaving(true)
+    const { error } = await supabase.from('fixtures').update({ scheduled_date: newDate }).in('id', r.ids)
+    setSaving(false)
+    if (error) { alert(error.message); return }
+    setExpanded(null)
+    onChanged()
+  }
+
+  // Shift this round AND everything scheduled on/after its date by `weeks`.
+  async function shiftFrom(r: RoundInfo, weeks: number) {
+    if (!r.date) return
+    const days = weeks * 7
+    const affected = fixtures.filter(f => f.scheduled_date && f.scheduled_date >= r.date!)
+    const byDate = new Map<string, string[]>()
+    for (const f of affected) {
+      const list = byDate.get(f.scheduled_date!) ?? []
+      list.push(f.id)
+      byDate.set(f.scheduled_date!, list)
+    }
+    setSaving(true)
+    for (const [d, ids] of byDate) {
+      const { error } = await supabase.from('fixtures').update({ scheduled_date: addDays(d, days) }).in('id', ids)
+      if (error) { alert(error.message); setSaving(false); return }
+    }
+    setSaving(false)
+    setExpanded(null)
+    onChanged()
+  }
+
+  async function moveToEnd(r: RoundInfo) {
+    if (!maxDate) return
+    await applyDate(r, addDays(maxDate, 7))
+  }
+
+  return (
+    <div className="card">
+      <p style={{ fontSize: '0.875rem', color: 'var(--color-muted)', marginBottom: '1rem' }}>
+        Adjust round dates for public holidays or closures. Changes go live on the public site immediately.
+      </p>
+
+      <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius)', overflow: 'hidden' }}>
+        {rounds.map((r, i) => {
+          const prev = rounds[i - 1]
+          const gap = (prev?.date && r.date) ? weeksBetween(prev.date, r.date) : 1
+          const isOpen = expanded === r.round
+          // Disallow pulling forward if it would collide with the previous round
+          const canPullForward = !!r.date && (!prev?.date || weeksBetween(prev.date, r.date) > 1)
+          return (
+            <div key={r.round}>
+              {gap > 1 && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 0.9rem', background: '#fef9c3', borderBottom: '1px solid var(--color-border)', fontSize: '0.78rem', color: '#854d0e' }}>
+                  <span style={{ fontWeight: 600 }}>▸ {gap - 1} week break</span>
+                  <span style={{ opacity: 0.75 }}>no games scheduled</span>
+                </div>
+              )}
+              <div style={{ borderBottom: i === rounds.length - 1 ? 'none' : '1px solid var(--color-border)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.7rem 0.9rem' }}>
+                  <div style={{ width: 80, fontWeight: 600, fontSize: '0.85rem', flexShrink: 0 }}>{roundLabel(r)}</div>
+                  <div style={{ flex: 1, minWidth: 0, fontSize: '0.85rem' }}>{r.date ? longDate(r.date) : <em style={{ color: 'var(--color-muted)' }}>No date set</em>}</div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--color-muted)', flexShrink: 0 }}>{r.games} game{r.games !== 1 ? 's' : ''}</div>
+                  <button
+                    className="btn-sm btn-secondary"
+                    style={{ flexShrink: 0 }}
+                    onClick={() => { setExpanded(isOpen ? null : r.round); setDateDraft(r.date ?? '') }}
+                  >
+                    {isOpen ? 'Close' : 'Edit'}
+                  </button>
+                </div>
+
+                {isOpen && (
+                  <div style={{ padding: '0 0.9rem 0.9rem 0.9rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    {/* Change this round only */}
+                    <div style={{ background: 'var(--color-surface)', borderRadius: 'var(--radius)', padding: '0.6rem 0.75rem' }}>
+                      <div style={{ fontSize: '0.78rem', fontWeight: 600, marginBottom: '0.4rem' }}>Move just this round</div>
+                      <div className="action-row" style={{ alignItems: 'center' }}>
+                        <input type="date" value={dateDraft} onChange={e => setDateDraft(e.target.value)} style={{ fontSize: '0.85rem', padding: '0.35rem' }} />
+                        <button
+                          disabled={saving || !dateDraft || dateDraft === r.date}
+                          onClick={() => applyDate(r, dateDraft)}
+                        >
+                          Apply to this round only
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Cascade */}
+                    <div style={{ background: 'var(--color-surface)', borderRadius: 'var(--radius)', padding: '0.6rem 0.75rem' }}>
+                      <div style={{ fontSize: '0.78rem', fontWeight: 600, marginBottom: '0.15rem' }}>Shift this round and all later rounds</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.4rem' }}>
+                        Everything on or after this date moves together — use for a holiday break.
+                      </div>
+                      <div className="action-row">
+                        <button disabled={saving || !canPullForward} onClick={() => shiftFrom(r, -1)}>− 1 week earlier</button>
+                        <button disabled={saving || !r.date} onClick={() => shiftFrom(r, 1)}>+ 1 week later</button>
+                      </div>
+                    </div>
+
+                    {/* Move to end */}
+                    <div className="action-row">
+                      <button className="btn-secondary" disabled={saving || !r.date || r.date === maxDate} onClick={() => moveToEnd(r)}>
+                        Move to end of season
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+        })}
+        {rounds.length === 0 && (
+          <div style={{ padding: '1rem', fontSize: '0.85rem', color: 'var(--color-muted)' }}>No rounds yet.</div>
+        )}
+      </div>
+
+      {saving && <div style={{ color: 'var(--color-muted)', fontSize: '0.85rem', marginTop: '0.75rem' }}>Saving…</div>}
+    </div>
+  )
+}
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export function FixtureEditorPage() {
@@ -219,7 +445,8 @@ export function FixtureEditorPage() {
   const [selectedRound, setSelectedRound] = useState<number>(1)
   const [loading, setLoading] = useState(true)
   const [dragFixture, setDragFixture] = useState<Fixture | null>(null)
-  const [pendingMove, setPendingMove] = useState<{ fixture: Fixture; slotId: string; courtId: string; warnings: string[] } | null>(null)
+  const [pending, setPending] = useState<PendingAction | null>(null)
+  const [view, setView] = useState<'grid' | 'schedule'>('grid')
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
 
@@ -273,7 +500,7 @@ export function FixtureEditorPage() {
 
   function handleDragStart(e: DragStartEvent) {
     setDragFixture(fixtures.find(f => f.id === e.active.id) ?? null)
-    setPendingMove(null)
+    setPending(null)
   }
 
   function handleDragEnd(e: DragEndEvent) {
@@ -288,21 +515,43 @@ export function FixtureEditorPage() {
     if (fixture.slot_id === slotId && fixture.court_id === courtId) return // no-op
 
     const roundFixtures = fixtures.filter(f => f.round === selectedRound && f.scheduled_date === fixture.scheduled_date)
-    const warnings = validateMove(fixture, slotId, courtId, roundFixtures, teamPlayerMap)
 
-    if (warnings.length) {
-      setPendingMove({ fixture, slotId, courtId, warnings })
-    } else {
-      applyMove(fixture, slotId, courtId)
+    // If the target cell already holds another (placed) fixture, swap them —
+    // their slot + court trade, so a 6pm game can swap with an 8pm game.
+    const occupant = roundFixtures.find(f => f.id !== fixture.id && f.slot_id === slotId && f.court_id === courtId)
+    if (occupant && fixture.slot_id && fixture.court_id) {
+      const warnings = validateSwap(fixture, occupant, roundFixtures, teamPlayerMap)
+      if (warnings.length) setPending({ kind: 'swap', fixture, occupant, warnings })
+      else applySwap(fixture, occupant)
+      return
     }
+
+    const warnings = validateMove(fixture, slotId, courtId, roundFixtures, teamPlayerMap)
+    if (warnings.length) setPending({ kind: 'move', fixture, slotId, courtId, warnings })
+    else applyMove(fixture, slotId, courtId)
   }
 
   async function applyMove(fixture: Fixture, slotId: string, courtId: string) {
     setSaving(true)
-    setPendingMove(null)
+    setPending(null)
     const { error } = await supabase.from('fixtures').update({ slot_id: slotId, court_id: courtId }).eq('id', fixture.id)
     if (error) alert(error.message)
     else setFixtures(prev => prev.map(f => f.id === fixture.id ? { ...f, slot_id: slotId, court_id: courtId } : f))
+    setSaving(false)
+  }
+
+  async function applySwap(a: Fixture, b: Fixture) {
+    setSaving(true)
+    setPending(null)
+    const aPos = { slot_id: a.slot_id, court_id: a.court_id }
+    const bPos = { slot_id: b.slot_id, court_id: b.court_id }
+    // a takes b's cell, b takes a's cell
+    const { error: e1 } = await supabase.from('fixtures').update(bPos).eq('id', a.id)
+    const { error: e2 } = await supabase.from('fixtures').update(aPos).eq('id', b.id)
+    if (e1 || e2) alert((e1 || e2)!.message)
+    else setFixtures(prev => prev.map(f =>
+      f.id === a.id ? { ...f, ...bPos } : f.id === b.id ? { ...f, ...aPos } : f
+    ))
     setSaving(false)
   }
 
@@ -343,6 +592,16 @@ export function FixtureEditorPage() {
 
       {!loading && fixtures.length > 0 && (
         <>
+          {/* View toggle */}
+          <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
+            <button className={view === 'grid' ? '' : 'btn-secondary'} style={{ fontSize: '0.85rem', padding: '0.4rem 0.9rem' }} onClick={() => setView('grid')}>Grid</button>
+            <button className={view === 'schedule' ? '' : 'btn-secondary'} style={{ fontSize: '0.85rem', padding: '0.4rem 0.9rem' }} onClick={() => { setView('schedule'); setPending(null) }}>Schedule</button>
+          </div>
+
+          {view === 'schedule' && <ScheduleView fixtures={fixtures} onChanged={load} />}
+
+          {view === 'grid' && (
+          <>
           {/* Round selector */}
           <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
             {rounds.map(r => {
@@ -352,7 +611,7 @@ export function FixtureEditorPage() {
                   key={r}
                   className={selectedRound === r ? '' : 'btn-secondary'}
                   style={{ fontSize: '0.85rem', padding: '0.4rem 0.8rem' }}
-                  onClick={() => { setSelectedRound(r); setPendingMove(null) }}
+                  onClick={() => { setSelectedRound(r); setPending(null) }}
                 >
                   {phase === 'makeup' ? `Makeup ${r}` : phase === 'finals' ? `Finals` : `Round ${r}`}
                 </button>
@@ -367,17 +626,17 @@ export function FixtureEditorPage() {
           )}
 
           {/* Clash warning + confirm */}
-          {pendingMove && (
+          {pending && (
             <div style={{ background: '#fef3c7', border: '1px solid #f59e0b', borderRadius: 'var(--radius)', padding: '0.75rem', marginBottom: '1rem' }}>
-              <div style={{ fontWeight: 700, marginBottom: '0.4rem' }}>⚠ Scheduling clash detected</div>
+              <div style={{ fontWeight: 700, marginBottom: '0.4rem' }}>⚠ {pending.kind === 'swap' ? 'Swap' : 'Scheduling'} clash detected</div>
               <ul style={{ margin: '0 0 0.75rem 1.25rem', fontSize: '0.875rem' }}>
-                {pendingMove.warnings.map((w, i) => <li key={i}>{w}</li>)}
+                {pending.warnings.map((w, i) => <li key={i}>{w}</li>)}
               </ul>
               <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button onClick={() => applyMove(pendingMove.fixture, pendingMove.slotId, pendingMove.courtId)}>
+                <button onClick={() => pending.kind === 'swap' ? applySwap(pending.fixture, pending.occupant) : applyMove(pending.fixture, pending.slotId, pending.courtId)}>
                   Apply anyway
                 </button>
-                <button className="btn-secondary" onClick={() => setPendingMove(null)}>Cancel</button>
+                <button className="btn-secondary" onClick={() => setPending(null)}>Cancel</button>
               </div>
             </div>
           )}
@@ -492,6 +751,8 @@ export function FixtureEditorPage() {
               </div>
             ))}
           </div>
+          </>
+          )}
         </>
       )}
     </div>
