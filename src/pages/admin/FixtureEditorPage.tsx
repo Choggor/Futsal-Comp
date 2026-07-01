@@ -688,7 +688,7 @@ export function FixtureEditorPage() {
           {unscheduled.length > 0 && (
             <div className="card" style={{ marginBottom: '1.5rem' }}>
               <h3 style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'var(--color-muted)' }}>
-                Unscheduled ({unscheduled.length}) — drag to a slot above
+                Unscheduled ({unscheduled.length}) — No slot available. Either add a time slot or reduce total teams
               </h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                 {unscheduled.map(f => (
