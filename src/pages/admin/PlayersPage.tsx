@@ -119,7 +119,20 @@ export function PlayersPage() {
     load()
   }
 
-  const filtered = players.filter(p => p.name.toLowerCase().includes(search.toLowerCase()))
+  const [teamFilter, setTeamFilter] = useState<string>('all')
+
+  // All unique teams across all players for the filter chips
+  const allTeams = Array.from(
+    new Map(
+      players.flatMap(p => p.team_players.map(tp => [tp.team_id, tp.teams.name]))
+    ).entries()
+  ).sort((a, b) => a[1].localeCompare(b[1]))
+
+  const filtered = players.filter(p => {
+    const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
+    const matchesTeam = teamFilter === 'all' || p.team_players.some(tp => tp.team_id === teamFilter)
+    return matchesSearch && matchesTeam
+  })
 
   return (
     <div>
@@ -175,8 +188,42 @@ export function PlayersPage() {
         </div>
       )}
 
-      <div style={{ marginBottom: '1rem' }}>
-        <input type="search" placeholder="Search players…" value={search} onChange={e => setSearch(e.target.value)} style={{ maxWidth: 300 }} />
+      <div style={{ marginBottom: '0.75rem' }}>
+        <input
+          type="search"
+          placeholder="Search players…"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{ maxWidth: 340 }}
+        />
+      </div>
+
+      {allTeams.length > 0 && (
+        <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
+          <button
+            className={teamFilter === 'all' ? '' : 'btn-secondary'}
+            style={{ fontSize: '0.82rem', padding: '0.3rem 0.75rem', flexShrink: 0 }}
+            onClick={() => setTeamFilter('all')}
+          >
+            All teams
+          </button>
+          {allTeams.map(([id, name]) => (
+            <button
+              key={id}
+              className={teamFilter === id ? '' : 'btn-secondary'}
+              style={{ fontSize: '0.82rem', padding: '0.3rem 0.75rem', flexShrink: 0 }}
+              onClick={() => setTeamFilter(teamFilter === id ? 'all' : id)}
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div style={{ fontSize: '0.8rem', color: 'var(--color-muted)', marginBottom: '0.5rem' }}>
+        {filtered.length} player{filtered.length !== 1 ? 's' : ''}
+        {teamFilter !== 'all' && ` · ${allTeams.find(([id]) => id === teamFilter)?.[1]}`}
+        {search && ` · "${search}"`}
       </div>
 
       <div className="table-scroll"><table className="data-table">
