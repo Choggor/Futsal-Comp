@@ -199,24 +199,13 @@ export function PlayersPage() {
       </div>
 
       {allTeams.length > 0 && (
-        <div className="tab-scroll" style={{ marginBottom: '1rem' }}>
-          <button
-            className={teamFilter === 'all' ? '' : 'btn-secondary'}
-            style={{ fontSize: '0.82rem', padding: '0.3rem 0.75rem', flexShrink: 0 }}
-            onClick={() => setTeamFilter('all')}
-          >
-            All teams
-          </button>
-          {allTeams.map(([id, name]) => (
-            <button
-              key={id}
-              className={teamFilter === id ? '' : 'btn-secondary'}
-              style={{ fontSize: '0.82rem', padding: '0.3rem 0.75rem', flexShrink: 0 }}
-              onClick={() => setTeamFilter(teamFilter === id ? 'all' : id)}
-            >
-              {name}
-            </button>
-          ))}
+        <div style={{ marginBottom: '1rem', maxWidth: 340 }}>
+          <select value={teamFilter} onChange={e => setTeamFilter(e.target.value)}>
+            <option value="all">All teams</option>
+            {allTeams.map(([id, name]) => (
+              <option key={id} value={id}>{name}</option>
+            ))}
+          </select>
         </div>
       )}
 
