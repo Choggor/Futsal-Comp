@@ -28,7 +28,7 @@ export function AdminLayout() {
             {isSuperAdmin && <NavLink to="/admin/users">Users</NavLink>}
           </div>
           <div className="admin-nav-user">
-            <span>{appUser?.display_name ?? 'Admin'}</span>
+            <NavLink to="/admin/account" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>{appUser?.display_name ?? 'Admin'}</NavLink>
             <button onClick={handleSignOut}>Sign out</button>
           </div>
           <button
@@ -48,6 +48,7 @@ export function AdminLayout() {
             {isSuperAdmin && <NavLink to="/admin/setup" onClick={closeMenu}>Import CSV</NavLink>}
             <NavLink to="/admin/draw" onClick={closeMenu}>Draw</NavLink>
             {isSuperAdmin && <NavLink to="/admin/users" onClick={closeMenu}>Users</NavLink>}
+            <NavLink to="/admin/account" onClick={closeMenu}>Account</NavLink>
             <div className="admin-nav-drawer-user">
               <span>{appUser?.display_name ?? 'Admin'}</span>
               <button onClick={handleSignOut}>Sign out</button>

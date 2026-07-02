@@ -57,24 +57,29 @@ Deno.serve(async (req) => {
       return resp({ success: true })
     }
 
-    // Invite user
-    const { email, display_name, role } = body
+    // Create user with a password (no email — credentials handed over directly)
+    const { email, display_name, role, password } = body
     if (!email) return resp({ error: 'email is required' }, 400)
+    if (!password || String(password).length < 8) return resp({ error: 'Password must be at least 8 characters' }, 400)
 
     const assignedRole = role === 'super_admin' ? 'super_admin' : 'sub_admin'
 
-    const { data: invited, error: inviteErr } = await admin.auth.admin.inviteUserByEmail(email, {
-      data: { display_name },
+    const { data: created, error: createErr } = await admin.auth.admin.createUser({
+      email,
+      password,
+      email_confirm: true, // no confirmation email needed
+      user_metadata: { display_name },
     })
-    if (inviteErr) return resp({ error: inviteErr.message }, 400)
+    if (createErr) return resp({ error: createErr.message }, 400)
 
     const { error: insertErr } = await admin.from('app_users').insert({
-      auth_user_id: invited.user.id,
+      auth_user_id: created.user.id,
       display_name: display_name || email,
       role: assignedRole,
     })
     if (insertErr) {
-      await admin.auth.admin.deleteUser(invited.user.id)
+      // Roll back the auth user if the app_users insert fails
+      await admin.auth.admin.deleteUser(created.user.id)
       return resp({ error: insertErr.message }, 400)
     }
 

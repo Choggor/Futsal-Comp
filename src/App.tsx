@@ -22,6 +22,7 @@ import { FixtureEditorPage } from './pages/admin/FixtureEditorPage'
 import { FinalsPage } from './pages/admin/FinalsPage'
 import { MatchSheetsPage } from './pages/admin/MatchSheetsPage'
 import { AdminUsersPage } from './pages/admin/AdminUsersPage'
+import { AccountPage } from './pages/admin/AccountPage'
 
 export default function App() {
   return (
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/admin/draw/:seasonId/finals" element={<FinalsPage />} />
             <Route path="/admin/draw/:seasonId/matchsheets" element={<MatchSheetsPage />} />
             <Route path="/admin/users" element={<AdminUsersPage />} />
+            <Route path="/admin/account" element={<AccountPage />} />
           </Route>
         </Route>
 

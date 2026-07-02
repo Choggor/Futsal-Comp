@@ -22,9 +22,10 @@ export function AdminUsersPage() {
   const [email, setEmail] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [role, setRole] = useState<'sub_admin' | 'super_admin'>('sub_admin')
-  const [inviting, setInviting] = useState(false)
-  const [inviteResult, setInviteResult] = useState<string | null>(null)
-  const [inviteError, setInviteError] = useState<string | null>(null)
+  const [password, setPassword] = useState('')
+  const [creating, setCreating] = useState(false)
+  const [createdCreds, setCreatedCreds] = useState<{ email: string; password: string } | null>(null)
+  const [createError, setCreateError] = useState<string | null>(null)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -42,11 +43,21 @@ export function AdminUsersPage() {
 
   useEffect(() => { load() }, [load])
 
-  async function handleInvite(e: React.FormEvent) {
+  function generatePassword() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789'
+    let pw = ''
+    const arr = new Uint32Array(12)
+    crypto.getRandomValues(arr)
+    for (let i = 0; i < 12; i++) pw += chars[arr[i] % chars.length]
+    setPassword(pw)
+  }
+
+  async function handleCreate(e: React.FormEvent) {
     e.preventDefault()
-    setInviting(true)
-    setInviteResult(null)
-    setInviteError(null)
+    if (password.length < 8) { setCreateError('Password must be at least 8 characters'); return }
+    setCreating(true)
+    setCreatedCreds(null)
+    setCreateError(null)
 
     const { data: { session } } = await supabase.auth.getSession()
     const res = await fetch(
@@ -57,20 +68,21 @@ export function AdminUsersPage() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${session?.access_token}`,
         },
-        body: JSON.stringify({ email, display_name: displayName, role }),
+        body: JSON.stringify({ action: 'create', email, display_name: displayName, role, password }),
       }
     )
     const json = await res.json()
     if (json.error) {
-      setInviteError(json.error)
+      setCreateError(json.error)
     } else {
-      setInviteResult(`Invite sent to ${email}`)
+      setCreatedCreds({ email, password })
       setEmail('')
       setDisplayName('')
       setRole('sub_admin')
+      setPassword('')
       load()
     }
-    setInviting(false)
+    setCreating(false)
   }
 
   async function toggleVenueAccess(userId: string, venueId: string, hasAccess: boolean) {
@@ -112,13 +124,13 @@ export function AdminUsersPage() {
         <h1>Admin Users</h1>
       </div>
 
-      {/* Invite form */}
+      {/* Create form */}
       <div className="card">
-        <h2>Invite admin</h2>
+        <h2>Create admin</h2>
         <p style={{ fontSize: '0.875rem', color: 'var(--color-muted)', marginBottom: '1rem' }}>
-          They'll receive an email with a link to set their password.
+          Set a password now and hand the login details to the new admin. They can change their own password later from the Account page.
         </p>
-        <form onSubmit={handleInvite}>
+        <form onSubmit={handleCreate}>
           <div className="form-grid">
             <label>
               Email address
@@ -146,16 +158,41 @@ export function AdminUsersPage() {
                 <option value="super_admin">Super admin — full access</option>
               </select>
             </label>
+            <label>
+              Password
+              <div style={{ display: 'flex', gap: '0.4rem' }}>
+                <input
+                  type="text"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="Min 8 characters"
+                  required
+                  style={{ flex: 1 }}
+                />
+                <button type="button" className="btn-secondary" style={{ whiteSpace: 'nowrap' }} onClick={generatePassword}>Generate</button>
+              </div>
+            </label>
           </div>
-          {inviteError && <div className="form-error">{inviteError}</div>}
-          {inviteResult && (
-            <div style={{ color: '#065f46', background: '#d1fae5', padding: '0.6rem 0.9rem', borderRadius: 'var(--radius)', fontSize: '0.875rem', marginBottom: '0.75rem' }}>
-              {inviteResult}
+          {createError && <div className="form-error">{createError}</div>}
+          {createdCreds && (
+            <div style={{ background: '#d1fae5', border: '1px solid #86efac', padding: '0.75rem 0.9rem', borderRadius: 'var(--radius)', fontSize: '0.875rem', marginBottom: '0.75rem', color: '#065f46' }}>
+              <strong>Account created.</strong> Share these details — the password is not shown again:
+              <div style={{ marginTop: '0.4rem', fontFamily: 'monospace', fontSize: '0.9rem' }}>
+                {createdCreds.email}<br />{createdCreds.password}
+              </div>
+              <button
+                type="button"
+                className="btn-sm btn-secondary"
+                style={{ marginTop: '0.5rem' }}
+                onClick={() => navigator.clipboard?.writeText(`${createdCreds.email} / ${createdCreds.password}`)}
+              >
+                Copy
+              </button>
             </div>
           )}
           <div className="form-actions">
-            <button type="submit" disabled={inviting}>
-              {inviting ? 'Sending…' : 'Send invite'}
+            <button type="submit" disabled={creating}>
+              {creating ? 'Creating…' : 'Create admin'}
             </button>
           </div>
         </form>
@@ -191,7 +228,7 @@ export function AdminUsersPage() {
         <div className="card">
           <h2>Venue admins {venueAdmins.length > 0 && `(${venueAdmins.length})`}</h2>
           {venueAdmins.length === 0 ? (
-            <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>No venue admins yet — invite one above.</p>
+            <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem' }}>No venue admins yet — create one above.</p>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {venueAdmins.map(u => {
