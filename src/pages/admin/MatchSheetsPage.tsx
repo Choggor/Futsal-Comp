@@ -1,22 +1,9 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
+import { useAuth } from '../../contexts/AuthContext'
 import { generateMatchSheetsPDF } from '../../utils/matchSheetPdf'
 import type { MatchSheetFixture, MatchSheetConfig } from '../../utils/matchSheetPdf'
-
-const STORAGE_KEY = 'matchsheet_config'
-
-function loadConfig(): MatchSheetConfig {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw)
-  } catch { /* ignore */ }
-  return { orgName: '', contactInfo: '', logoDataUrl: null }
-}
-
-function saveConfig(cfg: MatchSheetConfig) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(cfg))
-}
 
 interface RawFixture {
   id: string
@@ -41,6 +28,7 @@ function fmtShort(d: string | null): string {
 
 export function MatchSheetsPage() {
   const { seasonId } = useParams<{ seasonId: string }>()
+  const { isSuperAdmin } = useAuth()
   const [seasonName, setSeasonName] = useState('')
   const [venueName, setVenueName] = useState('')
   const [nightLabel, setNightLabel] = useState('')
@@ -50,14 +38,18 @@ export function MatchSheetsPage() {
   const [generating, setGenerating] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Config (org info + logo) – persisted in localStorage
-  const [config, setConfig] = useState<MatchSheetConfig>(loadConfig)
+  // Config (org info + logo) — persisted in the database (org_settings, single row)
+  const [config, setConfig] = useState<MatchSheetConfig>({ orgName: '', contactInfo: '', logoDataUrl: null })
   const [showConfig, setShowConfig] = useState(false)
+  const [cfgSaving, setCfgSaving] = useState(false)
+  const [cfgSaved, setCfgSaved] = useState(false)
   const logoInputRef = useRef<HTMLInputElement>(null)
 
-  // Auto-load brand logo as default when no logo has been uploaded yet
-  useEffect(() => {
-    if (config.logoDataUrl) return
+  function updateConfig(patch: Partial<MatchSheetConfig>) {
+    setConfig(prev => ({ ...prev, ...patch }))
+  }
+
+  function loadDefaultLogo() {
     const img = new Image()
     img.onload = () => {
       const canvas = document.createElement('canvas')
@@ -66,14 +58,36 @@ export function MatchSheetsPage() {
       const ctx = canvas.getContext('2d')
       if (!ctx) return
       ctx.drawImage(img, 0, 0)
-      const dataUrl = canvas.toDataURL('image/png')
-      updateConfig({ logoDataUrl: dataUrl })
+      updateConfig({ logoDataUrl: canvas.toDataURL('image/png') })
     }
     img.src = '/logo.svg'
+  }
+
+  // Load saved branding from the database (shared across devices and admins)
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase.from('org_settings').select('org_name, contact_info, logo_data_url').maybeSingle()
+      if (data) {
+        setConfig({ orgName: data.org_name ?? '', contactInfo: data.contact_info ?? '', logoDataUrl: data.logo_data_url ?? null })
+        if (!data.logo_data_url) loadDefaultLogo()
+      } else {
+        loadDefaultLogo()
+      }
+    })()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  function updateConfig(patch: Partial<MatchSheetConfig>) {
-    setConfig(prev => { const next = { ...prev, ...patch }; saveConfig(next); return next })
+  async function saveBranding() {
+    setCfgSaving(true); setCfgSaved(false)
+    const { error } = await supabase.from('org_settings').upsert({
+      id: true,
+      org_name: config.orgName || null,
+      contact_info: config.contactInfo || null,
+      logo_data_url: config.logoDataUrl,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'id' })
+    setCfgSaving(false)
+    if (error) { alert(error.message); return }
+    setCfgSaved(true); setTimeout(() => setCfgSaved(false), 2500)
   }
 
   function handleLogoFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -265,7 +279,8 @@ export function MatchSheetsPage() {
         </div>
       )}
 
-      {/* Organisation / Logo config */}
+      {/* Organisation / Logo config (super admin only) */}
+      {isSuperAdmin && (
       <div className="card" style={{ marginBottom: '1rem' }}>
         <div
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
@@ -322,10 +337,16 @@ export function MatchSheetsPage() {
                 PNG or JPG. Will be scaled to fit the top-left block on each sheet.
               </div>
             </div>
-            <div style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>Settings are saved automatically in your browser.</div>
+            <div className="form-actions" style={{ marginTop: '0.25rem' }}>
+              <button onClick={saveBranding} disabled={cfgSaving}>
+                {cfgSaving ? 'Saving…' : cfgSaved ? '✓ Saved' : 'Save branding'}
+              </button>
+            </div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>Saved to the database — shared across all devices and admins.</div>
           </div>
         )}
       </div>
+      )}
 
       {loading && <div className="loading">Loading…</div>}
 
