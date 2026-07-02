@@ -94,7 +94,26 @@ export function MatchSheetsPage() {
     const file = e.target.files?.[0]
     if (!file) return
     const reader = new FileReader()
-    reader.onload = ev => updateConfig({ logoDataUrl: ev.target?.result as string ?? null })
+    reader.onload = ev => {
+      const src = ev.target?.result as string
+      // Re-encode to PNG via canvas — jsPDF's addImage only supports PNG/JPEG
+      // (not SVG/WEBP), so normalise whatever was uploaded. Also downscale.
+      const img = new Image()
+      img.onload = () => {
+        const maxW = 600
+        let w = img.naturalWidth || 400
+        let h = img.naturalHeight || 150
+        if (w > maxW) { h = Math.round((h * maxW) / w); w = maxW }
+        const canvas = document.createElement('canvas')
+        canvas.width = w; canvas.height = h
+        const ctx = canvas.getContext('2d')
+        if (!ctx) { updateConfig({ logoDataUrl: src }); return }
+        ctx.drawImage(img, 0, 0, w, h)
+        updateConfig({ logoDataUrl: canvas.toDataURL('image/png') })
+      }
+      img.onerror = () => updateConfig({ logoDataUrl: src })
+      img.src = src
+    }
     reader.readAsDataURL(file)
   }
 
