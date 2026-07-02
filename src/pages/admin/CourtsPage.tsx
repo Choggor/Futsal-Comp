@@ -67,7 +67,7 @@ export function CourtsPage() {
         </div>
       )}
 
-      <table className="data-table">
+      <div className="table-scroll"><table className="data-table">
         <thead><tr><th>Name</th><th></th></tr></thead>
         <tbody>
           {courts.map(c => (
@@ -82,7 +82,7 @@ export function CourtsPage() {
           ))}
           {courts.length === 0 && <tr><td colSpan={2}>No courts yet.</td></tr>}
         </tbody>
-      </table>
+      </table></div>
     </div>
   )
 }

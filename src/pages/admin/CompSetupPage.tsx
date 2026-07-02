@@ -416,7 +416,7 @@ export function CompSetupPage() {
       {errorRows.length > 0 && (
         <div className="card" style={{ borderColor: '#fca5a5', background: '#fff5f5' }}>
           <strong style={{ color: 'var(--color-danger)' }}>{errorRows.length} row{errorRows.length !== 1 ? 's' : ''} with errors — fix and re-upload</strong>
-          <table className="data-table" style={{ marginTop: '0.75rem' }}>
+          <div className="table-scroll" style={{ marginTop: '0.75rem' }}><table className="data-table">
             <thead><tr><th>Row</th><th>Player</th><th>Error</th></tr></thead>
             <tbody>
               {errorRows.map((r, i) => (
@@ -427,7 +427,7 @@ export function CompSetupPage() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </div>
       )}
 

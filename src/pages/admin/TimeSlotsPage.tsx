@@ -85,7 +85,7 @@ export function TimeSlotsPage() {
         </div>
       )}
 
-      <table className="data-table">
+      <div className="table-scroll"><table className="data-table">
         <thead><tr><th>Order</th><th>Start time</th><th></th></tr></thead>
         <tbody>
           {slots.map(s => (
@@ -101,7 +101,7 @@ export function TimeSlotsPage() {
           ))}
           {slots.length === 0 && <tr><td colSpan={3}>No time slots yet.</td></tr>}
         </tbody>
-      </table>
+      </table></div>
     </div>
   )
 }

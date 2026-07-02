@@ -105,7 +105,7 @@ export function DivisionsPage() {
         </div>
       )}
 
-      <table className="data-table">
+      <div className="table-scroll"><table className="data-table">
         <thead><tr><th>Name</th><th>Type</th><th>Finals</th><th>Teams</th><th></th></tr></thead>
         <tbody>
           {divisions.map(d => (
@@ -123,7 +123,7 @@ export function DivisionsPage() {
           ))}
           {divisions.length === 0 && <tr><td colSpan={5}>No divisions yet for this night.</td></tr>}
         </tbody>
-      </table>
+      </table></div>
     </div>
   )
 }

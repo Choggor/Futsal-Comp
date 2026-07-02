@@ -81,7 +81,7 @@ export function NightsPage() {
         </div>
       )}
 
-      <table className="data-table">
+      <div className="table-scroll"><table className="data-table">
         <thead><tr><th>Night</th><th>Divisions</th><th></th></tr></thead>
         <tbody>
           {nights.map(n => (
@@ -100,7 +100,7 @@ export function NightsPage() {
           ))}
           {nights.length === 0 && <tr><td colSpan={3}>No competition nights yet. Add one to start configuring divisions.</td></tr>}
         </tbody>
-      </table>
+      </table></div>
     </div>
   )
 }

@@ -83,7 +83,7 @@ export function TeamsPage() {
         </div>
       )}
 
-      <table className="data-table">
+      <div className="table-scroll"><table className="data-table">
         <thead><tr><th>Name</th><th></th></tr></thead>
         <tbody>
           {teams.map(t => (
@@ -98,7 +98,7 @@ export function TeamsPage() {
           ))}
           {teams.length === 0 && <tr><td colSpan={2}>No teams yet.</td></tr>}
         </tbody>
-      </table>
+      </table></div>
     </div>
   )
 }
