@@ -138,11 +138,21 @@ create table public.mvp_awards (
   unique (fixture_id, points)  -- one player per 3/2/1 placing per game
 );
 
--- Which venues a sub-admin may act on.
-create table public.sub_admin_scopes (
-  app_user_id uuid not null references public.app_users(id) on delete cascade,
-  venue_id    uuid not null references public.venues(id) on delete cascade,
-  primary key (app_user_id, venue_id)
+-- Which venues a sub-admin (venue admin) may act on.
+create table public.admin_venue_access (
+  user_id  uuid not null references public.app_users(id) on delete cascade,
+  venue_id uuid not null references public.venues(id) on delete cascade,
+  primary key (user_id, venue_id)
+);
+
+-- Single-row branding used on printed match sheets (org name, contact, logo).
+create table public.org_settings (
+  id            boolean primary key default true,
+  org_name      text,
+  contact_info  text,
+  logo_data_url text,                       -- base64 data URL of the logo
+  updated_at    timestamptz not null default now(),
+  constraint org_settings_singleton check (id)
 );
 
 -- Helpful indexes
@@ -183,7 +193,7 @@ language sql stable security definer set search_path = public as $$
       or exists (
         select 1
         from public.app_users u
-        join public.sub_admin_scopes s on s.app_user_id = u.id
+        join public.admin_venue_access s on s.user_id = u.id
         where u.auth_user_id = auth.uid()
           and s.venue_id = target_venue
       );
@@ -202,8 +212,9 @@ alter table public.teams            enable row level security;
 alter table public.players          enable row level security;
 alter table public.team_players     enable row level security;
 alter table public.fixtures         enable row level security;
-alter table public.mvp_awards       enable row level security;
-alter table public.sub_admin_scopes enable row level security;
+alter table public.mvp_awards         enable row level security;
+alter table public.admin_venue_access enable row level security;
+alter table public.org_settings       enable row level security;
 
 -- ---------------------------------------------------------------------------
 -- 4. Policies
@@ -215,13 +226,19 @@ create policy app_users_select on public.app_users for select to authenticated
 create policy app_users_write on public.app_users for all to authenticated
   using (public.is_super_admin()) with check (public.is_super_admin());
 
--- --- sub_admin_scopes: read own, super-admin manages -----------------------
-create policy scopes_select on public.sub_admin_scopes for select to authenticated
+-- --- admin_venue_access: read own, super-admin manages ---------------------
+create policy ava_select on public.admin_venue_access for select to authenticated
   using (
     public.is_super_admin()
-    or app_user_id in (select id from public.app_users where auth_user_id = auth.uid())
+    or user_id in (select id from public.app_users where auth_user_id = auth.uid())
   );
-create policy scopes_write on public.sub_admin_scopes for all to authenticated
+create policy ava_write on public.admin_venue_access for all to authenticated
+  using (public.is_super_admin()) with check (public.is_super_admin());
+
+-- --- org_settings: admins read, super-admin writes -------------------------
+create policy org_settings_read on public.org_settings for select to authenticated
+  using (public.is_admin());
+create policy org_settings_write on public.org_settings for all to authenticated
   using (public.is_super_admin()) with check (public.is_super_admin());
 
 -- --- Static config tables: public READ, super-admin WRITE ------------------
