@@ -225,11 +225,12 @@ export function MatchSheetsPage() {
 
   const rounds = [...new Set(fixtures.map(f => f.round))].sort((a, b) => a - b)
   const roundLabel = (r: number) => {
-    const rf = fixtures.find(f => f.round === r)
-    const p = rf?.phase ?? 'regular'
-    const date = rf?.scheduled_date ? ` - ${fmtShort(rf.scheduled_date)}` : ''
-    const base = p === 'finals' ? `Finals (Rd ${r})` : p === 'makeup' ? `Makeup (Rd ${r})` : `Round ${r}`
-    return base + date
+    const p = fixtures.find(f => f.round === r)?.phase ?? 'regular'
+    return p === 'finals' ? `Finals (Rd ${r})` : p === 'makeup' ? `Makeup (Rd ${r})` : `Round ${r}`
+  }
+  const roundDateShort = (r: number) => {
+    const d = fixtures.find(f => f.round === r)?.scheduled_date
+    return d ? fmtShort(d) : ''
   }
   const roundMin = rounds[0]
   const roundMax = rounds[rounds.length - 1]
@@ -343,10 +344,11 @@ export function MatchSheetsPage() {
               <button
                 key={r}
                 className={selectedRound === r ? '' : 'btn-secondary'}
-                style={{ fontSize: '0.85rem', padding: '0.4rem 0.8rem' }}
+                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1.15, fontSize: '0.85rem', padding: '0.4rem 0.85rem' }}
                 onClick={() => setSelectedRound(r)}
               >
-                {roundLabel(r)}
+                <span>{roundLabel(r)}</span>
+                {roundDateShort(r) && <span style={{ fontSize: '0.72rem', opacity: 0.8, fontWeight: 400 }}>{roundDateShort(r)}</span>}
               </button>
             ))}
           </div>
