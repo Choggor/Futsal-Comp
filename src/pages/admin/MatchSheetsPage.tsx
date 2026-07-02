@@ -31,9 +31,19 @@ interface RawFixture {
   court_id: string | null
 }
 
+const DAY_FULL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+function fmtShort(d: string | null): string {
+  if (!d) return ''
+  const [, m, day] = d.split('-').map(Number)
+  return `${day} ${MON[m - 1]}`
+}
+
 export function MatchSheetsPage() {
   const { seasonId } = useParams<{ seasonId: string }>()
   const [seasonName, setSeasonName] = useState('')
+  const [venueName, setVenueName] = useState('')
+  const [nightLabel, setNightLabel] = useState('')
   const [fixtures, setFixtures] = useState<RawFixture[]>([])
   const [selectedRound, setSelectedRound] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
@@ -77,7 +87,7 @@ export function MatchSheetsPage() {
   const load = useCallback(async () => {
     setLoading(true)
     const [{ data: s }, { data: fx }] = await Promise.all([
-      supabase.from('seasons').select('name').eq('id', seasonId!).single(),
+      supabase.from('seasons').select('name, venue_nights(name, day_of_week, venues(name))').eq('id', seasonId!).single(),
       supabase.from('fixtures')
         .select('id, round, phase, scheduled_date, home_team_id, away_team_id, division_id, venue_id, slot_id, court_id')
         .eq('season_id', seasonId!)
@@ -85,6 +95,9 @@ export function MatchSheetsPage() {
         .order('round'),
     ])
     setSeasonName(s?.name ?? '')
+    const vn = (s as any)?.venue_nights
+    setVenueName(vn?.venues?.name ?? '')
+    setNightLabel(vn ? (vn.name ?? DAY_FULL[vn.day_of_week] ?? '') : '')
     const fxList = (fx ?? []) as RawFixture[]
     setFixtures(fxList)
     const rounds = [...new Set(fxList.map(f => f.round))].sort((a, b) => a - b)
@@ -212,11 +225,15 @@ export function MatchSheetsPage() {
 
   const rounds = [...new Set(fixtures.map(f => f.round))].sort((a, b) => a - b)
   const roundLabel = (r: number) => {
-    const p = fixtures.find(f => f.round === r)?.phase ?? 'regular'
-    if (p === 'finals') return `Finals (Rd ${r})`
-    if (p === 'makeup') return `Makeup (Rd ${r})`
-    return `Round ${r}`
+    const rf = fixtures.find(f => f.round === r)
+    const p = rf?.phase ?? 'regular'
+    const date = rf?.scheduled_date ? ` - ${fmtShort(rf.scheduled_date)}` : ''
+    const base = p === 'finals' ? `Finals (Rd ${r})` : p === 'makeup' ? `Makeup (Rd ${r})` : `Round ${r}`
+    return base + date
   }
+  const roundMin = rounds[0]
+  const roundMax = rounds[rounds.length - 1]
+  const teamCount = new Set(fixtures.flatMap(f => [f.home_team_id, f.away_team_id].filter(Boolean) as string[])).size
   const roundDate = selectedRound !== null
     ? fixtures.find(f => f.round === selectedRound)?.scheduled_date
     : null
@@ -225,11 +242,27 @@ export function MatchSheetsPage() {
   return (
     <div>
       <div className="breadcrumb">
-        <Link to={`/admin/draw?season=${seasonId}`}>Draw</Link> › Match sheets
+        <Link to={`/admin/draw?season=${seasonId}`}>Draw</Link> › {venueName && `${venueName} · ${nightLabel} › `}Match sheets
       </div>
       <div className="page-header">
-        <h1>Match sheets — {seasonName}</h1>
+        <h1>Match sheets</h1>
       </div>
+
+      {(venueName || nightLabel) && (
+        <div className="card" style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', marginBottom: '1rem' }}>
+          <div style={{ width: 40, height: 40, borderRadius: 8, background: '#dbeafe', color: '#1d4ed8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>📍</div>
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontWeight: 600, fontSize: '1rem' }}>
+              {venueName}{nightLabel && <span style={{ color: 'var(--color-muted)', fontWeight: 400 }}> · {nightLabel} nights</span>}
+            </div>
+            <div style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
+              {seasonName}
+              {rounds.length > 0 && ` · Rounds ${roundMin}–${roundMax}`}
+              {` · ${teamCount} team${teamCount !== 1 ? 's' : ''}`}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Organisation / Logo config */}
       <div className="card" style={{ marginBottom: '1rem' }}>
